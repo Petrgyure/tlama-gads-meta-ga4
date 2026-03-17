@@ -1,0 +1,5735 @@
+{
+  "fetched_at": "2026-03-17T14:43:23.546904",
+  "date_start": "2025-12-20",
+  "date_end": "2026-03-16",
+  "bs_ids": [
+    "23301463644",
+    "23306648786",
+    "23301463641"
+  ],
+  "control_ids": [
+    "19984039856",
+    "16066578205",
+    "21853901424"
+  ],
+  "campaigns": [
+    {
+      "id": "23301463644",
+      "name": "CZ-Pmax-Vlastní nakladatelství > nová > BS",
+      "group": "BS",
+      "totals": {
+        "cost_czk": 55112.73,
+        "clicks": 9649,
+        "impressions": 558613,
+        "conversions": 556.0912,
+        "revenue_czk": 658497.06,
+        "roas": 11.9482,
+        "ctr_pct": 1.7273,
+        "avg_cpc": 5.7118,
+        "conv_rate_pct": 5.7632,
+        "aov": 1184.15,
+        "ltv": 5920.76
+      },
+      "daily": [
+        {
+          "date": "2025-12-20",
+          "cost_czk": 579.54,
+          "clicks": 83,
+          "impressions": 5228,
+          "conversions": 8.3816,
+          "revenue_czk": 7106.62
+        },
+        {
+          "date": "2025-12-21",
+          "cost_czk": 496.4,
+          "clicks": 112,
+          "impressions": 5089,
+          "conversions": 6.5409,
+          "revenue_czk": 5113.85
+        },
+        {
+          "date": "2025-12-22",
+          "cost_czk": 491.75,
+          "clicks": 80,
+          "impressions": 4791,
+          "conversions": 13.7741,
+          "revenue_czk": 34586.15
+        },
+        {
+          "date": "2025-12-23",
+          "cost_czk": 734.46,
+          "clicks": 157,
+          "impressions": 11970,
+          "conversions": 6.9732,
+          "revenue_czk": 6478.46
+        },
+        {
+          "date": "2025-12-24",
+          "cost_czk": 683.73,
+          "clicks": 138,
+          "impressions": 7258,
+          "conversions": 9.1433,
+          "revenue_czk": 13795.33
+        },
+        {
+          "date": "2025-12-25",
+          "cost_czk": 546.45,
+          "clicks": 153,
+          "impressions": 7594,
+          "conversions": 7.3756,
+          "revenue_czk": 6623.32
+        },
+        {
+          "date": "2025-12-26",
+          "cost_czk": 596.38,
+          "clicks": 175,
+          "impressions": 10790,
+          "conversions": 5.3347,
+          "revenue_czk": 2359.73
+        },
+        {
+          "date": "2025-12-27",
+          "cost_czk": 597.02,
+          "clicks": 184,
+          "impressions": 10092,
+          "conversions": 8.0611,
+          "revenue_czk": 13852.45
+        },
+        {
+          "date": "2025-12-28",
+          "cost_czk": 540.31,
+          "clicks": 145,
+          "impressions": 7809,
+          "conversions": 11.2259,
+          "revenue_czk": 10686.26
+        },
+        {
+          "date": "2025-12-29",
+          "cost_czk": 551.58,
+          "clicks": 161,
+          "impressions": 7584,
+          "conversions": 7.717,
+          "revenue_czk": 10873.21
+        },
+        {
+          "date": "2025-12-30",
+          "cost_czk": 556.93,
+          "clicks": 141,
+          "impressions": 8588,
+          "conversions": 3.512,
+          "revenue_czk": 3637.07
+        },
+        {
+          "date": "2025-12-31",
+          "cost_czk": 483.47,
+          "clicks": 107,
+          "impressions": 7082,
+          "conversions": 6.5194,
+          "revenue_czk": 7397.66
+        },
+        {
+          "date": "2026-01-01",
+          "cost_czk": 655.24,
+          "clicks": 140,
+          "impressions": 6148,
+          "conversions": 4.7238,
+          "revenue_czk": 6669.88
+        },
+        {
+          "date": "2026-01-02",
+          "cost_czk": 580.8,
+          "clicks": 167,
+          "impressions": 9314,
+          "conversions": 4.52,
+          "revenue_czk": 2258.65
+        },
+        {
+          "date": "2026-01-03",
+          "cost_czk": 419.19,
+          "clicks": 99,
+          "impressions": 5145,
+          "conversions": 3.5153,
+          "revenue_czk": 4208.36
+        },
+        {
+          "date": "2026-01-04",
+          "cost_czk": 663.74,
+          "clicks": 146,
+          "impressions": 6575,
+          "conversions": 9.7925,
+          "revenue_czk": 10595.98
+        },
+        {
+          "date": "2026-01-05",
+          "cost_czk": 636.77,
+          "clicks": 123,
+          "impressions": 5846,
+          "conversions": 4.6467,
+          "revenue_czk": 1199.46
+        },
+        {
+          "date": "2026-01-06",
+          "cost_czk": 569.66,
+          "clicks": 127,
+          "impressions": 5869,
+          "conversions": 7.9473,
+          "revenue_czk": 8116.58
+        },
+        {
+          "date": "2026-01-07",
+          "cost_czk": 543.86,
+          "clicks": 132,
+          "impressions": 6045,
+          "conversions": 9.8927,
+          "revenue_czk": 11894.83
+        },
+        {
+          "date": "2026-01-08",
+          "cost_czk": 970.07,
+          "clicks": 206,
+          "impressions": 9802,
+          "conversions": 8.3646,
+          "revenue_czk": 10926.72
+        },
+        {
+          "date": "2026-01-09",
+          "cost_czk": 542.41,
+          "clicks": 109,
+          "impressions": 4787,
+          "conversions": 7.6231,
+          "revenue_czk": 5852.77
+        },
+        {
+          "date": "2026-01-10",
+          "cost_czk": 1076.96,
+          "clicks": 239,
+          "impressions": 11921,
+          "conversions": 5.1836,
+          "revenue_czk": 2759.32
+        },
+        {
+          "date": "2026-01-11",
+          "cost_czk": 693.48,
+          "clicks": 124,
+          "impressions": 6710,
+          "conversions": 8.929,
+          "revenue_czk": 10574.8
+        },
+        {
+          "date": "2026-01-12",
+          "cost_czk": 455.8,
+          "clicks": 72,
+          "impressions": 2822,
+          "conversions": 7.1862,
+          "revenue_czk": 9464.99
+        },
+        {
+          "date": "2026-01-13",
+          "cost_czk": 793.77,
+          "clicks": 142,
+          "impressions": 7278,
+          "conversions": 8.8973,
+          "revenue_czk": 9612.53
+        },
+        {
+          "date": "2026-01-14",
+          "cost_czk": 931.92,
+          "clicks": 149,
+          "impressions": 7699,
+          "conversions": 6.3164,
+          "revenue_czk": 10035.64
+        },
+        {
+          "date": "2026-01-15",
+          "cost_czk": 1006.72,
+          "clicks": 139,
+          "impressions": 7056,
+          "conversions": 10.3723,
+          "revenue_czk": 18700.58
+        },
+        {
+          "date": "2026-01-16",
+          "cost_czk": 707.3,
+          "clicks": 115,
+          "impressions": 6785,
+          "conversions": 4.6522,
+          "revenue_czk": 6667.08
+        },
+        {
+          "date": "2026-01-17",
+          "cost_czk": 928.59,
+          "clicks": 117,
+          "impressions": 6342,
+          "conversions": 10.6857,
+          "revenue_czk": 10345.82
+        },
+        {
+          "date": "2026-01-18",
+          "cost_czk": 636.26,
+          "clicks": 122,
+          "impressions": 5295,
+          "conversions": 7.0233,
+          "revenue_czk": 8766.72
+        },
+        {
+          "date": "2026-01-19",
+          "cost_czk": 825.29,
+          "clicks": 121,
+          "impressions": 7090,
+          "conversions": 7.3308,
+          "revenue_czk": 6849.49
+        },
+        {
+          "date": "2026-01-20",
+          "cost_czk": 843.22,
+          "clicks": 122,
+          "impressions": 7459,
+          "conversions": 3.0173,
+          "revenue_czk": 4306.14
+        },
+        {
+          "date": "2026-01-21",
+          "cost_czk": 823.88,
+          "clicks": 102,
+          "impressions": 7410,
+          "conversions": 10.0192,
+          "revenue_czk": 16330.39
+        },
+        {
+          "date": "2026-01-22",
+          "cost_czk": 650.73,
+          "clicks": 98,
+          "impressions": 8120,
+          "conversions": 5.7955,
+          "revenue_czk": 3086.93
+        },
+        {
+          "date": "2026-01-23",
+          "cost_czk": 816.09,
+          "clicks": 111,
+          "impressions": 7262,
+          "conversions": 7.5493,
+          "revenue_czk": 8497.53
+        },
+        {
+          "date": "2026-01-24",
+          "cost_czk": 790.04,
+          "clicks": 152,
+          "impressions": 10055,
+          "conversions": 3.5244,
+          "revenue_czk": 3308.75
+        },
+        {
+          "date": "2026-01-25",
+          "cost_czk": 725.58,
+          "clicks": 124,
+          "impressions": 7418,
+          "conversions": 10.1374,
+          "revenue_czk": 8713.43
+        },
+        {
+          "date": "2026-01-26",
+          "cost_czk": 548.81,
+          "clicks": 75,
+          "impressions": 6078,
+          "conversions": 4.9394,
+          "revenue_czk": 4374.94
+        },
+        {
+          "date": "2026-01-27",
+          "cost_czk": 798.84,
+          "clicks": 145,
+          "impressions": 8330,
+          "conversions": 7.0005,
+          "revenue_czk": 5811.16
+        },
+        {
+          "date": "2026-01-28",
+          "cost_czk": 572.82,
+          "clicks": 89,
+          "impressions": 6588,
+          "conversions": 7.7069,
+          "revenue_czk": 7336.94
+        },
+        {
+          "date": "2026-01-29",
+          "cost_czk": 428.96,
+          "clicks": 72,
+          "impressions": 5736,
+          "conversions": 10.3643,
+          "revenue_czk": 6449.56
+        },
+        {
+          "date": "2026-01-30",
+          "cost_czk": 614.02,
+          "clicks": 99,
+          "impressions": 5930,
+          "conversions": 4.5266,
+          "revenue_czk": 7999.01
+        },
+        {
+          "date": "2026-01-31",
+          "cost_czk": 731.21,
+          "clicks": 132,
+          "impressions": 7075,
+          "conversions": 6.1106,
+          "revenue_czk": 9062.27
+        },
+        {
+          "date": "2026-02-01",
+          "cost_czk": 634.07,
+          "clicks": 110,
+          "impressions": 6264,
+          "conversions": 5.6949,
+          "revenue_czk": 6086.64
+        },
+        {
+          "date": "2026-02-02",
+          "cost_czk": 588.66,
+          "clicks": 117,
+          "impressions": 6022,
+          "conversions": 3.9809,
+          "revenue_czk": 1731.03
+        },
+        {
+          "date": "2026-02-03",
+          "cost_czk": 478.34,
+          "clicks": 69,
+          "impressions": 5821,
+          "conversions": 6.8896,
+          "revenue_czk": 12060.09
+        },
+        {
+          "date": "2026-02-04",
+          "cost_czk": 598.01,
+          "clicks": 97,
+          "impressions": 6359,
+          "conversions": 5.4341,
+          "revenue_czk": 9544.87
+        },
+        {
+          "date": "2026-02-05",
+          "cost_czk": 664.13,
+          "clicks": 95,
+          "impressions": 6914,
+          "conversions": 3.5737,
+          "revenue_czk": 1411.81
+        },
+        {
+          "date": "2026-02-06",
+          "cost_czk": 896.12,
+          "clicks": 127,
+          "impressions": 7796,
+          "conversions": 9.6871,
+          "revenue_czk": 8667.2
+        },
+        {
+          "date": "2026-02-07",
+          "cost_czk": 944.67,
+          "clicks": 159,
+          "impressions": 8608,
+          "conversions": 7.1754,
+          "revenue_czk": 6775.66
+        },
+        {
+          "date": "2026-02-08",
+          "cost_czk": 1036.9,
+          "clicks": 183,
+          "impressions": 9633,
+          "conversions": 8.0671,
+          "revenue_czk": 10885.31
+        },
+        {
+          "date": "2026-02-09",
+          "cost_czk": 1188.45,
+          "clicks": 175,
+          "impressions": 9060,
+          "conversions": 9.046,
+          "revenue_czk": 7260.89
+        },
+        {
+          "date": "2026-02-10",
+          "cost_czk": 523.04,
+          "clicks": 92,
+          "impressions": 6374,
+          "conversions": 5.0652,
+          "revenue_czk": 11302.82
+        },
+        {
+          "date": "2026-02-11",
+          "cost_czk": 472.95,
+          "clicks": 85,
+          "impressions": 4225,
+          "conversions": 3.8784,
+          "revenue_czk": 2596.55
+        },
+        {
+          "date": "2026-02-12",
+          "cost_czk": 335.0,
+          "clicks": 63,
+          "impressions": 4188,
+          "conversions": 4.0603,
+          "revenue_czk": 4857.26
+        },
+        {
+          "date": "2026-02-13",
+          "cost_czk": 273.56,
+          "clicks": 44,
+          "impressions": 4278,
+          "conversions": 3.0731,
+          "revenue_czk": 3045.18
+        },
+        {
+          "date": "2026-02-14",
+          "cost_czk": 520.6,
+          "clicks": 72,
+          "impressions": 3854,
+          "conversions": 3.1216,
+          "revenue_czk": 6804.06
+        },
+        {
+          "date": "2026-02-15",
+          "cost_czk": 500.04,
+          "clicks": 90,
+          "impressions": 4633,
+          "conversions": 5.7702,
+          "revenue_czk": 4604.99
+        },
+        {
+          "date": "2026-02-16",
+          "cost_czk": 604.07,
+          "clicks": 81,
+          "impressions": 4672,
+          "conversions": 5.4331,
+          "revenue_czk": 11469.36
+        },
+        {
+          "date": "2026-02-17",
+          "cost_czk": 646.71,
+          "clicks": 100,
+          "impressions": 5317,
+          "conversions": 6.0777,
+          "revenue_czk": 7935.78
+        },
+        {
+          "date": "2026-02-18",
+          "cost_czk": 406.75,
+          "clicks": 80,
+          "impressions": 5625,
+          "conversions": 6.5342,
+          "revenue_czk": 9855.36
+        },
+        {
+          "date": "2026-02-19",
+          "cost_czk": 749.26,
+          "clicks": 114,
+          "impressions": 6565,
+          "conversions": 7.3434,
+          "revenue_czk": 3944.32
+        },
+        {
+          "date": "2026-02-20",
+          "cost_czk": 677.36,
+          "clicks": 103,
+          "impressions": 7318,
+          "conversions": 5.3305,
+          "revenue_czk": 11631.95
+        },
+        {
+          "date": "2026-02-21",
+          "cost_czk": 427.42,
+          "clicks": 81,
+          "impressions": 5870,
+          "conversions": 2.6649,
+          "revenue_czk": 3178.87
+        },
+        {
+          "date": "2026-02-22",
+          "cost_czk": 842.37,
+          "clicks": 125,
+          "impressions": 6568,
+          "conversions": 5.2659,
+          "revenue_czk": 3955.99
+        },
+        {
+          "date": "2026-02-23",
+          "cost_czk": 599.73,
+          "clicks": 121,
+          "impressions": 5872,
+          "conversions": 6.0003,
+          "revenue_czk": 8271.4
+        },
+        {
+          "date": "2026-02-24",
+          "cost_czk": 718.62,
+          "clicks": 131,
+          "impressions": 7028,
+          "conversions": 12.3828,
+          "revenue_czk": 13037.02
+        },
+        {
+          "date": "2026-02-25",
+          "cost_czk": 829.24,
+          "clicks": 128,
+          "impressions": 7366,
+          "conversions": 9.8001,
+          "revenue_czk": 18740.35
+        },
+        {
+          "date": "2026-02-26",
+          "cost_czk": 502.28,
+          "clicks": 82,
+          "impressions": 5327,
+          "conversions": 1.8935,
+          "revenue_czk": 1640.22
+        },
+        {
+          "date": "2026-02-27",
+          "cost_czk": 708.66,
+          "clicks": 100,
+          "impressions": 6444,
+          "conversions": 5.5983,
+          "revenue_czk": 5792.99
+        },
+        {
+          "date": "2026-02-28",
+          "cost_czk": 691.87,
+          "clicks": 92,
+          "impressions": 6514,
+          "conversions": 2.9614,
+          "revenue_czk": 3618.12
+        },
+        {
+          "date": "2026-03-01",
+          "cost_czk": 678.31,
+          "clicks": 99,
+          "impressions": 6097,
+          "conversions": 5.8873,
+          "revenue_czk": 7962.71
+        },
+        {
+          "date": "2026-03-02",
+          "cost_czk": 705.78,
+          "clicks": 96,
+          "impressions": 6005,
+          "conversions": 9.424,
+          "revenue_czk": 17912.59
+        },
+        {
+          "date": "2026-03-03",
+          "cost_czk": 518.97,
+          "clicks": 86,
+          "impressions": 5359,
+          "conversions": 2.397,
+          "revenue_czk": 1822.55
+        },
+        {
+          "date": "2026-03-04",
+          "cost_czk": 550.49,
+          "clicks": 77,
+          "impressions": 5423,
+          "conversions": 9.6429,
+          "revenue_czk": 10518.47
+        },
+        {
+          "date": "2026-03-05",
+          "cost_czk": 534.9,
+          "clicks": 72,
+          "impressions": 5025,
+          "conversions": 1.6227,
+          "revenue_czk": 1412.98
+        },
+        {
+          "date": "2026-03-06",
+          "cost_czk": 550.68,
+          "clicks": 84,
+          "impressions": 6252,
+          "conversions": 7.3289,
+          "revenue_czk": 5481.52
+        },
+        {
+          "date": "2026-03-07",
+          "cost_czk": 672.29,
+          "clicks": 85,
+          "impressions": 4744,
+          "conversions": 3.468,
+          "revenue_czk": 2014.74
+        },
+        {
+          "date": "2026-03-08",
+          "cost_czk": 473.85,
+          "clicks": 90,
+          "impressions": 4515,
+          "conversions": 7.394,
+          "revenue_czk": 8041.2
+        },
+        {
+          "date": "2026-03-09",
+          "cost_czk": 360.09,
+          "clicks": 67,
+          "impressions": 4336,
+          "conversions": 8.0829,
+          "revenue_czk": 11063.68
+        },
+        {
+          "date": "2026-03-10",
+          "cost_czk": 550.95,
+          "clicks": 79,
+          "impressions": 4952,
+          "conversions": 6.448,
+          "revenue_czk": 4830.5
+        },
+        {
+          "date": "2026-03-11",
+          "cost_czk": 427.81,
+          "clicks": 49,
+          "impressions": 4083,
+          "conversions": 4.3408,
+          "revenue_czk": 9875.26
+        },
+        {
+          "date": "2026-03-12",
+          "cost_czk": 326.69,
+          "clicks": 43,
+          "impressions": 3484,
+          "conversions": 4.7692,
+          "revenue_czk": 4033.23
+        },
+        {
+          "date": "2026-03-13",
+          "cost_czk": 367.63,
+          "clicks": 41,
+          "impressions": 3062,
+          "conversions": 5.5496,
+          "revenue_czk": 2498.83
+        },
+        {
+          "date": "2026-03-14",
+          "cost_czk": 214.58,
+          "clicks": 36,
+          "impressions": 2250,
+          "conversions": 2.1513,
+          "revenue_czk": 2510.05
+        },
+        {
+          "date": "2026-03-15",
+          "cost_czk": 545.96,
+          "clicks": 56,
+          "impressions": 2560,
+          "conversions": 0.1938,
+          "revenue_czk": 83.25
+        },
+        {
+          "date": "2026-03-16",
+          "cost_czk": 734.82,
+          "clicks": 127,
+          "impressions": 6086,
+          "conversions": 2.7341,
+          "revenue_czk": 4442.05
+        }
+      ]
+    },
+    {
+      "id": "23306648786",
+      "name": "CZ-Pmax-Zombie -> BS",
+      "group": "BS",
+      "totals": {
+        "cost_czk": 149295.66,
+        "clicks": 38801,
+        "impressions": 1342249,
+        "conversions": 1486.3524,
+        "revenue_czk": 1749294.77,
+        "roas": 11.717,
+        "ctr_pct": 2.8907,
+        "avg_cpc": 3.8477,
+        "conv_rate_pct": 3.8307,
+        "aov": 1176.9,
+        "ltv": 5884.52
+      },
+      "daily": [
+        {
+          "date": "2025-12-20",
+          "cost_czk": 744.66,
+          "clicks": 280,
+          "impressions": 6493,
+          "conversions": 11.3929,
+          "revenue_czk": 12939.99
+        },
+        {
+          "date": "2025-12-21",
+          "cost_czk": 1074.58,
+          "clicks": 421,
+          "impressions": 11918,
+          "conversions": 11.3957,
+          "revenue_czk": 11853.0
+        },
+        {
+          "date": "2025-12-22",
+          "cost_czk": 1061.38,
+          "clicks": 437,
+          "impressions": 10881,
+          "conversions": 23.3534,
+          "revenue_czk": 20395.75
+        },
+        {
+          "date": "2025-12-23",
+          "cost_czk": 1094.68,
+          "clicks": 506,
+          "impressions": 16452,
+          "conversions": 13.1903,
+          "revenue_czk": 14623.48
+        },
+        {
+          "date": "2025-12-24",
+          "cost_czk": 1245.21,
+          "clicks": 497,
+          "impressions": 14224,
+          "conversions": 21.0541,
+          "revenue_czk": 26448.11
+        },
+        {
+          "date": "2025-12-25",
+          "cost_czk": 884.84,
+          "clicks": 477,
+          "impressions": 12860,
+          "conversions": 9.7527,
+          "revenue_czk": 8509.6
+        },
+        {
+          "date": "2025-12-26",
+          "cost_czk": 823.33,
+          "clicks": 294,
+          "impressions": 6589,
+          "conversions": 11.5216,
+          "revenue_czk": 15929.43
+        },
+        {
+          "date": "2025-12-27",
+          "cost_czk": 1414.61,
+          "clicks": 485,
+          "impressions": 16308,
+          "conversions": 12.1193,
+          "revenue_czk": 8103.24
+        },
+        {
+          "date": "2025-12-28",
+          "cost_czk": 952.46,
+          "clicks": 335,
+          "impressions": 10087,
+          "conversions": 5.8983,
+          "revenue_czk": 5672.88
+        },
+        {
+          "date": "2025-12-29",
+          "cost_czk": 925.94,
+          "clicks": 428,
+          "impressions": 7622,
+          "conversions": 17.2498,
+          "revenue_czk": 14583.73
+        },
+        {
+          "date": "2025-12-30",
+          "cost_czk": 854.39,
+          "clicks": 335,
+          "impressions": 11322,
+          "conversions": 9.0294,
+          "revenue_czk": 10506.35
+        },
+        {
+          "date": "2025-12-31",
+          "cost_czk": 967.71,
+          "clicks": 315,
+          "impressions": 11425,
+          "conversions": 15.0509,
+          "revenue_czk": 15063.07
+        },
+        {
+          "date": "2026-01-01",
+          "cost_czk": 1114.26,
+          "clicks": 325,
+          "impressions": 8855,
+          "conversions": 12.8326,
+          "revenue_czk": 8369.23
+        },
+        {
+          "date": "2026-01-02",
+          "cost_czk": 1033.55,
+          "clicks": 437,
+          "impressions": 12124,
+          "conversions": 7.5384,
+          "revenue_czk": 16644.12
+        },
+        {
+          "date": "2026-01-03",
+          "cost_czk": 1037.89,
+          "clicks": 334,
+          "impressions": 8817,
+          "conversions": 10.6632,
+          "revenue_czk": 14974.13
+        },
+        {
+          "date": "2026-01-04",
+          "cost_czk": 1072.28,
+          "clicks": 327,
+          "impressions": 9606,
+          "conversions": 10.2321,
+          "revenue_czk": 21126.45
+        },
+        {
+          "date": "2026-01-05",
+          "cost_czk": 1041.1,
+          "clicks": 407,
+          "impressions": 8336,
+          "conversions": 8.8681,
+          "revenue_czk": 8631.85
+        },
+        {
+          "date": "2026-01-06",
+          "cost_czk": 548.92,
+          "clicks": 290,
+          "impressions": 4542,
+          "conversions": 11.7992,
+          "revenue_czk": 11559.11
+        },
+        {
+          "date": "2026-01-07",
+          "cost_czk": 2399.78,
+          "clicks": 671,
+          "impressions": 21119,
+          "conversions": 21.553,
+          "revenue_czk": 26041.59
+        },
+        {
+          "date": "2026-01-08",
+          "cost_czk": 2564.69,
+          "clicks": 656,
+          "impressions": 18516,
+          "conversions": 23.565,
+          "revenue_czk": 22922.19
+        },
+        {
+          "date": "2026-01-09",
+          "cost_czk": 2340.64,
+          "clicks": 803,
+          "impressions": 21798,
+          "conversions": 27.2049,
+          "revenue_czk": 21437.79
+        },
+        {
+          "date": "2026-01-10",
+          "cost_czk": 2518.77,
+          "clicks": 770,
+          "impressions": 25543,
+          "conversions": 25.0046,
+          "revenue_czk": 26545.73
+        },
+        {
+          "date": "2026-01-11",
+          "cost_czk": 2634.89,
+          "clicks": 639,
+          "impressions": 17953,
+          "conversions": 18.3342,
+          "revenue_czk": 22612.79
+        },
+        {
+          "date": "2026-01-12",
+          "cost_czk": 2484.45,
+          "clicks": 699,
+          "impressions": 18693,
+          "conversions": 30.7499,
+          "revenue_czk": 36196.51
+        },
+        {
+          "date": "2026-01-13",
+          "cost_czk": 2438.63,
+          "clicks": 648,
+          "impressions": 23805,
+          "conversions": 15.2796,
+          "revenue_czk": 19111.81
+        },
+        {
+          "date": "2026-01-14",
+          "cost_czk": 2454.27,
+          "clicks": 577,
+          "impressions": 21599,
+          "conversions": 16.6437,
+          "revenue_czk": 24626.61
+        },
+        {
+          "date": "2026-01-15",
+          "cost_czk": 1403.27,
+          "clicks": 307,
+          "impressions": 6134,
+          "conversions": 14.7585,
+          "revenue_czk": 8524.15
+        },
+        {
+          "date": "2026-01-16",
+          "cost_czk": 2772.88,
+          "clicks": 615,
+          "impressions": 23687,
+          "conversions": 18.5676,
+          "revenue_czk": 20024.86
+        },
+        {
+          "date": "2026-01-17",
+          "cost_czk": 3296.68,
+          "clicks": 737,
+          "impressions": 33233,
+          "conversions": 12.1165,
+          "revenue_czk": 10285.21
+        },
+        {
+          "date": "2026-01-18",
+          "cost_czk": 2298.1,
+          "clicks": 554,
+          "impressions": 17252,
+          "conversions": 16.0526,
+          "revenue_czk": 24518.96
+        },
+        {
+          "date": "2026-01-19",
+          "cost_czk": 1253.88,
+          "clicks": 284,
+          "impressions": 7738,
+          "conversions": 11.7603,
+          "revenue_czk": 14655.02
+        },
+        {
+          "date": "2026-01-20",
+          "cost_czk": 2681.68,
+          "clicks": 617,
+          "impressions": 27751,
+          "conversions": 17.3225,
+          "revenue_czk": 22558.51
+        },
+        {
+          "date": "2026-01-21",
+          "cost_czk": 2946.28,
+          "clicks": 666,
+          "impressions": 28429,
+          "conversions": 21.9402,
+          "revenue_czk": 22297.92
+        },
+        {
+          "date": "2026-01-22",
+          "cost_czk": 2292.15,
+          "clicks": 546,
+          "impressions": 23452,
+          "conversions": 21.9987,
+          "revenue_czk": 30749.43
+        },
+        {
+          "date": "2026-01-23",
+          "cost_czk": 2242.37,
+          "clicks": 506,
+          "impressions": 24591,
+          "conversions": 16.6149,
+          "revenue_czk": 22128.88
+        },
+        {
+          "date": "2026-01-24",
+          "cost_czk": 2721.9,
+          "clicks": 613,
+          "impressions": 32342,
+          "conversions": 18.4959,
+          "revenue_czk": 25304.46
+        },
+        {
+          "date": "2026-01-25",
+          "cost_czk": 2757.15,
+          "clicks": 593,
+          "impressions": 28585,
+          "conversions": 34.1096,
+          "revenue_czk": 42412.52
+        },
+        {
+          "date": "2026-01-26",
+          "cost_czk": 2019.94,
+          "clicks": 410,
+          "impressions": 22799,
+          "conversions": 25.6805,
+          "revenue_czk": 29670.71
+        },
+        {
+          "date": "2026-01-27",
+          "cost_czk": 1955.47,
+          "clicks": 436,
+          "impressions": 24145,
+          "conversions": 23.6891,
+          "revenue_czk": 25090.26
+        },
+        {
+          "date": "2026-01-28",
+          "cost_czk": 2357.22,
+          "clicks": 467,
+          "impressions": 24300,
+          "conversions": 13.9818,
+          "revenue_czk": 14337.19
+        },
+        {
+          "date": "2026-01-29",
+          "cost_czk": 1991.22,
+          "clicks": 464,
+          "impressions": 23642,
+          "conversions": 16.791,
+          "revenue_czk": 20073.4
+        },
+        {
+          "date": "2026-01-30",
+          "cost_czk": 2676.54,
+          "clicks": 528,
+          "impressions": 27230,
+          "conversions": 14.5654,
+          "revenue_czk": 13144.89
+        },
+        {
+          "date": "2026-01-31",
+          "cost_czk": 2399.16,
+          "clicks": 561,
+          "impressions": 28098,
+          "conversions": 12.8915,
+          "revenue_czk": 18440.61
+        },
+        {
+          "date": "2026-02-01",
+          "cost_czk": 2189.68,
+          "clicks": 530,
+          "impressions": 23952,
+          "conversions": 14.1362,
+          "revenue_czk": 17976.2
+        },
+        {
+          "date": "2026-02-02",
+          "cost_czk": 1486.28,
+          "clicks": 344,
+          "impressions": 16855,
+          "conversions": 10.8392,
+          "revenue_czk": 11342.81
+        },
+        {
+          "date": "2026-02-03",
+          "cost_czk": 1108.91,
+          "clicks": 258,
+          "impressions": 12383,
+          "conversions": 13.1015,
+          "revenue_czk": 15831.89
+        },
+        {
+          "date": "2026-02-04",
+          "cost_czk": 815.29,
+          "clicks": 304,
+          "impressions": 10267,
+          "conversions": 26.7307,
+          "revenue_czk": 37052.74
+        },
+        {
+          "date": "2026-02-05",
+          "cost_czk": 1329.72,
+          "clicks": 421,
+          "impressions": 11703,
+          "conversions": 12.9419,
+          "revenue_czk": 7441.57
+        },
+        {
+          "date": "2026-02-06",
+          "cost_czk": 1830.73,
+          "clicks": 490,
+          "impressions": 11763,
+          "conversions": 23.8592,
+          "revenue_czk": 26345.85
+        },
+        {
+          "date": "2026-02-07",
+          "cost_czk": 2364.36,
+          "clicks": 582,
+          "impressions": 17700,
+          "conversions": 12.4153,
+          "revenue_czk": 14196.91
+        },
+        {
+          "date": "2026-02-08",
+          "cost_czk": 2644.94,
+          "clicks": 652,
+          "impressions": 20396,
+          "conversions": 12.3932,
+          "revenue_czk": 12463.38
+        },
+        {
+          "date": "2026-02-09",
+          "cost_czk": 3294.35,
+          "clicks": 810,
+          "impressions": 24450,
+          "conversions": 34.3109,
+          "revenue_czk": 39306.98
+        },
+        {
+          "date": "2026-02-10",
+          "cost_czk": 2192.21,
+          "clicks": 574,
+          "impressions": 14965,
+          "conversions": 28.5617,
+          "revenue_czk": 43918.78
+        },
+        {
+          "date": "2026-02-11",
+          "cost_czk": 1859.79,
+          "clicks": 475,
+          "impressions": 11640,
+          "conversions": 24.621,
+          "revenue_czk": 25196.03
+        },
+        {
+          "date": "2026-02-12",
+          "cost_czk": 1775.07,
+          "clicks": 439,
+          "impressions": 11827,
+          "conversions": 14.0261,
+          "revenue_czk": 17407.15
+        },
+        {
+          "date": "2026-02-13",
+          "cost_czk": 1887.39,
+          "clicks": 481,
+          "impressions": 12728,
+          "conversions": 29.8169,
+          "revenue_czk": 22586.38
+        },
+        {
+          "date": "2026-02-14",
+          "cost_czk": 1890.34,
+          "clicks": 457,
+          "impressions": 11913,
+          "conversions": 13.6595,
+          "revenue_czk": 15512.77
+        },
+        {
+          "date": "2026-02-15",
+          "cost_czk": 1615.47,
+          "clicks": 432,
+          "impressions": 11492,
+          "conversions": 22.7723,
+          "revenue_czk": 21108.92
+        },
+        {
+          "date": "2026-02-16",
+          "cost_czk": 2026.19,
+          "clicks": 526,
+          "impressions": 12430,
+          "conversions": 22.0931,
+          "revenue_czk": 21197.53
+        },
+        {
+          "date": "2026-02-17",
+          "cost_czk": 1566.86,
+          "clicks": 486,
+          "impressions": 12804,
+          "conversions": 22.8132,
+          "revenue_czk": 37559.67
+        },
+        {
+          "date": "2026-02-18",
+          "cost_czk": 1689.39,
+          "clicks": 503,
+          "impressions": 14711,
+          "conversions": 22.3008,
+          "revenue_czk": 31656.81
+        },
+        {
+          "date": "2026-02-19",
+          "cost_czk": 1355.19,
+          "clicks": 436,
+          "impressions": 12707,
+          "conversions": 24.4942,
+          "revenue_czk": 31701.68
+        },
+        {
+          "date": "2026-02-20",
+          "cost_czk": 1644.44,
+          "clicks": 490,
+          "impressions": 12695,
+          "conversions": 27.6898,
+          "revenue_czk": 44791.83
+        },
+        {
+          "date": "2026-02-21",
+          "cost_czk": 1676.88,
+          "clicks": 469,
+          "impressions": 14100,
+          "conversions": 11.0869,
+          "revenue_czk": 8733.26
+        },
+        {
+          "date": "2026-02-22",
+          "cost_czk": 1951.6,
+          "clicks": 615,
+          "impressions": 17507,
+          "conversions": 19.9085,
+          "revenue_czk": 40614.15
+        },
+        {
+          "date": "2026-02-23",
+          "cost_czk": 2369.79,
+          "clicks": 645,
+          "impressions": 18282,
+          "conversions": 29.1649,
+          "revenue_czk": 29590.58
+        },
+        {
+          "date": "2026-02-24",
+          "cost_czk": 2597.59,
+          "clicks": 660,
+          "impressions": 20151,
+          "conversions": 26.2324,
+          "revenue_czk": 28580.92
+        },
+        {
+          "date": "2026-02-25",
+          "cost_czk": 2409.56,
+          "clicks": 585,
+          "impressions": 19675,
+          "conversions": 26.2028,
+          "revenue_czk": 30947.48
+        },
+        {
+          "date": "2026-02-26",
+          "cost_czk": 1560.61,
+          "clicks": 387,
+          "impressions": 7684,
+          "conversions": 17.1953,
+          "revenue_czk": 24972.13
+        },
+        {
+          "date": "2026-02-27",
+          "cost_czk": 1810.24,
+          "clicks": 393,
+          "impressions": 11357,
+          "conversions": 19.4797,
+          "revenue_czk": 29472.9
+        },
+        {
+          "date": "2026-02-28",
+          "cost_czk": 1436.95,
+          "clicks": 279,
+          "impressions": 12266,
+          "conversions": 9.886,
+          "revenue_czk": 13694.51
+        },
+        {
+          "date": "2026-03-01",
+          "cost_czk": 1414.47,
+          "clicks": 299,
+          "impressions": 13147,
+          "conversions": 15.2551,
+          "revenue_czk": 20856.49
+        },
+        {
+          "date": "2026-03-02",
+          "cost_czk": 2072.7,
+          "clicks": 367,
+          "impressions": 16749,
+          "conversions": 17.35,
+          "revenue_czk": 16689.48
+        },
+        {
+          "date": "2026-03-03",
+          "cost_czk": 2136.44,
+          "clicks": 346,
+          "impressions": 17553,
+          "conversions": 13.6551,
+          "revenue_czk": 19020.01
+        },
+        {
+          "date": "2026-03-04",
+          "cost_czk": 1772.37,
+          "clicks": 305,
+          "impressions": 16330,
+          "conversions": 21.2479,
+          "revenue_czk": 28894.92
+        },
+        {
+          "date": "2026-03-05",
+          "cost_czk": 1892.65,
+          "clicks": 327,
+          "impressions": 15126,
+          "conversions": 10.6293,
+          "revenue_czk": 10013.11
+        },
+        {
+          "date": "2026-03-06",
+          "cost_czk": 1666.14,
+          "clicks": 287,
+          "impressions": 16272,
+          "conversions": 15.3106,
+          "revenue_czk": 18045.43
+        },
+        {
+          "date": "2026-03-07",
+          "cost_czk": 1332.9,
+          "clicks": 256,
+          "impressions": 12441,
+          "conversions": 6.8846,
+          "revenue_czk": 4945.23
+        },
+        {
+          "date": "2026-03-08",
+          "cost_czk": 1470.71,
+          "clicks": 283,
+          "impressions": 12702,
+          "conversions": 7.5138,
+          "revenue_czk": 6248.64
+        },
+        {
+          "date": "2026-03-09",
+          "cost_czk": 988.73,
+          "clicks": 226,
+          "impressions": 9938,
+          "conversions": 16.4501,
+          "revenue_czk": 15295.59
+        },
+        {
+          "date": "2026-03-10",
+          "cost_czk": 1050.11,
+          "clicks": 211,
+          "impressions": 10444,
+          "conversions": 17.9054,
+          "revenue_czk": 22361.65
+        },
+        {
+          "date": "2026-03-11",
+          "cost_czk": 492.66,
+          "clicks": 108,
+          "impressions": 3940,
+          "conversions": 17.3373,
+          "revenue_czk": 15858.03
+        },
+        {
+          "date": "2026-03-12",
+          "cost_czk": 162.97,
+          "clicks": 44,
+          "impressions": 2222,
+          "conversions": 10.0699,
+          "revenue_czk": 10389.3
+        },
+        {
+          "date": "2026-03-13",
+          "cost_czk": 149.67,
+          "clicks": 35,
+          "impressions": 1888,
+          "conversions": 14.0067,
+          "revenue_czk": 20582.27
+        },
+        {
+          "date": "2026-03-14",
+          "cost_czk": 263.15,
+          "clicks": 111,
+          "impressions": 2031,
+          "conversions": 5.4692,
+          "revenue_czk": 6742.11
+        },
+        {
+          "date": "2026-03-15",
+          "cost_czk": 488.12,
+          "clicks": 148,
+          "impressions": 2986,
+          "conversions": 4.5306,
+          "revenue_czk": 11370.39
+        },
+        {
+          "date": "2026-03-16",
+          "cost_czk": 1768.25,
+          "clicks": 428,
+          "impressions": 17182,
+          "conversions": 7.3901,
+          "revenue_czk": 11134.79
+        }
+      ]
+    },
+    {
+      "id": "23301463641",
+      "name": "CZ-Pmax-Značky-BS",
+      "group": "BS",
+      "totals": {
+        "cost_czk": 102761.52,
+        "clicks": 24923,
+        "impressions": 1360135,
+        "conversions": 1127.1675,
+        "revenue_czk": 1457109.37,
+        "roas": 14.1795,
+        "ctr_pct": 1.8324,
+        "avg_cpc": 4.1232,
+        "conv_rate_pct": 4.5226,
+        "aov": 1292.72,
+        "ltv": 6463.59
+      },
+      "daily": [
+        {
+          "date": "2025-12-20",
+          "cost_czk": 657.91,
+          "clicks": 192,
+          "impressions": 9796,
+          "conversions": 7.9907,
+          "revenue_czk": 9073.92
+        },
+        {
+          "date": "2025-12-21",
+          "cost_czk": 598.43,
+          "clicks": 191,
+          "impressions": 9073,
+          "conversions": 7.1335,
+          "revenue_czk": 7913.69
+        },
+        {
+          "date": "2025-12-22",
+          "cost_czk": 411.56,
+          "clicks": 129,
+          "impressions": 5877,
+          "conversions": 11.6073,
+          "revenue_czk": 17900.46
+        },
+        {
+          "date": "2025-12-23",
+          "cost_czk": 905.28,
+          "clicks": 245,
+          "impressions": 13120,
+          "conversions": 8.0915,
+          "revenue_czk": 6050.98
+        },
+        {
+          "date": "2025-12-24",
+          "cost_czk": 712.3,
+          "clicks": 238,
+          "impressions": 11481,
+          "conversions": 15.2365,
+          "revenue_czk": 18845.3
+        },
+        {
+          "date": "2025-12-25",
+          "cost_czk": 613.13,
+          "clicks": 283,
+          "impressions": 12229,
+          "conversions": 9.4912,
+          "revenue_czk": 7446.33
+        },
+        {
+          "date": "2025-12-26",
+          "cost_czk": 716.24,
+          "clicks": 337,
+          "impressions": 16207,
+          "conversions": 6.1552,
+          "revenue_czk": 5027.67
+        },
+        {
+          "date": "2025-12-27",
+          "cost_czk": 656.03,
+          "clicks": 278,
+          "impressions": 11206,
+          "conversions": 10.5847,
+          "revenue_czk": 9241.87
+        },
+        {
+          "date": "2025-12-28",
+          "cost_czk": 629.64,
+          "clicks": 297,
+          "impressions": 11203,
+          "conversions": 13.7021,
+          "revenue_czk": 17010.02
+        },
+        {
+          "date": "2025-12-29",
+          "cost_czk": 654.15,
+          "clicks": 223,
+          "impressions": 12227,
+          "conversions": 10.6297,
+          "revenue_czk": 12513.56
+        },
+        {
+          "date": "2025-12-30",
+          "cost_czk": 495.0,
+          "clicks": 194,
+          "impressions": 8720,
+          "conversions": 6.9903,
+          "revenue_czk": 7265.81
+        },
+        {
+          "date": "2025-12-31",
+          "cost_czk": 617.06,
+          "clicks": 196,
+          "impressions": 10115,
+          "conversions": 9.7872,
+          "revenue_czk": 11657.18
+        },
+        {
+          "date": "2026-01-01",
+          "cost_czk": 736.7,
+          "clicks": 264,
+          "impressions": 12420,
+          "conversions": 9.0929,
+          "revenue_czk": 6073.13
+        },
+        {
+          "date": "2026-01-02",
+          "cost_czk": 669.98,
+          "clicks": 276,
+          "impressions": 10683,
+          "conversions": 5.8807,
+          "revenue_czk": 24052.4
+        },
+        {
+          "date": "2026-01-03",
+          "cost_czk": 676.02,
+          "clicks": 252,
+          "impressions": 9548,
+          "conversions": 8.0179,
+          "revenue_czk": 9903.93
+        },
+        {
+          "date": "2026-01-04",
+          "cost_czk": 674.29,
+          "clicks": 278,
+          "impressions": 10756,
+          "conversions": 6.3303,
+          "revenue_czk": 6990.82
+        },
+        {
+          "date": "2026-01-05",
+          "cost_czk": 598.56,
+          "clicks": 165,
+          "impressions": 7851,
+          "conversions": 8.079,
+          "revenue_czk": 22542.09
+        },
+        {
+          "date": "2026-01-06",
+          "cost_czk": 451.35,
+          "clicks": 152,
+          "impressions": 8408,
+          "conversions": 5.8821,
+          "revenue_czk": 8079.56
+        },
+        {
+          "date": "2026-01-07",
+          "cost_czk": 1306.48,
+          "clicks": 376,
+          "impressions": 18413,
+          "conversions": 9.0073,
+          "revenue_czk": 8884.99
+        },
+        {
+          "date": "2026-01-08",
+          "cost_czk": 1343.4,
+          "clicks": 382,
+          "impressions": 19389,
+          "conversions": 13.3376,
+          "revenue_czk": 16270.5
+        },
+        {
+          "date": "2026-01-09",
+          "cost_czk": 1320.23,
+          "clicks": 347,
+          "impressions": 17377,
+          "conversions": 17.5646,
+          "revenue_czk": 12948.95
+        },
+        {
+          "date": "2026-01-10",
+          "cost_czk": 1365.03,
+          "clicks": 384,
+          "impressions": 17688,
+          "conversions": 12.6185,
+          "revenue_czk": 10399.18
+        },
+        {
+          "date": "2026-01-11",
+          "cost_czk": 1374.32,
+          "clicks": 400,
+          "impressions": 17910,
+          "conversions": 12.2934,
+          "revenue_czk": 18742.43
+        },
+        {
+          "date": "2026-01-12",
+          "cost_czk": 1397.18,
+          "clicks": 376,
+          "impressions": 19008,
+          "conversions": 20.0993,
+          "revenue_czk": 14833.7
+        },
+        {
+          "date": "2026-01-13",
+          "cost_czk": 1200.08,
+          "clicks": 309,
+          "impressions": 18160,
+          "conversions": 11.8442,
+          "revenue_czk": 14234.43
+        },
+        {
+          "date": "2026-01-14",
+          "cost_czk": 1422.33,
+          "clicks": 329,
+          "impressions": 15821,
+          "conversions": 16.4763,
+          "revenue_czk": 17940.34
+        },
+        {
+          "date": "2026-01-15",
+          "cost_czk": 1307.71,
+          "clicks": 259,
+          "impressions": 16872,
+          "conversions": 13.5436,
+          "revenue_czk": 26666.8
+        },
+        {
+          "date": "2026-01-16",
+          "cost_czk": 1154.23,
+          "clicks": 248,
+          "impressions": 13130,
+          "conversions": 13.1562,
+          "revenue_czk": 12655.95
+        },
+        {
+          "date": "2026-01-17",
+          "cost_czk": 1571.93,
+          "clicks": 319,
+          "impressions": 18553,
+          "conversions": 8.1502,
+          "revenue_czk": 9304.73
+        },
+        {
+          "date": "2026-01-18",
+          "cost_czk": 1312.84,
+          "clicks": 303,
+          "impressions": 14201,
+          "conversions": 14.2998,
+          "revenue_czk": 12857.08
+        },
+        {
+          "date": "2026-01-19",
+          "cost_czk": 1235.22,
+          "clicks": 245,
+          "impressions": 13600,
+          "conversions": 11.4044,
+          "revenue_czk": 14735.26
+        },
+        {
+          "date": "2026-01-20",
+          "cost_czk": 1217.75,
+          "clicks": 283,
+          "impressions": 17415,
+          "conversions": 9.3213,
+          "revenue_czk": 6022.38
+        },
+        {
+          "date": "2026-01-21",
+          "cost_czk": 1485.65,
+          "clicks": 337,
+          "impressions": 17760,
+          "conversions": 3.4743,
+          "revenue_czk": 4926.32
+        },
+        {
+          "date": "2026-01-22",
+          "cost_czk": 1117.54,
+          "clicks": 246,
+          "impressions": 16391,
+          "conversions": 8.4872,
+          "revenue_czk": 12748.56
+        },
+        {
+          "date": "2026-01-23",
+          "cost_czk": 1466.42,
+          "clicks": 357,
+          "impressions": 23293,
+          "conversions": 14.6472,
+          "revenue_czk": 11238.59
+        },
+        {
+          "date": "2026-01-24",
+          "cost_czk": 1279.81,
+          "clicks": 333,
+          "impressions": 17263,
+          "conversions": 10.1981,
+          "revenue_czk": 8767.48
+        },
+        {
+          "date": "2026-01-25",
+          "cost_czk": 1324.77,
+          "clicks": 312,
+          "impressions": 14556,
+          "conversions": 17.1206,
+          "revenue_czk": 23578.63
+        },
+        {
+          "date": "2026-01-26",
+          "cost_czk": 1256.57,
+          "clicks": 310,
+          "impressions": 16191,
+          "conversions": 8.9274,
+          "revenue_czk": 11141.79
+        },
+        {
+          "date": "2026-01-27",
+          "cost_czk": 1161.85,
+          "clicks": 318,
+          "impressions": 15999,
+          "conversions": 8.3361,
+          "revenue_czk": 6959.36
+        },
+        {
+          "date": "2026-01-28",
+          "cost_czk": 1309.09,
+          "clicks": 319,
+          "impressions": 18667,
+          "conversions": 18.8582,
+          "revenue_czk": 16810.58
+        },
+        {
+          "date": "2026-01-29",
+          "cost_czk": 1240.5,
+          "clicks": 308,
+          "impressions": 14814,
+          "conversions": 15.1924,
+          "revenue_czk": 31218.38
+        },
+        {
+          "date": "2026-01-30",
+          "cost_czk": 1117.6,
+          "clicks": 238,
+          "impressions": 16134,
+          "conversions": 9.224,
+          "revenue_czk": 9532.64
+        },
+        {
+          "date": "2026-01-31",
+          "cost_czk": 1150.22,
+          "clicks": 262,
+          "impressions": 15875,
+          "conversions": 14.7305,
+          "revenue_czk": 10336.08
+        },
+        {
+          "date": "2026-02-01",
+          "cost_czk": 1440.61,
+          "clicks": 336,
+          "impressions": 17809,
+          "conversions": 9.6331,
+          "revenue_czk": 9931.52
+        },
+        {
+          "date": "2026-02-02",
+          "cost_czk": 1245.3,
+          "clicks": 261,
+          "impressions": 14516,
+          "conversions": 9.6015,
+          "revenue_czk": 13125.16
+        },
+        {
+          "date": "2026-02-03",
+          "cost_czk": 1474.52,
+          "clicks": 321,
+          "impressions": 20161,
+          "conversions": 8.5421,
+          "revenue_czk": 9401.33
+        },
+        {
+          "date": "2026-02-04",
+          "cost_czk": 1623.25,
+          "clicks": 335,
+          "impressions": 19254,
+          "conversions": 13.5069,
+          "revenue_czk": 13289.07
+        },
+        {
+          "date": "2026-02-05",
+          "cost_czk": 1225.2,
+          "clicks": 271,
+          "impressions": 15966,
+          "conversions": 13.2981,
+          "revenue_czk": 9960.4
+        },
+        {
+          "date": "2026-02-06",
+          "cost_czk": 1669.45,
+          "clicks": 370,
+          "impressions": 21347,
+          "conversions": 17.0134,
+          "revenue_czk": 21144.79
+        },
+        {
+          "date": "2026-02-07",
+          "cost_czk": 1438.83,
+          "clicks": 338,
+          "impressions": 18049,
+          "conversions": 6.8497,
+          "revenue_czk": 13357.07
+        },
+        {
+          "date": "2026-02-08",
+          "cost_czk": 1620.01,
+          "clicks": 402,
+          "impressions": 20628,
+          "conversions": 9.384,
+          "revenue_czk": 14069.26
+        },
+        {
+          "date": "2026-02-09",
+          "cost_czk": 1162.29,
+          "clicks": 286,
+          "impressions": 18969,
+          "conversions": 20.9144,
+          "revenue_czk": 27673.3
+        },
+        {
+          "date": "2026-02-10",
+          "cost_czk": 1904.5,
+          "clicks": 413,
+          "impressions": 19328,
+          "conversions": 15.7138,
+          "revenue_czk": 23707.99
+        },
+        {
+          "date": "2026-02-11",
+          "cost_czk": 1722.32,
+          "clicks": 362,
+          "impressions": 21387,
+          "conversions": 15.7249,
+          "revenue_czk": 20851.81
+        },
+        {
+          "date": "2026-02-12",
+          "cost_czk": 1772.96,
+          "clicks": 355,
+          "impressions": 21349,
+          "conversions": 23.2532,
+          "revenue_czk": 21251.53
+        },
+        {
+          "date": "2026-02-13",
+          "cost_czk": 1860.83,
+          "clicks": 396,
+          "impressions": 24302,
+          "conversions": 20.7876,
+          "revenue_czk": 22676.77
+        },
+        {
+          "date": "2026-02-14",
+          "cost_czk": 1619.53,
+          "clicks": 337,
+          "impressions": 22444,
+          "conversions": 12.6983,
+          "revenue_czk": 18075.77
+        },
+        {
+          "date": "2026-02-15",
+          "cost_czk": 1855.05,
+          "clicks": 400,
+          "impressions": 25112,
+          "conversions": 17.3011,
+          "revenue_czk": 14404.45
+        },
+        {
+          "date": "2026-02-16",
+          "cost_czk": 1683.71,
+          "clicks": 351,
+          "impressions": 23690,
+          "conversions": 19.1639,
+          "revenue_czk": 24808.06
+        },
+        {
+          "date": "2026-02-17",
+          "cost_czk": 2121.28,
+          "clicks": 475,
+          "impressions": 28496,
+          "conversions": 17.5225,
+          "revenue_czk": 36528.22
+        },
+        {
+          "date": "2026-02-18",
+          "cost_czk": 2664.25,
+          "clicks": 589,
+          "impressions": 35146,
+          "conversions": 16.5247,
+          "revenue_czk": 23696.78
+        },
+        {
+          "date": "2026-02-19",
+          "cost_czk": 2300.57,
+          "clicks": 566,
+          "impressions": 32047,
+          "conversions": 22.1958,
+          "revenue_czk": 28425.32
+        },
+        {
+          "date": "2026-02-20",
+          "cost_czk": 2257.29,
+          "clicks": 545,
+          "impressions": 29209,
+          "conversions": 26.4121,
+          "revenue_czk": 45037.18
+        },
+        {
+          "date": "2026-02-21",
+          "cost_czk": 2078.38,
+          "clicks": 568,
+          "impressions": 30816,
+          "conversions": 17.891,
+          "revenue_czk": 23124.54
+        },
+        {
+          "date": "2026-02-22",
+          "cost_czk": 2870.21,
+          "clicks": 741,
+          "impressions": 32200,
+          "conversions": 20.6337,
+          "revenue_czk": 22957.52
+        },
+        {
+          "date": "2026-02-23",
+          "cost_czk": 2633.75,
+          "clicks": 626,
+          "impressions": 31914,
+          "conversions": 20.7908,
+          "revenue_czk": 34140.9
+        },
+        {
+          "date": "2026-02-24",
+          "cost_czk": 2635.2,
+          "clicks": 617,
+          "impressions": 27408,
+          "conversions": 28.0255,
+          "revenue_czk": 40080.16
+        },
+        {
+          "date": "2026-02-25",
+          "cost_czk": 1566.46,
+          "clicks": 356,
+          "impressions": 18400,
+          "conversions": 29.2905,
+          "revenue_czk": 38159.46
+        },
+        {
+          "date": "2026-02-26",
+          "cost_czk": 1938.94,
+          "clicks": 393,
+          "impressions": 19583,
+          "conversions": 17.3446,
+          "revenue_czk": 21887.43
+        },
+        {
+          "date": "2026-02-27",
+          "cost_czk": 1969.66,
+          "clicks": 360,
+          "impressions": 20111,
+          "conversions": 21.4545,
+          "revenue_czk": 35138.81
+        },
+        {
+          "date": "2026-02-28",
+          "cost_czk": 1674.4,
+          "clicks": 389,
+          "impressions": 19590,
+          "conversions": 11.5506,
+          "revenue_czk": 23458.98
+        },
+        {
+          "date": "2026-03-01",
+          "cost_czk": 1643.03,
+          "clicks": 373,
+          "impressions": 19108,
+          "conversions": 9.1458,
+          "revenue_czk": 18218.78
+        },
+        {
+          "date": "2026-03-02",
+          "cost_czk": 630.08,
+          "clicks": 124,
+          "impressions": 8676,
+          "conversions": 24.0796,
+          "revenue_czk": 38654.99
+        },
+        {
+          "date": "2026-03-03",
+          "cost_czk": 308.29,
+          "clicks": 47,
+          "impressions": 5059,
+          "conversions": 14.9732,
+          "revenue_czk": 22740.16
+        },
+        {
+          "date": "2026-03-04",
+          "cost_czk": 417.89,
+          "clicks": 59,
+          "impressions": 4921,
+          "conversions": 16.3956,
+          "revenue_czk": 15771.64
+        },
+        {
+          "date": "2026-03-05",
+          "cost_czk": 265.8,
+          "clicks": 46,
+          "impressions": 4579,
+          "conversions": 10.8118,
+          "revenue_czk": 12884.89
+        },
+        {
+          "date": "2026-03-06",
+          "cost_czk": 340.45,
+          "clicks": 38,
+          "impressions": 4615,
+          "conversions": 9.8308,
+          "revenue_czk": 12341.94
+        },
+        {
+          "date": "2026-03-07",
+          "cost_czk": 297.46,
+          "clicks": 36,
+          "impressions": 4352,
+          "conversions": 7.8027,
+          "revenue_czk": 8300.13
+        },
+        {
+          "date": "2026-03-08",
+          "cost_czk": 313.43,
+          "clicks": 39,
+          "impressions": 4339,
+          "conversions": 9.1419,
+          "revenue_czk": 28823.59
+        },
+        {
+          "date": "2026-03-09",
+          "cost_czk": 318.31,
+          "clicks": 51,
+          "impressions": 5552,
+          "conversions": 9.7135,
+          "revenue_czk": 12398.97
+        },
+        {
+          "date": "2026-03-10",
+          "cost_czk": 406.36,
+          "clicks": 52,
+          "impressions": 6637,
+          "conversions": 10.2037,
+          "revenue_czk": 12950.58
+        },
+        {
+          "date": "2026-03-11",
+          "cost_czk": 377.74,
+          "clicks": 40,
+          "impressions": 5583,
+          "conversions": 13.3353,
+          "revenue_czk": 17800.78
+        },
+        {
+          "date": "2026-03-12",
+          "cost_czk": 393.17,
+          "clicks": 44,
+          "impressions": 5104,
+          "conversions": 12.5124,
+          "revenue_czk": 17440.73
+        },
+        {
+          "date": "2026-03-13",
+          "cost_czk": 274.86,
+          "clicks": 33,
+          "impressions": 5039,
+          "conversions": 6.5933,
+          "revenue_czk": 11837.36
+        },
+        {
+          "date": "2026-03-14",
+          "cost_czk": 266.16,
+          "clicks": 25,
+          "impressions": 3312,
+          "conversions": 3.4276,
+          "revenue_czk": 4513.39
+        },
+        {
+          "date": "2026-03-15",
+          "cost_czk": 410.29,
+          "clicks": 43,
+          "impressions": 4160,
+          "conversions": 6.8646,
+          "revenue_czk": 10792.3
+        },
+        {
+          "date": "2026-03-16",
+          "cost_czk": 157.07,
+          "clicks": 24,
+          "impressions": 4468,
+          "conversions": 6.3179,
+          "revenue_czk": 9931.71
+        }
+      ]
+    },
+    {
+      "id": "19984039856",
+      "name": "CZ-Pmax-Vlastní nakladatelství > nová",
+      "group": "Control",
+      "totals": {
+        "cost_czk": 50723.26,
+        "clicks": 9094,
+        "impressions": 611474,
+        "conversions": 506.7641,
+        "revenue_czk": 568806.1,
+        "roas": 11.2139,
+        "ctr_pct": 1.4872,
+        "avg_cpc": 5.5777,
+        "conv_rate_pct": 5.5725,
+        "aov": 1122.43,
+        "ltv": 5612.14
+      },
+      "daily": [
+        {
+          "date": "2025-12-20",
+          "cost_czk": 824.61,
+          "clicks": 130,
+          "impressions": 8352,
+          "conversions": 11.4335,
+          "revenue_czk": 8260.85
+        },
+        {
+          "date": "2025-12-21",
+          "cost_czk": 730.36,
+          "clicks": 123,
+          "impressions": 7779,
+          "conversions": 7.2336,
+          "revenue_czk": 6506.24
+        },
+        {
+          "date": "2025-12-22",
+          "cost_czk": 729.59,
+          "clicks": 148,
+          "impressions": 12077,
+          "conversions": 6.5964,
+          "revenue_czk": 11537.73
+        },
+        {
+          "date": "2025-12-23",
+          "cost_czk": 703.05,
+          "clicks": 147,
+          "impressions": 8197,
+          "conversions": 2.324,
+          "revenue_czk": 3682.55
+        },
+        {
+          "date": "2025-12-24",
+          "cost_czk": 1209.19,
+          "clicks": 226,
+          "impressions": 12625,
+          "conversions": 15.3644,
+          "revenue_czk": 20865.75
+        },
+        {
+          "date": "2025-12-25",
+          "cost_czk": 455.46,
+          "clicks": 108,
+          "impressions": 5006,
+          "conversions": 2.8473,
+          "revenue_czk": 2192.09
+        },
+        {
+          "date": "2025-12-26",
+          "cost_czk": 1136.71,
+          "clicks": 223,
+          "impressions": 14861,
+          "conversions": 6.0965,
+          "revenue_czk": 4003.18
+        },
+        {
+          "date": "2025-12-27",
+          "cost_czk": 812.93,
+          "clicks": 173,
+          "impressions": 9536,
+          "conversions": 6.3093,
+          "revenue_czk": 6950.78
+        },
+        {
+          "date": "2025-12-28",
+          "cost_czk": 746.2,
+          "clicks": 129,
+          "impressions": 10308,
+          "conversions": 6.498,
+          "revenue_czk": 4545.64
+        },
+        {
+          "date": "2025-12-29",
+          "cost_czk": 915.42,
+          "clicks": 217,
+          "impressions": 12805,
+          "conversions": 7.9746,
+          "revenue_czk": 8716.76
+        },
+        {
+          "date": "2025-12-30",
+          "cost_czk": 793.27,
+          "clicks": 168,
+          "impressions": 10327,
+          "conversions": 5.9074,
+          "revenue_czk": 7874.28
+        },
+        {
+          "date": "2025-12-31",
+          "cost_czk": 745.45,
+          "clicks": 152,
+          "impressions": 10924,
+          "conversions": 1.7981,
+          "revenue_czk": 2782.87
+        },
+        {
+          "date": "2026-01-01",
+          "cost_czk": 775.9,
+          "clicks": 218,
+          "impressions": 13851,
+          "conversions": 2.6049,
+          "revenue_czk": 3462.85
+        },
+        {
+          "date": "2026-01-02",
+          "cost_czk": 1253.97,
+          "clicks": 297,
+          "impressions": 21674,
+          "conversions": 11.7007,
+          "revenue_czk": 7391.51
+        },
+        {
+          "date": "2026-01-03",
+          "cost_czk": 882.73,
+          "clicks": 198,
+          "impressions": 11824,
+          "conversions": 1.7226,
+          "revenue_czk": 698.35
+        },
+        {
+          "date": "2026-01-04",
+          "cost_czk": 533.11,
+          "clicks": 96,
+          "impressions": 6547,
+          "conversions": 6.0323,
+          "revenue_czk": 7535.58
+        },
+        {
+          "date": "2026-01-05",
+          "cost_czk": 917.91,
+          "clicks": 172,
+          "impressions": 10741,
+          "conversions": 7.163,
+          "revenue_czk": 4020.87
+        },
+        {
+          "date": "2026-01-06",
+          "cost_czk": 996.43,
+          "clicks": 189,
+          "impressions": 12507,
+          "conversions": 19.5776,
+          "revenue_czk": 15541.41
+        },
+        {
+          "date": "2026-01-07",
+          "cost_czk": 589.71,
+          "clicks": 102,
+          "impressions": 5706,
+          "conversions": 8.3916,
+          "revenue_czk": 6584.7
+        },
+        {
+          "date": "2026-01-08",
+          "cost_czk": 255.16,
+          "clicks": 48,
+          "impressions": 3039,
+          "conversions": 8.231,
+          "revenue_czk": 9429.88
+        },
+        {
+          "date": "2026-01-09",
+          "cost_czk": 353.1,
+          "clicks": 72,
+          "impressions": 5179,
+          "conversions": 9.8244,
+          "revenue_czk": 23679.85
+        },
+        {
+          "date": "2026-01-10",
+          "cost_czk": 128.02,
+          "clicks": 35,
+          "impressions": 2216,
+          "conversions": 5.7693,
+          "revenue_czk": 10341.13
+        },
+        {
+          "date": "2026-01-11",
+          "cost_czk": 642.37,
+          "clicks": 124,
+          "impressions": 9028,
+          "conversions": 8.8009,
+          "revenue_czk": 9841.66
+        },
+        {
+          "date": "2026-01-12",
+          "cost_czk": 1579.77,
+          "clicks": 273,
+          "impressions": 15414,
+          "conversions": 17.3427,
+          "revenue_czk": 17552.31
+        },
+        {
+          "date": "2026-01-13",
+          "cost_czk": 804.41,
+          "clicks": 138,
+          "impressions": 10023,
+          "conversions": 9.5132,
+          "revenue_czk": 9504.19
+        },
+        {
+          "date": "2026-01-14",
+          "cost_czk": 1083.5,
+          "clicks": 170,
+          "impressions": 17277,
+          "conversions": 12.6321,
+          "revenue_czk": 17760.4
+        },
+        {
+          "date": "2026-01-15",
+          "cost_czk": 1628.16,
+          "clicks": 231,
+          "impressions": 16876,
+          "conversions": 9.6067,
+          "revenue_czk": 13267.44
+        },
+        {
+          "date": "2026-01-16",
+          "cost_czk": 733.2,
+          "clicks": 97,
+          "impressions": 9025,
+          "conversions": 8.7797,
+          "revenue_czk": 15132.69
+        },
+        {
+          "date": "2026-01-17",
+          "cost_czk": 521.59,
+          "clicks": 68,
+          "impressions": 4702,
+          "conversions": 6.4468,
+          "revenue_czk": 6978.1
+        },
+        {
+          "date": "2026-01-18",
+          "cost_czk": 794.01,
+          "clicks": 122,
+          "impressions": 9041,
+          "conversions": 4.2554,
+          "revenue_czk": 5635.46
+        },
+        {
+          "date": "2026-01-19",
+          "cost_czk": 1062.41,
+          "clicks": 138,
+          "impressions": 11793,
+          "conversions": 10.1867,
+          "revenue_czk": 6818.97
+        },
+        {
+          "date": "2026-01-20",
+          "cost_czk": 550.13,
+          "clicks": 81,
+          "impressions": 8153,
+          "conversions": 3.3838,
+          "revenue_czk": 3540.55
+        },
+        {
+          "date": "2026-01-21",
+          "cost_czk": 893.47,
+          "clicks": 112,
+          "impressions": 11442,
+          "conversions": 10.3173,
+          "revenue_czk": 13349.21
+        },
+        {
+          "date": "2026-01-22",
+          "cost_czk": 762.57,
+          "clicks": 118,
+          "impressions": 10051,
+          "conversions": 7.3091,
+          "revenue_czk": 6926.28
+        },
+        {
+          "date": "2026-01-23",
+          "cost_czk": 910.4,
+          "clicks": 128,
+          "impressions": 10648,
+          "conversions": 6.9425,
+          "revenue_czk": 5834.95
+        },
+        {
+          "date": "2026-01-24",
+          "cost_czk": 660.8,
+          "clicks": 82,
+          "impressions": 6606,
+          "conversions": 2.3224,
+          "revenue_czk": 2852.05
+        },
+        {
+          "date": "2026-01-25",
+          "cost_czk": 950.86,
+          "clicks": 161,
+          "impressions": 10910,
+          "conversions": 8.9963,
+          "revenue_czk": 8235.94
+        },
+        {
+          "date": "2026-01-26",
+          "cost_czk": 917.29,
+          "clicks": 143,
+          "impressions": 10582,
+          "conversions": 9.9602,
+          "revenue_czk": 11818.25
+        },
+        {
+          "date": "2026-01-27",
+          "cost_czk": 419.53,
+          "clicks": 59,
+          "impressions": 5175,
+          "conversions": 3.8603,
+          "revenue_czk": 2928.72
+        },
+        {
+          "date": "2026-01-28",
+          "cost_czk": 682.04,
+          "clicks": 90,
+          "impressions": 8779,
+          "conversions": 6.5715,
+          "revenue_czk": 3549.47
+        },
+        {
+          "date": "2026-01-29",
+          "cost_czk": 890.54,
+          "clicks": 125,
+          "impressions": 7486,
+          "conversions": 5.4838,
+          "revenue_czk": 4156.59
+        },
+        {
+          "date": "2026-01-30",
+          "cost_czk": 933.02,
+          "clicks": 126,
+          "impressions": 8064,
+          "conversions": 9.3013,
+          "revenue_czk": 8450.7
+        },
+        {
+          "date": "2026-01-31",
+          "cost_czk": 688.99,
+          "clicks": 125,
+          "impressions": 8421,
+          "conversions": 9.2922,
+          "revenue_czk": 9500.57
+        },
+        {
+          "date": "2026-02-01",
+          "cost_czk": 836.52,
+          "clicks": 122,
+          "impressions": 7776,
+          "conversions": 7.234,
+          "revenue_czk": 5454.07
+        },
+        {
+          "date": "2026-02-02",
+          "cost_czk": 683.39,
+          "clicks": 125,
+          "impressions": 7104,
+          "conversions": 7.1319,
+          "revenue_czk": 7668.35
+        },
+        {
+          "date": "2026-02-03",
+          "cost_czk": 522.95,
+          "clicks": 93,
+          "impressions": 6215,
+          "conversions": 1.9281,
+          "revenue_czk": 2422.5
+        },
+        {
+          "date": "2026-02-04",
+          "cost_czk": 419.48,
+          "clicks": 81,
+          "impressions": 4195,
+          "conversions": 7.372,
+          "revenue_czk": 4426.73
+        },
+        {
+          "date": "2026-02-05",
+          "cost_czk": 396.99,
+          "clicks": 77,
+          "impressions": 4271,
+          "conversions": 3.1096,
+          "revenue_czk": 6211.01
+        },
+        {
+          "date": "2026-02-06",
+          "cost_czk": 484.35,
+          "clicks": 86,
+          "impressions": 6289,
+          "conversions": 3.6483,
+          "revenue_czk": 3702.12
+        },
+        {
+          "date": "2026-02-07",
+          "cost_czk": 646.04,
+          "clicks": 136,
+          "impressions": 7035,
+          "conversions": 4.6713,
+          "revenue_czk": 6803.35
+        },
+        {
+          "date": "2026-02-08",
+          "cost_czk": 681.04,
+          "clicks": 131,
+          "impressions": 7877,
+          "conversions": 4.7249,
+          "revenue_czk": 3857.24
+        },
+        {
+          "date": "2026-02-09",
+          "cost_czk": 629.58,
+          "clicks": 116,
+          "impressions": 6831,
+          "conversions": 5.9496,
+          "revenue_czk": 5532.63
+        },
+        {
+          "date": "2026-02-10",
+          "cost_czk": 247.06,
+          "clicks": 61,
+          "impressions": 4090,
+          "conversions": 2.3894,
+          "revenue_czk": 2994.45
+        },
+        {
+          "date": "2026-02-11",
+          "cost_czk": 251.66,
+          "clicks": 46,
+          "impressions": 3254,
+          "conversions": 3.4256,
+          "revenue_czk": 3753.56
+        },
+        {
+          "date": "2026-02-12",
+          "cost_czk": 190.24,
+          "clicks": 40,
+          "impressions": 2842,
+          "conversions": 4.1344,
+          "revenue_czk": 2799.71
+        },
+        {
+          "date": "2026-02-13",
+          "cost_czk": 203.17,
+          "clicks": 37,
+          "impressions": 2615,
+          "conversions": 4.5724,
+          "revenue_czk": 5260.72
+        },
+        {
+          "date": "2026-02-14",
+          "cost_czk": 249.83,
+          "clicks": 52,
+          "impressions": 2453,
+          "conversions": 1.4131,
+          "revenue_czk": 1510.63
+        },
+        {
+          "date": "2026-02-15",
+          "cost_czk": 226.19,
+          "clicks": 46,
+          "impressions": 2352,
+          "conversions": 5.0161,
+          "revenue_czk": 6117.52
+        },
+        {
+          "date": "2026-02-16",
+          "cost_czk": 202.12,
+          "clicks": 43,
+          "impressions": 2105,
+          "conversions": 1.9864,
+          "revenue_czk": 1858.85
+        },
+        {
+          "date": "2026-02-17",
+          "cost_czk": 312.25,
+          "clicks": 58,
+          "impressions": 2589,
+          "conversions": 6.6492,
+          "revenue_czk": 14461.67
+        },
+        {
+          "date": "2026-02-18",
+          "cost_czk": 346.42,
+          "clicks": 66,
+          "impressions": 3023,
+          "conversions": 4.7062,
+          "revenue_czk": 7049.27
+        },
+        {
+          "date": "2026-02-19",
+          "cost_czk": 455.22,
+          "clicks": 70,
+          "impressions": 3502,
+          "conversions": 4.746,
+          "revenue_czk": 5652.14
+        },
+        {
+          "date": "2026-02-20",
+          "cost_czk": 403.02,
+          "clicks": 81,
+          "impressions": 5157,
+          "conversions": 1.2211,
+          "revenue_czk": 508.81
+        },
+        {
+          "date": "2026-02-21",
+          "cost_czk": 312.96,
+          "clicks": 74,
+          "impressions": 4947,
+          "conversions": 2.6733,
+          "revenue_czk": 2199.44
+        },
+        {
+          "date": "2026-02-22",
+          "cost_czk": 442.38,
+          "clicks": 80,
+          "impressions": 4979,
+          "conversions": 4.4157,
+          "revenue_czk": 4035.68
+        },
+        {
+          "date": "2026-02-23",
+          "cost_czk": 326.48,
+          "clicks": 65,
+          "impressions": 4603,
+          "conversions": 6.0528,
+          "revenue_czk": 6378.93
+        },
+        {
+          "date": "2026-02-24",
+          "cost_czk": 359.15,
+          "clicks": 81,
+          "impressions": 5203,
+          "conversions": 6.3027,
+          "revenue_czk": 8365.25
+        },
+        {
+          "date": "2026-02-25",
+          "cost_czk": 384.91,
+          "clicks": 77,
+          "impressions": 4553,
+          "conversions": 6.4189,
+          "revenue_czk": 5993.54
+        },
+        {
+          "date": "2026-02-26",
+          "cost_czk": 502.32,
+          "clicks": 93,
+          "impressions": 5403,
+          "conversions": 3.6939,
+          "revenue_czk": 1932.56
+        },
+        {
+          "date": "2026-02-27",
+          "cost_czk": 448.71,
+          "clicks": 74,
+          "impressions": 4793,
+          "conversions": 3.9582,
+          "revenue_czk": 5501.48
+        },
+        {
+          "date": "2026-02-28",
+          "cost_czk": 457.72,
+          "clicks": 76,
+          "impressions": 4755,
+          "conversions": 3.1585,
+          "revenue_czk": 806.96
+        },
+        {
+          "date": "2026-03-01",
+          "cost_czk": 498.13,
+          "clicks": 89,
+          "impressions": 5367,
+          "conversions": 2.3581,
+          "revenue_czk": 2310.62
+        },
+        {
+          "date": "2026-03-02",
+          "cost_czk": 484.22,
+          "clicks": 74,
+          "impressions": 3950,
+          "conversions": 5.2256,
+          "revenue_czk": 19496.37
+        },
+        {
+          "date": "2026-03-03",
+          "cost_czk": 363.53,
+          "clicks": 65,
+          "impressions": 3971,
+          "conversions": 4.3611,
+          "revenue_czk": 6866.58
+        },
+        {
+          "date": "2026-03-04",
+          "cost_czk": 325.99,
+          "clicks": 58,
+          "impressions": 3815,
+          "conversions": 4.2047,
+          "revenue_czk": 4151.1
+        },
+        {
+          "date": "2026-03-05",
+          "cost_czk": 414.5,
+          "clicks": 76,
+          "impressions": 4812,
+          "conversions": 2.0014,
+          "revenue_czk": 1195.43
+        },
+        {
+          "date": "2026-03-06",
+          "cost_czk": 348.17,
+          "clicks": 71,
+          "impressions": 4933,
+          "conversions": 2.6378,
+          "revenue_czk": 1666.56
+        },
+        {
+          "date": "2026-03-07",
+          "cost_czk": 195.57,
+          "clicks": 50,
+          "impressions": 3214,
+          "conversions": 1.4414,
+          "revenue_czk": 1394.5
+        },
+        {
+          "date": "2026-03-08",
+          "cost_czk": 353.46,
+          "clicks": 64,
+          "impressions": 3770,
+          "conversions": 2.6089,
+          "revenue_czk": 4244.83
+        },
+        {
+          "date": "2026-03-09",
+          "cost_czk": 323.42,
+          "clicks": 57,
+          "impressions": 3754,
+          "conversions": 2.0389,
+          "revenue_czk": 1787.74
+        },
+        {
+          "date": "2026-03-10",
+          "cost_czk": 328.23,
+          "clicks": 54,
+          "impressions": 3897,
+          "conversions": 1.0861,
+          "revenue_czk": 716.99
+        },
+        {
+          "date": "2026-03-11",
+          "cost_czk": 111.66,
+          "clicks": 22,
+          "impressions": 1928,
+          "conversions": 4.2951,
+          "revenue_czk": 3883.27
+        },
+        {
+          "date": "2026-03-12",
+          "cost_czk": 89.16,
+          "clicks": 16,
+          "impressions": 1295,
+          "conversions": 4.0767,
+          "revenue_czk": 4302.62
+        },
+        {
+          "date": "2026-03-13",
+          "cost_czk": 80.84,
+          "clicks": 12,
+          "impressions": 1573,
+          "conversions": 2.4646,
+          "revenue_czk": 3162.88
+        },
+        {
+          "date": "2026-03-14",
+          "cost_czk": 83.8,
+          "clicks": 15,
+          "impressions": 1531,
+          "conversions": 6.5469,
+          "revenue_czk": 6545.06
+        },
+        {
+          "date": "2026-03-15",
+          "cost_czk": 170.89,
+          "clicks": 22,
+          "impressions": 2156,
+          "conversions": 1.5685,
+          "revenue_czk": 1837.46
+        },
+        {
+          "date": "2026-03-16",
+          "cost_czk": 332.2,
+          "clicks": 80,
+          "impressions": 5120,
+          "conversions": 4.4393,
+          "revenue_czk": 11745.57
+        }
+      ]
+    },
+    {
+      "id": "16066578205",
+      "name": "CZ-Pmax-Značky",
+      "group": "Control",
+      "totals": {
+        "cost_czk": 131826.55,
+        "clicks": 31195,
+        "impressions": 1470252,
+        "conversions": 1184.0946,
+        "revenue_czk": 1399251.82,
+        "roas": 10.6143,
+        "ctr_pct": 2.1217,
+        "avg_cpc": 4.2259,
+        "conv_rate_pct": 3.7958,
+        "aov": 1181.71,
+        "ltv": 5908.53
+      },
+      "daily": [
+        {
+          "date": "2025-12-20",
+          "cost_czk": 735.03,
+          "clicks": 185,
+          "impressions": 10756,
+          "conversions": 13.4834,
+          "revenue_czk": 17562.06
+        },
+        {
+          "date": "2025-12-21",
+          "cost_czk": 1584.63,
+          "clicks": 360,
+          "impressions": 14708,
+          "conversions": 20.2047,
+          "revenue_czk": 18956.93
+        },
+        {
+          "date": "2025-12-22",
+          "cost_czk": 1298.35,
+          "clicks": 400,
+          "impressions": 21965,
+          "conversions": 11.8916,
+          "revenue_czk": 10655.41
+        },
+        {
+          "date": "2025-12-23",
+          "cost_czk": 1482.86,
+          "clicks": 414,
+          "impressions": 20719,
+          "conversions": 10.3655,
+          "revenue_czk": 25641.33
+        },
+        {
+          "date": "2025-12-24",
+          "cost_czk": 1421.77,
+          "clicks": 385,
+          "impressions": 19616,
+          "conversions": 18.5793,
+          "revenue_czk": 31367.46
+        },
+        {
+          "date": "2025-12-25",
+          "cost_czk": 1091.91,
+          "clicks": 396,
+          "impressions": 14769,
+          "conversions": 15.9013,
+          "revenue_czk": 14675.69
+        },
+        {
+          "date": "2025-12-26",
+          "cost_czk": 1420.51,
+          "clicks": 513,
+          "impressions": 23146,
+          "conversions": 9.2919,
+          "revenue_czk": 7479.35
+        },
+        {
+          "date": "2025-12-27",
+          "cost_czk": 1243.5,
+          "clicks": 484,
+          "impressions": 22420,
+          "conversions": 9.5872,
+          "revenue_czk": 7987.72
+        },
+        {
+          "date": "2025-12-28",
+          "cost_czk": 1119.98,
+          "clicks": 403,
+          "impressions": 17787,
+          "conversions": 4.7565,
+          "revenue_czk": 4414.87
+        },
+        {
+          "date": "2025-12-29",
+          "cost_czk": 1304.25,
+          "clicks": 486,
+          "impressions": 19627,
+          "conversions": 13.1046,
+          "revenue_czk": 9574.33
+        },
+        {
+          "date": "2025-12-30",
+          "cost_czk": 1240.02,
+          "clicks": 428,
+          "impressions": 21459,
+          "conversions": 14.9974,
+          "revenue_czk": 12184.38
+        },
+        {
+          "date": "2025-12-31",
+          "cost_czk": 1097.38,
+          "clicks": 353,
+          "impressions": 20906,
+          "conversions": 11.5692,
+          "revenue_czk": 15692.54
+        },
+        {
+          "date": "2026-01-01",
+          "cost_czk": 1335.37,
+          "clicks": 470,
+          "impressions": 18729,
+          "conversions": 11.5436,
+          "revenue_czk": 13906.61
+        },
+        {
+          "date": "2026-01-02",
+          "cost_czk": 1403.25,
+          "clicks": 490,
+          "impressions": 17392,
+          "conversions": 10.3882,
+          "revenue_czk": 14725.19
+        },
+        {
+          "date": "2026-01-03",
+          "cost_czk": 1348.61,
+          "clicks": 521,
+          "impressions": 19959,
+          "conversions": 16.1325,
+          "revenue_czk": 14542.36
+        },
+        {
+          "date": "2026-01-04",
+          "cost_czk": 1034.52,
+          "clicks": 326,
+          "impressions": 16609,
+          "conversions": 11.1406,
+          "revenue_czk": 11066.63
+        },
+        {
+          "date": "2026-01-05",
+          "cost_czk": 1312.98,
+          "clicks": 351,
+          "impressions": 15291,
+          "conversions": 8.5374,
+          "revenue_czk": 11411.09
+        },
+        {
+          "date": "2026-01-06",
+          "cost_czk": 1237.17,
+          "clicks": 365,
+          "impressions": 15190,
+          "conversions": 12.7619,
+          "revenue_czk": 14656.22
+        },
+        {
+          "date": "2026-01-07",
+          "cost_czk": 1407.79,
+          "clicks": 394,
+          "impressions": 14281,
+          "conversions": 18.0669,
+          "revenue_czk": 14424.4
+        },
+        {
+          "date": "2026-01-08",
+          "cost_czk": 1466.61,
+          "clicks": 416,
+          "impressions": 12942,
+          "conversions": 16.7996,
+          "revenue_czk": 14093.08
+        },
+        {
+          "date": "2026-01-09",
+          "cost_czk": 2073.3,
+          "clicks": 497,
+          "impressions": 13760,
+          "conversions": 24.6941,
+          "revenue_czk": 23574.17
+        },
+        {
+          "date": "2026-01-10",
+          "cost_czk": 1457.68,
+          "clicks": 366,
+          "impressions": 13568,
+          "conversions": 14.6161,
+          "revenue_czk": 13452.82
+        },
+        {
+          "date": "2026-01-11",
+          "cost_czk": 2813.34,
+          "clicks": 798,
+          "impressions": 29611,
+          "conversions": 26.0502,
+          "revenue_czk": 23791.25
+        },
+        {
+          "date": "2026-01-12",
+          "cost_czk": 981.62,
+          "clicks": 234,
+          "impressions": 5251,
+          "conversions": 19.7412,
+          "revenue_czk": 20837.05
+        },
+        {
+          "date": "2026-01-13",
+          "cost_czk": 3041.15,
+          "clicks": 681,
+          "impressions": 29679,
+          "conversions": 24.9365,
+          "revenue_czk": 26006.79
+        },
+        {
+          "date": "2026-01-14",
+          "cost_czk": 1786.42,
+          "clicks": 406,
+          "impressions": 17235,
+          "conversions": 19.1762,
+          "revenue_czk": 26744.36
+        },
+        {
+          "date": "2026-01-15",
+          "cost_czk": 1614.54,
+          "clicks": 289,
+          "impressions": 9768,
+          "conversions": 13.1118,
+          "revenue_czk": 9619.42
+        },
+        {
+          "date": "2026-01-16",
+          "cost_czk": 1437.59,
+          "clicks": 312,
+          "impressions": 12229,
+          "conversions": 12.7463,
+          "revenue_czk": 11441.21
+        },
+        {
+          "date": "2026-01-17",
+          "cost_czk": 2200.74,
+          "clicks": 497,
+          "impressions": 20975,
+          "conversions": 12.6583,
+          "revenue_czk": 13810.34
+        },
+        {
+          "date": "2026-01-18",
+          "cost_czk": 1943.26,
+          "clicks": 451,
+          "impressions": 16355,
+          "conversions": 18.53,
+          "revenue_czk": 14931.71
+        },
+        {
+          "date": "2026-01-19",
+          "cost_czk": 2446.21,
+          "clicks": 515,
+          "impressions": 22854,
+          "conversions": 20.9084,
+          "revenue_czk": 31935.2
+        },
+        {
+          "date": "2026-01-20",
+          "cost_czk": 1694.61,
+          "clicks": 362,
+          "impressions": 15116,
+          "conversions": 13.2367,
+          "revenue_czk": 19902.97
+        },
+        {
+          "date": "2026-01-21",
+          "cost_czk": 1387.56,
+          "clicks": 268,
+          "impressions": 10580,
+          "conversions": 12.5472,
+          "revenue_czk": 24104.06
+        },
+        {
+          "date": "2026-01-22",
+          "cost_czk": 1791.47,
+          "clicks": 406,
+          "impressions": 17836,
+          "conversions": 17.1261,
+          "revenue_czk": 21933.31
+        },
+        {
+          "date": "2026-01-23",
+          "cost_czk": 1863.42,
+          "clicks": 382,
+          "impressions": 14934,
+          "conversions": 11.5623,
+          "revenue_czk": 11540.43
+        },
+        {
+          "date": "2026-01-24",
+          "cost_czk": 1461.37,
+          "clicks": 305,
+          "impressions": 14938,
+          "conversions": 9.6437,
+          "revenue_czk": 14993.39
+        },
+        {
+          "date": "2026-01-25",
+          "cost_czk": 1964.22,
+          "clicks": 389,
+          "impressions": 19683,
+          "conversions": 12.3404,
+          "revenue_czk": 9262.79
+        },
+        {
+          "date": "2026-01-26",
+          "cost_czk": 1580.95,
+          "clicks": 342,
+          "impressions": 17340,
+          "conversions": 10.3272,
+          "revenue_czk": 17551.96
+        },
+        {
+          "date": "2026-01-27",
+          "cost_czk": 1907.86,
+          "clicks": 426,
+          "impressions": 27186,
+          "conversions": 15.2219,
+          "revenue_czk": 12057.4
+        },
+        {
+          "date": "2026-01-28",
+          "cost_czk": 1783.52,
+          "clicks": 408,
+          "impressions": 24652,
+          "conversions": 23.0628,
+          "revenue_czk": 22658.15
+        },
+        {
+          "date": "2026-01-29",
+          "cost_czk": 1693.26,
+          "clicks": 362,
+          "impressions": 21964,
+          "conversions": 6.9072,
+          "revenue_czk": 4344.51
+        },
+        {
+          "date": "2026-01-30",
+          "cost_czk": 1605.13,
+          "clicks": 346,
+          "impressions": 23639,
+          "conversions": 12.1883,
+          "revenue_czk": 15399.65
+        },
+        {
+          "date": "2026-01-31",
+          "cost_czk": 1627.42,
+          "clicks": 322,
+          "impressions": 15386,
+          "conversions": 9.479,
+          "revenue_czk": 15899.49
+        },
+        {
+          "date": "2026-02-01",
+          "cost_czk": 2244.08,
+          "clicks": 462,
+          "impressions": 22176,
+          "conversions": 12.9111,
+          "revenue_czk": 13773.45
+        },
+        {
+          "date": "2026-02-02",
+          "cost_czk": 2195.0,
+          "clicks": 494,
+          "impressions": 26170,
+          "conversions": 11.5934,
+          "revenue_czk": 11819.72
+        },
+        {
+          "date": "2026-02-03",
+          "cost_czk": 1941.93,
+          "clicks": 401,
+          "impressions": 22035,
+          "conversions": 5.2676,
+          "revenue_czk": 5680.9
+        },
+        {
+          "date": "2026-02-04",
+          "cost_czk": 2046.59,
+          "clicks": 450,
+          "impressions": 25886,
+          "conversions": 10.7195,
+          "revenue_czk": 19262.91
+        },
+        {
+          "date": "2026-02-05",
+          "cost_czk": 1865.43,
+          "clicks": 415,
+          "impressions": 20207,
+          "conversions": 8.1207,
+          "revenue_czk": 16969.16
+        },
+        {
+          "date": "2026-02-06",
+          "cost_czk": 2077.79,
+          "clicks": 452,
+          "impressions": 21056,
+          "conversions": 19.1184,
+          "revenue_czk": 22468.25
+        },
+        {
+          "date": "2026-02-07",
+          "cost_czk": 2017.47,
+          "clicks": 417,
+          "impressions": 18297,
+          "conversions": 11.6174,
+          "revenue_czk": 15196.41
+        },
+        {
+          "date": "2026-02-08",
+          "cost_czk": 2023.38,
+          "clicks": 446,
+          "impressions": 16951,
+          "conversions": 14.6701,
+          "revenue_czk": 14242.71
+        },
+        {
+          "date": "2026-02-09",
+          "cost_czk": 2101.76,
+          "clicks": 471,
+          "impressions": 17962,
+          "conversions": 21.0673,
+          "revenue_czk": 26991.04
+        },
+        {
+          "date": "2026-02-10",
+          "cost_czk": 1903.73,
+          "clicks": 410,
+          "impressions": 16350,
+          "conversions": 16.9669,
+          "revenue_czk": 31945.38
+        },
+        {
+          "date": "2026-02-11",
+          "cost_czk": 1660.71,
+          "clicks": 415,
+          "impressions": 18667,
+          "conversions": 14.3318,
+          "revenue_czk": 11949.35
+        },
+        {
+          "date": "2026-02-12",
+          "cost_czk": 2174.18,
+          "clicks": 416,
+          "impressions": 18891,
+          "conversions": 18.2093,
+          "revenue_czk": 20342.55
+        },
+        {
+          "date": "2026-02-13",
+          "cost_czk": 2004.28,
+          "clicks": 415,
+          "impressions": 17150,
+          "conversions": 24.6072,
+          "revenue_czk": 32874.68
+        },
+        {
+          "date": "2026-02-14",
+          "cost_czk": 1899.99,
+          "clicks": 427,
+          "impressions": 20016,
+          "conversions": 11.5772,
+          "revenue_czk": 12456.21
+        },
+        {
+          "date": "2026-02-15",
+          "cost_czk": 2135.53,
+          "clicks": 453,
+          "impressions": 21280,
+          "conversions": 11.2818,
+          "revenue_czk": 10328.56
+        },
+        {
+          "date": "2026-02-16",
+          "cost_czk": 1870.67,
+          "clicks": 412,
+          "impressions": 18769,
+          "conversions": 22.7385,
+          "revenue_czk": 33361.39
+        },
+        {
+          "date": "2026-02-17",
+          "cost_czk": 888.54,
+          "clicks": 197,
+          "impressions": 9370,
+          "conversions": 17.9589,
+          "revenue_czk": 19124.13
+        },
+        {
+          "date": "2026-02-18",
+          "cost_czk": 118.85,
+          "clicks": 37,
+          "impressions": 1893,
+          "conversions": 9.3707,
+          "revenue_czk": 10271.75
+        },
+        {
+          "date": "2026-02-19",
+          "cost_czk": 100.82,
+          "clicks": 27,
+          "impressions": 1858,
+          "conversions": 11.6186,
+          "revenue_czk": 36070.0
+        },
+        {
+          "date": "2026-02-20",
+          "cost_czk": 139.89,
+          "clicks": 29,
+          "impressions": 1801,
+          "conversions": 8.9816,
+          "revenue_czk": 8099.26
+        },
+        {
+          "date": "2026-02-21",
+          "cost_czk": 169.18,
+          "clicks": 46,
+          "impressions": 1532,
+          "conversions": 7.4967,
+          "revenue_czk": 8430.73
+        },
+        {
+          "date": "2026-02-22",
+          "cost_czk": 112.83,
+          "clicks": 36,
+          "impressions": 1655,
+          "conversions": 9.9632,
+          "revenue_czk": 19320.51
+        },
+        {
+          "date": "2026-02-23",
+          "cost_czk": 123.89,
+          "clicks": 38,
+          "impressions": 2188,
+          "conversions": 7.0882,
+          "revenue_czk": 5790.65
+        },
+        {
+          "date": "2026-02-24",
+          "cost_czk": 151.28,
+          "clicks": 42,
+          "impressions": 3365,
+          "conversions": 8.1304,
+          "revenue_czk": 8174.97
+        },
+        {
+          "date": "2026-02-25",
+          "cost_czk": 280.45,
+          "clicks": 70,
+          "impressions": 3405,
+          "conversions": 9.5113,
+          "revenue_czk": 14778.87
+        },
+        {
+          "date": "2026-02-26",
+          "cost_czk": 1716.51,
+          "clicks": 371,
+          "impressions": 19009,
+          "conversions": 8.1049,
+          "revenue_czk": 9733.93
+        },
+        {
+          "date": "2026-02-27",
+          "cost_czk": 1676.21,
+          "clicks": 338,
+          "impressions": 19213,
+          "conversions": 12.9783,
+          "revenue_czk": 19349.77
+        },
+        {
+          "date": "2026-02-28",
+          "cost_czk": 1570.81,
+          "clicks": 340,
+          "impressions": 20288,
+          "conversions": 10.3075,
+          "revenue_czk": 12262.44
+        },
+        {
+          "date": "2026-03-01",
+          "cost_czk": 2229.63,
+          "clicks": 462,
+          "impressions": 24041,
+          "conversions": 14.596,
+          "revenue_czk": 18868.59
+        },
+        {
+          "date": "2026-03-02",
+          "cost_czk": 2020.11,
+          "clicks": 430,
+          "impressions": 28156,
+          "conversions": 22.6946,
+          "revenue_czk": 28593.51
+        },
+        {
+          "date": "2026-03-03",
+          "cost_czk": 1950.43,
+          "clicks": 426,
+          "impressions": 21573,
+          "conversions": 14.9189,
+          "revenue_czk": 13820.52
+        },
+        {
+          "date": "2026-03-04",
+          "cost_czk": 2005.22,
+          "clicks": 370,
+          "impressions": 21216,
+          "conversions": 10.6326,
+          "revenue_czk": 16024.58
+        },
+        {
+          "date": "2026-03-05",
+          "cost_czk": 2050.12,
+          "clicks": 395,
+          "impressions": 18048,
+          "conversions": 12.1335,
+          "revenue_czk": 12651.39
+        },
+        {
+          "date": "2026-03-06",
+          "cost_czk": 1538.94,
+          "clicks": 358,
+          "impressions": 21118,
+          "conversions": 11.4215,
+          "revenue_czk": 8745.59
+        },
+        {
+          "date": "2026-03-07",
+          "cost_czk": 1333.04,
+          "clicks": 301,
+          "impressions": 17984,
+          "conversions": 13.8194,
+          "revenue_czk": 14744.33
+        },
+        {
+          "date": "2026-03-08",
+          "cost_czk": 1502.61,
+          "clicks": 357,
+          "impressions": 19035,
+          "conversions": 17.7048,
+          "revenue_czk": 20630.65
+        },
+        {
+          "date": "2026-03-09",
+          "cost_czk": 1909.12,
+          "clicks": 353,
+          "impressions": 19557,
+          "conversions": 19.9828,
+          "revenue_czk": 20190.96
+        },
+        {
+          "date": "2026-03-10",
+          "cost_czk": 1460.85,
+          "clicks": 331,
+          "impressions": 20993,
+          "conversions": 15.9154,
+          "revenue_czk": 18445.46
+        },
+        {
+          "date": "2026-03-11",
+          "cost_czk": 1020.85,
+          "clicks": 213,
+          "impressions": 13046,
+          "conversions": 18.1715,
+          "revenue_czk": 18368.71
+        },
+        {
+          "date": "2026-03-12",
+          "cost_czk": 1098.47,
+          "clicks": 178,
+          "impressions": 11096,
+          "conversions": 7.2932,
+          "revenue_czk": 11941.74
+        },
+        {
+          "date": "2026-03-13",
+          "cost_czk": 744.11,
+          "clicks": 156,
+          "impressions": 9090,
+          "conversions": 5.9453,
+          "revenue_czk": 4737.0
+        },
+        {
+          "date": "2026-03-14",
+          "cost_czk": 1009.36,
+          "clicks": 176,
+          "impressions": 10254,
+          "conversions": 6.0667,
+          "revenue_czk": 8380.03
+        },
+        {
+          "date": "2026-03-15",
+          "cost_czk": 1047.07,
+          "clicks": 226,
+          "impressions": 10895,
+          "conversions": 7.4674,
+          "revenue_czk": 7148.85
+        },
+        {
+          "date": "2026-03-16",
+          "cost_czk": 1951.71,
+          "clicks": 432,
+          "impressions": 23900,
+          "conversions": 9.1073,
+          "revenue_czk": 14080.15
+        }
+      ]
+    },
+    {
+      "id": "21853901424",
+      "name": "CZ-Pmax-Zombie",
+      "group": "Control",
+      "totals": {
+        "cost_czk": 111502.22,
+        "clicks": 25677,
+        "impressions": 1554463,
+        "conversions": 1016.571,
+        "revenue_czk": 1192474.27,
+        "roas": 10.6946,
+        "ctr_pct": 1.6518,
+        "avg_cpc": 4.3425,
+        "conv_rate_pct": 3.9591,
+        "aov": 1173.04,
+        "ltv": 5865.18
+      },
+      "daily": [
+        {
+          "date": "2025-12-20",
+          "cost_czk": 2741.16,
+          "clicks": 477,
+          "impressions": 30583,
+          "conversions": 30.5921,
+          "revenue_czk": 35216.56
+        },
+        {
+          "date": "2025-12-21",
+          "cost_czk": 2514.65,
+          "clicks": 422,
+          "impressions": 32555,
+          "conversions": 31.9207,
+          "revenue_czk": 31294.91
+        },
+        {
+          "date": "2025-12-22",
+          "cost_czk": 2988.72,
+          "clicks": 603,
+          "impressions": 37948,
+          "conversions": 33.649,
+          "revenue_czk": 29537.34
+        },
+        {
+          "date": "2025-12-23",
+          "cost_czk": 1015.31,
+          "clicks": 159,
+          "impressions": 11358,
+          "conversions": 16.6333,
+          "revenue_czk": 26724.34
+        },
+        {
+          "date": "2025-12-24",
+          "cost_czk": 695.35,
+          "clicks": 163,
+          "impressions": 9662,
+          "conversions": 27.4129,
+          "revenue_czk": 43987.12
+        },
+        {
+          "date": "2025-12-25",
+          "cost_czk": 2936.28,
+          "clicks": 1016,
+          "impressions": 54121,
+          "conversions": 20.2778,
+          "revenue_czk": 25587.21
+        },
+        {
+          "date": "2025-12-26",
+          "cost_czk": 4295.31,
+          "clicks": 1384,
+          "impressions": 78446,
+          "conversions": 33.2492,
+          "revenue_czk": 32571.65
+        },
+        {
+          "date": "2025-12-27",
+          "cost_czk": 3935.57,
+          "clicks": 1208,
+          "impressions": 71983,
+          "conversions": 28.8445,
+          "revenue_czk": 26374.99
+        },
+        {
+          "date": "2025-12-28",
+          "cost_czk": 4025.63,
+          "clicks": 1264,
+          "impressions": 68116,
+          "conversions": 33.5659,
+          "revenue_czk": 30967.26
+        },
+        {
+          "date": "2025-12-29",
+          "cost_czk": 2752.7,
+          "clicks": 926,
+          "impressions": 45754,
+          "conversions": 32.5032,
+          "revenue_czk": 43956.9
+        },
+        {
+          "date": "2025-12-30",
+          "cost_czk": 2562.07,
+          "clicks": 779,
+          "impressions": 41067,
+          "conversions": 30.6343,
+          "revenue_czk": 34735.37
+        },
+        {
+          "date": "2025-12-31",
+          "cost_czk": 2331.4,
+          "clicks": 639,
+          "impressions": 40795,
+          "conversions": 28.5887,
+          "revenue_czk": 48699.8
+        },
+        {
+          "date": "2026-01-01",
+          "cost_czk": 3050.85,
+          "clicks": 814,
+          "impressions": 43021,
+          "conversions": 27.8769,
+          "revenue_czk": 37281.65
+        },
+        {
+          "date": "2026-01-02",
+          "cost_czk": 3271.31,
+          "clicks": 1045,
+          "impressions": 52241,
+          "conversions": 24.364,
+          "revenue_czk": 19662.88
+        },
+        {
+          "date": "2026-01-03",
+          "cost_czk": 3215.95,
+          "clicks": 1046,
+          "impressions": 46558,
+          "conversions": 23.199,
+          "revenue_czk": 27834.33
+        },
+        {
+          "date": "2026-01-04",
+          "cost_czk": 2376.06,
+          "clicks": 765,
+          "impressions": 38225,
+          "conversions": 13.7776,
+          "revenue_czk": 16936.59
+        },
+        {
+          "date": "2026-01-05",
+          "cost_czk": 2929.74,
+          "clicks": 750,
+          "impressions": 43143,
+          "conversions": 30.348,
+          "revenue_czk": 38353.19
+        },
+        {
+          "date": "2026-01-06",
+          "cost_czk": 2587.05,
+          "clicks": 712,
+          "impressions": 36670,
+          "conversions": 27.421,
+          "revenue_czk": 27857.92
+        },
+        {
+          "date": "2026-01-07",
+          "cost_czk": 1335.79,
+          "clicks": 348,
+          "impressions": 17554,
+          "conversions": 23.015,
+          "revenue_czk": 25371.98
+        },
+        {
+          "date": "2026-01-08",
+          "cost_czk": 129.84,
+          "clicks": 33,
+          "impressions": 3101,
+          "conversions": 21.3038,
+          "revenue_czk": 24734.02
+        },
+        {
+          "date": "2026-01-09",
+          "cost_czk": 247.89,
+          "clicks": 30,
+          "impressions": 1947,
+          "conversions": 19.4171,
+          "revenue_czk": 24479.5
+        },
+        {
+          "date": "2026-01-10",
+          "cost_czk": 113.7,
+          "clicks": 26,
+          "impressions": 2190,
+          "conversions": 10.796,
+          "revenue_czk": 12941.39
+        },
+        {
+          "date": "2026-01-11",
+          "cost_czk": 138.06,
+          "clicks": 46,
+          "impressions": 3721,
+          "conversions": 7.0691,
+          "revenue_czk": 8478.65
+        },
+        {
+          "date": "2026-01-12",
+          "cost_czk": 246.75,
+          "clicks": 73,
+          "impressions": 4983,
+          "conversions": 16.9024,
+          "revenue_czk": 29589.8
+        },
+        {
+          "date": "2026-01-13",
+          "cost_czk": 158.28,
+          "clicks": 39,
+          "impressions": 3311,
+          "conversions": 11.6406,
+          "revenue_czk": 11560.14
+        },
+        {
+          "date": "2026-01-14",
+          "cost_czk": 519.08,
+          "clicks": 109,
+          "impressions": 6562,
+          "conversions": 11.4138,
+          "revenue_czk": 26686.61
+        },
+        {
+          "date": "2026-01-15",
+          "cost_czk": 1645.53,
+          "clicks": 352,
+          "impressions": 20686,
+          "conversions": 17.7567,
+          "revenue_czk": 24950.57
+        },
+        {
+          "date": "2026-01-16",
+          "cost_czk": 609.13,
+          "clicks": 118,
+          "impressions": 7650,
+          "conversions": 17.444,
+          "revenue_czk": 16526.72
+        },
+        {
+          "date": "2026-01-17",
+          "cost_czk": 814.65,
+          "clicks": 153,
+          "impressions": 8548,
+          "conversions": 6.7434,
+          "revenue_czk": 7318.41
+        },
+        {
+          "date": "2026-01-18",
+          "cost_czk": 2000.77,
+          "clicks": 417,
+          "impressions": 21894,
+          "conversions": 14.5308,
+          "revenue_czk": 15260.45
+        },
+        {
+          "date": "2026-01-19",
+          "cost_czk": 1569.16,
+          "clicks": 339,
+          "impressions": 19768,
+          "conversions": 17.3372,
+          "revenue_czk": 16721.24
+        },
+        {
+          "date": "2026-01-20",
+          "cost_czk": 108.38,
+          "clicks": 27,
+          "impressions": 2594,
+          "conversions": 6.1053,
+          "revenue_czk": 6078.53
+        },
+        {
+          "date": "2026-01-21",
+          "cost_czk": 232.94,
+          "clicks": 50,
+          "impressions": 3626,
+          "conversions": 9.2262,
+          "revenue_czk": 9271.9
+        },
+        {
+          "date": "2026-01-22",
+          "cost_czk": 199.86,
+          "clicks": 35,
+          "impressions": 3052,
+          "conversions": 11.1732,
+          "revenue_czk": 11949.78
+        },
+        {
+          "date": "2026-01-23",
+          "cost_czk": 217.56,
+          "clicks": 53,
+          "impressions": 3281,
+          "conversions": 10.4436,
+          "revenue_czk": 12749.14
+        },
+        {
+          "date": "2026-01-24",
+          "cost_czk": 130.15,
+          "clicks": 43,
+          "impressions": 4029,
+          "conversions": 4.5981,
+          "revenue_czk": 4687.47
+        },
+        {
+          "date": "2026-01-25",
+          "cost_czk": 520.51,
+          "clicks": 133,
+          "impressions": 9899,
+          "conversions": 9.9784,
+          "revenue_czk": 9805.03
+        },
+        {
+          "date": "2026-01-26",
+          "cost_czk": 742.36,
+          "clicks": 155,
+          "impressions": 11616,
+          "conversions": 11.411,
+          "revenue_czk": 11211.94
+        },
+        {
+          "date": "2026-01-27",
+          "cost_czk": 138.06,
+          "clicks": 38,
+          "impressions": 7107,
+          "conversions": 4.3548,
+          "revenue_czk": 5045.32
+        },
+        {
+          "date": "2026-01-28",
+          "cost_czk": 89.02,
+          "clicks": 32,
+          "impressions": 7843,
+          "conversions": 4.5709,
+          "revenue_czk": 5203.46
+        },
+        {
+          "date": "2026-01-29",
+          "cost_czk": 98.62,
+          "clicks": 34,
+          "impressions": 5749,
+          "conversions": 3.3332,
+          "revenue_czk": 5067.99
+        },
+        {
+          "date": "2026-01-30",
+          "cost_czk": 151.7,
+          "clicks": 33,
+          "impressions": 3364,
+          "conversions": 4.7216,
+          "revenue_czk": 3997.17
+        },
+        {
+          "date": "2026-01-31",
+          "cost_czk": 263.89,
+          "clicks": 60,
+          "impressions": 3481,
+          "conversions": 3.3978,
+          "revenue_czk": 4777.4
+        },
+        {
+          "date": "2026-02-01",
+          "cost_czk": 141.48,
+          "clicks": 29,
+          "impressions": 2239,
+          "conversions": 1.5237,
+          "revenue_czk": 2124.89
+        },
+        {
+          "date": "2026-02-02",
+          "cost_czk": 59.64,
+          "clicks": 25,
+          "impressions": 2073,
+          "conversions": 3.4798,
+          "revenue_czk": 5358.6
+        },
+        {
+          "date": "2026-02-03",
+          "cost_czk": 54.94,
+          "clicks": 17,
+          "impressions": 1432,
+          "conversions": 3.8754,
+          "revenue_czk": 2670.47
+        },
+        {
+          "date": "2026-02-04",
+          "cost_czk": 71.04,
+          "clicks": 22,
+          "impressions": 1990,
+          "conversions": 2.6799,
+          "revenue_czk": 2725.91
+        },
+        {
+          "date": "2026-02-05",
+          "cost_czk": 98.13,
+          "clicks": 33,
+          "impressions": 2185,
+          "conversions": 6.4713,
+          "revenue_czk": 14587.0
+        },
+        {
+          "date": "2026-02-06",
+          "cost_czk": 41.65,
+          "clicks": 16,
+          "impressions": 1352,
+          "conversions": 2.8242,
+          "revenue_czk": 2953.94
+        },
+        {
+          "date": "2026-02-07",
+          "cost_czk": 36.42,
+          "clicks": 24,
+          "impressions": 1226,
+          "conversions": 0.4761,
+          "revenue_czk": 146.76
+        },
+        {
+          "date": "2026-02-08",
+          "cost_czk": 72.7,
+          "clicks": 15,
+          "impressions": 1239,
+          "conversions": 1.2357,
+          "revenue_czk": 1162.78
+        },
+        {
+          "date": "2026-02-09",
+          "cost_czk": 115.72,
+          "clicks": 25,
+          "impressions": 2025,
+          "conversions": 3.3725,
+          "revenue_czk": 4862.88
+        },
+        {
+          "date": "2026-02-10",
+          "cost_czk": 577.17,
+          "clicks": 133,
+          "impressions": 8470,
+          "conversions": 3.3572,
+          "revenue_czk": 4323.96
+        },
+        {
+          "date": "2026-02-11",
+          "cost_czk": 570.79,
+          "clicks": 141,
+          "impressions": 8963,
+          "conversions": 1.7804,
+          "revenue_czk": 1582.51
+        },
+        {
+          "date": "2026-02-12",
+          "cost_czk": 710.27,
+          "clicks": 165,
+          "impressions": 10175,
+          "conversions": 6.9236,
+          "revenue_czk": 6205.51
+        },
+        {
+          "date": "2026-02-13",
+          "cost_czk": 530.97,
+          "clicks": 136,
+          "impressions": 9339,
+          "conversions": 3.8502,
+          "revenue_czk": 3521.24
+        },
+        {
+          "date": "2026-02-14",
+          "cost_czk": 596.4,
+          "clicks": 131,
+          "impressions": 7921,
+          "conversions": 1.9921,
+          "revenue_czk": 2433.74
+        },
+        {
+          "date": "2026-02-15",
+          "cost_czk": 724.08,
+          "clicks": 161,
+          "impressions": 9407,
+          "conversions": 10.6727,
+          "revenue_czk": 10669.73
+        },
+        {
+          "date": "2026-02-16",
+          "cost_czk": 772.27,
+          "clicks": 153,
+          "impressions": 11212,
+          "conversions": 9.6003,
+          "revenue_czk": 16282.97
+        },
+        {
+          "date": "2026-02-17",
+          "cost_czk": 366.61,
+          "clicks": 77,
+          "impressions": 7356,
+          "conversions": 4.0589,
+          "revenue_czk": 3318.53
+        },
+        {
+          "date": "2026-02-18",
+          "cost_czk": 24.2,
+          "clicks": 4,
+          "impressions": 1128,
+          "conversions": 4.6726,
+          "revenue_czk": 11055.56
+        },
+        {
+          "date": "2026-02-19",
+          "cost_czk": 68.61,
+          "clicks": 13,
+          "impressions": 1681,
+          "conversions": 2.1467,
+          "revenue_czk": 5598.49
+        },
+        {
+          "date": "2026-02-20",
+          "cost_czk": 31.78,
+          "clicks": 6,
+          "impressions": 1132,
+          "conversions": 2.9837,
+          "revenue_czk": 1609.87
+        },
+        {
+          "date": "2026-02-21",
+          "cost_czk": 41.87,
+          "clicks": 10,
+          "impressions": 1136,
+          "conversions": 0.2993,
+          "revenue_czk": 305.5
+        },
+        {
+          "date": "2026-02-22",
+          "cost_czk": 32.39,
+          "clicks": 6,
+          "impressions": 983,
+          "conversions": 3.3913,
+          "revenue_czk": 5747.76
+        },
+        {
+          "date": "2026-02-23",
+          "cost_czk": 49.37,
+          "clicks": 12,
+          "impressions": 917,
+          "conversions": 1.7607,
+          "revenue_czk": 997.26
+        },
+        {
+          "date": "2026-02-24",
+          "cost_czk": 37.61,
+          "clicks": 10,
+          "impressions": 996,
+          "conversions": 0.7438,
+          "revenue_czk": 664.43
+        },
+        {
+          "date": "2026-02-25",
+          "cost_czk": 55.58,
+          "clicks": 10,
+          "impressions": 1447,
+          "conversions": 1.8198,
+          "revenue_czk": 1574.05
+        },
+        {
+          "date": "2026-02-26",
+          "cost_czk": 1133.6,
+          "clicks": 186,
+          "impressions": 12711,
+          "conversions": 2.6667,
+          "revenue_czk": 2891.0
+        },
+        {
+          "date": "2026-02-27",
+          "cost_czk": 809.47,
+          "clicks": 149,
+          "impressions": 13162,
+          "conversions": 4.663,
+          "revenue_czk": 6329.67
+        },
+        {
+          "date": "2026-02-28",
+          "cost_czk": 1144.98,
+          "clicks": 213,
+          "impressions": 12675,
+          "conversions": 0.982,
+          "revenue_czk": 1188.34
+        },
+        {
+          "date": "2026-03-01",
+          "cost_czk": 1170.67,
+          "clicks": 245,
+          "impressions": 15390,
+          "conversions": 4.5838,
+          "revenue_czk": 8528.45
+        },
+        {
+          "date": "2026-03-02",
+          "cost_czk": 1121.2,
+          "clicks": 230,
+          "impressions": 16499,
+          "conversions": 5.8566,
+          "revenue_czk": 5011.58
+        },
+        {
+          "date": "2026-03-03",
+          "cost_czk": 977.78,
+          "clicks": 205,
+          "impressions": 15288,
+          "conversions": 3.4182,
+          "revenue_czk": 3310.48
+        },
+        {
+          "date": "2026-03-04",
+          "cost_czk": 1469.97,
+          "clicks": 247,
+          "impressions": 15756,
+          "conversions": 11.3834,
+          "revenue_czk": 11236.41
+        },
+        {
+          "date": "2026-03-05",
+          "cost_czk": 1182.07,
+          "clicks": 221,
+          "impressions": 15353,
+          "conversions": 8.0978,
+          "revenue_czk": 6443.25
+        },
+        {
+          "date": "2026-03-06",
+          "cost_czk": 995.62,
+          "clicks": 207,
+          "impressions": 15632,
+          "conversions": 5.8844,
+          "revenue_czk": 7071.46
+        },
+        {
+          "date": "2026-03-07",
+          "cost_czk": 999.83,
+          "clicks": 190,
+          "impressions": 12673,
+          "conversions": 5.5874,
+          "revenue_czk": 5322.81
+        },
+        {
+          "date": "2026-03-08",
+          "cost_czk": 971.12,
+          "clicks": 213,
+          "impressions": 13378,
+          "conversions": 3.4294,
+          "revenue_czk": 2765.69
+        },
+        {
+          "date": "2026-03-09",
+          "cost_czk": 847.99,
+          "clicks": 182,
+          "impressions": 11825,
+          "conversions": 2.8456,
+          "revenue_czk": 2732.79
+        },
+        {
+          "date": "2026-03-10",
+          "cost_czk": 693.56,
+          "clicks": 132,
+          "impressions": 10341,
+          "conversions": 7.2215,
+          "revenue_czk": 6994.62
+        },
+        {
+          "date": "2026-03-11",
+          "cost_czk": 4167.38,
+          "clicks": 705,
+          "impressions": 42891,
+          "conversions": 13.3971,
+          "revenue_czk": 11801.97
+        },
+        {
+          "date": "2026-03-12",
+          "cost_czk": 5535.81,
+          "clicks": 855,
+          "impressions": 56842,
+          "conversions": 15.3597,
+          "revenue_czk": 16148.2
+        },
+        {
+          "date": "2026-03-13",
+          "cost_czk": 5091.19,
+          "clicks": 783,
+          "impressions": 53290,
+          "conversions": 16.0212,
+          "revenue_czk": 22721.93
+        },
+        {
+          "date": "2026-03-14",
+          "cost_czk": 5762.58,
+          "clicks": 987,
+          "impressions": 64280,
+          "conversions": 17.5164,
+          "revenue_czk": 21252.97
+        },
+        {
+          "date": "2026-03-15",
+          "cost_czk": 7599.56,
+          "clicks": 1197,
+          "impressions": 74855,
+          "conversions": 16.4071,
+          "revenue_czk": 13283.13
+        },
+        {
+          "date": "2026-03-16",
+          "cost_czk": 1299.36,
+          "clicks": 208,
+          "impressions": 13796,
+          "conversions": 11.7157,
+          "revenue_czk": 12910.56
+        }
+      ]
+    }
+  ],
+  "bs_totals": {
+    "cost_czk": 307169.91,
+    "clicks": 73373,
+    "impressions": 3260997,
+    "conversions": 3169.6111,
+    "revenue_czk": 3864901.2,
+    "roas": 12.5823,
+    "ctr_pct": 2.25,
+    "avg_cpc": 4.1864,
+    "conv_rate_pct": 4.3199,
+    "aov": 1219.36,
+    "ltv": 6096.81
+  },
+  "control_totals": {
+    "cost_czk": 294052.03,
+    "clicks": 65966,
+    "impressions": 3636189,
+    "conversions": 2707.4297,
+    "revenue_czk": 3160532.19,
+    "roas": 10.7482,
+    "ctr_pct": 1.8142,
+    "avg_cpc": 4.4576,
+    "conv_rate_pct": 4.1043,
+    "aov": 1167.36,
+    "ltv": 5836.78
+  },
+  "daily_bs": [
+    {
+      "date": "2025-12-20",
+      "cost_czk": 1982.11,
+      "clicks": 555,
+      "impressions": 21517,
+      "conversions": 27.7652,
+      "revenue_czk": 29120.53
+    },
+    {
+      "date": "2025-12-21",
+      "cost_czk": 2169.41,
+      "clicks": 724,
+      "impressions": 26080,
+      "conversions": 25.0701,
+      "revenue_czk": 24880.54
+    },
+    {
+      "date": "2025-12-22",
+      "cost_czk": 1964.69,
+      "clicks": 646,
+      "impressions": 21549,
+      "conversions": 48.7348,
+      "revenue_czk": 72882.36
+    },
+    {
+      "date": "2025-12-23",
+      "cost_czk": 2734.42,
+      "clicks": 908,
+      "impressions": 41542,
+      "conversions": 28.255,
+      "revenue_czk": 27152.92
+    },
+    {
+      "date": "2025-12-24",
+      "cost_czk": 2641.24,
+      "clicks": 873,
+      "impressions": 32963,
+      "conversions": 45.4339,
+      "revenue_czk": 59088.74
+    },
+    {
+      "date": "2025-12-25",
+      "cost_czk": 2044.42,
+      "clicks": 913,
+      "impressions": 32683,
+      "conversions": 26.6195,
+      "revenue_czk": 22579.25
+    },
+    {
+      "date": "2025-12-26",
+      "cost_czk": 2135.95,
+      "clicks": 806,
+      "impressions": 33586,
+      "conversions": 23.0115,
+      "revenue_czk": 23316.83
+    },
+    {
+      "date": "2025-12-27",
+      "cost_czk": 2667.66,
+      "clicks": 947,
+      "impressions": 37606,
+      "conversions": 30.7651,
+      "revenue_czk": 31197.56
+    },
+    {
+      "date": "2025-12-28",
+      "cost_czk": 2122.41,
+      "clicks": 777,
+      "impressions": 29099,
+      "conversions": 30.8263,
+      "revenue_czk": 33369.16
+    },
+    {
+      "date": "2025-12-29",
+      "cost_czk": 2131.67,
+      "clicks": 812,
+      "impressions": 27433,
+      "conversions": 35.5965,
+      "revenue_czk": 37970.5
+    },
+    {
+      "date": "2025-12-30",
+      "cost_czk": 1906.32,
+      "clicks": 670,
+      "impressions": 28630,
+      "conversions": 19.5317,
+      "revenue_czk": 21409.23
+    },
+    {
+      "date": "2025-12-31",
+      "cost_czk": 2068.24,
+      "clicks": 618,
+      "impressions": 28622,
+      "conversions": 31.3575,
+      "revenue_czk": 34117.91
+    },
+    {
+      "date": "2026-01-01",
+      "cost_czk": 2506.2,
+      "clicks": 729,
+      "impressions": 27423,
+      "conversions": 26.6493,
+      "revenue_czk": 21112.24
+    },
+    {
+      "date": "2026-01-02",
+      "cost_czk": 2284.33,
+      "clicks": 880,
+      "impressions": 32121,
+      "conversions": 17.9391,
+      "revenue_czk": 42955.17
+    },
+    {
+      "date": "2026-01-03",
+      "cost_czk": 2133.1,
+      "clicks": 685,
+      "impressions": 23510,
+      "conversions": 22.1964,
+      "revenue_czk": 29086.42
+    },
+    {
+      "date": "2026-01-04",
+      "cost_czk": 2410.31,
+      "clicks": 751,
+      "impressions": 26937,
+      "conversions": 26.3549,
+      "revenue_czk": 38713.25
+    },
+    {
+      "date": "2026-01-05",
+      "cost_czk": 2276.43,
+      "clicks": 695,
+      "impressions": 22033,
+      "conversions": 21.5938,
+      "revenue_czk": 32373.4
+    },
+    {
+      "date": "2026-01-06",
+      "cost_czk": 1569.93,
+      "clicks": 569,
+      "impressions": 18819,
+      "conversions": 25.6286,
+      "revenue_czk": 27755.25
+    },
+    {
+      "date": "2026-01-07",
+      "cost_czk": 4250.12,
+      "clicks": 1179,
+      "impressions": 45577,
+      "conversions": 40.453,
+      "revenue_czk": 46821.41
+    },
+    {
+      "date": "2026-01-08",
+      "cost_czk": 4878.16,
+      "clicks": 1244,
+      "impressions": 47707,
+      "conversions": 45.2672,
+      "revenue_czk": 50119.41
+    },
+    {
+      "date": "2026-01-09",
+      "cost_czk": 4203.28,
+      "clicks": 1259,
+      "impressions": 43962,
+      "conversions": 52.3926,
+      "revenue_czk": 40239.51
+    },
+    {
+      "date": "2026-01-10",
+      "cost_czk": 4960.76,
+      "clicks": 1393,
+      "impressions": 55152,
+      "conversions": 42.8067,
+      "revenue_czk": 39704.23
+    },
+    {
+      "date": "2026-01-11",
+      "cost_czk": 4702.69,
+      "clicks": 1163,
+      "impressions": 42573,
+      "conversions": 39.5566,
+      "revenue_czk": 51930.02
+    },
+    {
+      "date": "2026-01-12",
+      "cost_czk": 4337.43,
+      "clicks": 1147,
+      "impressions": 40523,
+      "conversions": 58.0354,
+      "revenue_czk": 60495.2
+    },
+    {
+      "date": "2026-01-13",
+      "cost_czk": 4432.48,
+      "clicks": 1099,
+      "impressions": 49243,
+      "conversions": 36.0211,
+      "revenue_czk": 42958.77
+    },
+    {
+      "date": "2026-01-14",
+      "cost_czk": 4808.52,
+      "clicks": 1055,
+      "impressions": 45119,
+      "conversions": 39.4364,
+      "revenue_czk": 52602.59
+    },
+    {
+      "date": "2026-01-15",
+      "cost_czk": 3717.7,
+      "clicks": 705,
+      "impressions": 30062,
+      "conversions": 38.6744,
+      "revenue_czk": 53891.53
+    },
+    {
+      "date": "2026-01-16",
+      "cost_czk": 4634.41,
+      "clicks": 978,
+      "impressions": 43602,
+      "conversions": 36.376,
+      "revenue_czk": 39347.89
+    },
+    {
+      "date": "2026-01-17",
+      "cost_czk": 5797.2,
+      "clicks": 1173,
+      "impressions": 58128,
+      "conversions": 30.9524,
+      "revenue_czk": 29935.76
+    },
+    {
+      "date": "2026-01-18",
+      "cost_czk": 4247.2,
+      "clicks": 979,
+      "impressions": 36748,
+      "conversions": 37.3757,
+      "revenue_czk": 46142.76
+    },
+    {
+      "date": "2026-01-19",
+      "cost_czk": 3314.39,
+      "clicks": 650,
+      "impressions": 28428,
+      "conversions": 30.4955,
+      "revenue_czk": 36239.77
+    },
+    {
+      "date": "2026-01-20",
+      "cost_czk": 4742.65,
+      "clicks": 1022,
+      "impressions": 52625,
+      "conversions": 29.6611,
+      "revenue_czk": 32887.03
+    },
+    {
+      "date": "2026-01-21",
+      "cost_czk": 5255.81,
+      "clicks": 1105,
+      "impressions": 53599,
+      "conversions": 35.4337,
+      "revenue_czk": 43554.63
+    },
+    {
+      "date": "2026-01-22",
+      "cost_czk": 4060.42,
+      "clicks": 890,
+      "impressions": 47963,
+      "conversions": 36.2814,
+      "revenue_czk": 46584.92
+    },
+    {
+      "date": "2026-01-23",
+      "cost_czk": 4524.88,
+      "clicks": 974,
+      "impressions": 55146,
+      "conversions": 38.8114,
+      "revenue_czk": 41865.0
+    },
+    {
+      "date": "2026-01-24",
+      "cost_czk": 4791.75,
+      "clicks": 1098,
+      "impressions": 59660,
+      "conversions": 32.2184,
+      "revenue_czk": 37380.69
+    },
+    {
+      "date": "2026-01-25",
+      "cost_czk": 4807.5,
+      "clicks": 1029,
+      "impressions": 50559,
+      "conversions": 61.3676,
+      "revenue_czk": 74704.58
+    },
+    {
+      "date": "2026-01-26",
+      "cost_czk": 3825.32,
+      "clicks": 795,
+      "impressions": 45068,
+      "conversions": 39.5473,
+      "revenue_czk": 45187.44
+    },
+    {
+      "date": "2026-01-27",
+      "cost_czk": 3916.16,
+      "clicks": 899,
+      "impressions": 48474,
+      "conversions": 39.0257,
+      "revenue_czk": 37860.78
+    },
+    {
+      "date": "2026-01-28",
+      "cost_czk": 4239.13,
+      "clicks": 875,
+      "impressions": 49555,
+      "conversions": 40.5469,
+      "revenue_czk": 38484.71
+    },
+    {
+      "date": "2026-01-29",
+      "cost_czk": 3660.68,
+      "clicks": 844,
+      "impressions": 44192,
+      "conversions": 42.3477,
+      "revenue_czk": 57741.34
+    },
+    {
+      "date": "2026-01-30",
+      "cost_czk": 4408.16,
+      "clicks": 865,
+      "impressions": 49294,
+      "conversions": 28.316,
+      "revenue_czk": 30676.54
+    },
+    {
+      "date": "2026-01-31",
+      "cost_czk": 4280.59,
+      "clicks": 955,
+      "impressions": 51048,
+      "conversions": 33.7326,
+      "revenue_czk": 37838.96
+    },
+    {
+      "date": "2026-02-01",
+      "cost_czk": 4264.36,
+      "clicks": 976,
+      "impressions": 48025,
+      "conversions": 29.4642,
+      "revenue_czk": 33994.36
+    },
+    {
+      "date": "2026-02-02",
+      "cost_czk": 3320.24,
+      "clicks": 722,
+      "impressions": 37393,
+      "conversions": 24.4216,
+      "revenue_czk": 26199.0
+    },
+    {
+      "date": "2026-02-03",
+      "cost_czk": 3061.77,
+      "clicks": 648,
+      "impressions": 38365,
+      "conversions": 28.5332,
+      "revenue_czk": 37293.31
+    },
+    {
+      "date": "2026-02-04",
+      "cost_czk": 3036.55,
+      "clicks": 736,
+      "impressions": 35880,
+      "conversions": 45.6717,
+      "revenue_czk": 59886.68
+    },
+    {
+      "date": "2026-02-05",
+      "cost_czk": 3219.05,
+      "clicks": 787,
+      "impressions": 34583,
+      "conversions": 29.8137,
+      "revenue_czk": 18813.78
+    },
+    {
+      "date": "2026-02-06",
+      "cost_czk": 4396.3,
+      "clicks": 987,
+      "impressions": 40906,
+      "conversions": 50.5597,
+      "revenue_czk": 56157.84
+    },
+    {
+      "date": "2026-02-07",
+      "cost_czk": 4747.86,
+      "clicks": 1079,
+      "impressions": 44357,
+      "conversions": 26.4404,
+      "revenue_czk": 34329.64
+    },
+    {
+      "date": "2026-02-08",
+      "cost_czk": 5301.85,
+      "clicks": 1237,
+      "impressions": 50657,
+      "conversions": 29.8443,
+      "revenue_czk": 37417.95
+    },
+    {
+      "date": "2026-02-09",
+      "cost_czk": 5645.09,
+      "clicks": 1271,
+      "impressions": 52479,
+      "conversions": 64.2713,
+      "revenue_czk": 74241.17
+    },
+    {
+      "date": "2026-02-10",
+      "cost_czk": 4619.75,
+      "clicks": 1079,
+      "impressions": 40667,
+      "conversions": 49.3407,
+      "revenue_czk": 78929.59
+    },
+    {
+      "date": "2026-02-11",
+      "cost_czk": 4055.06,
+      "clicks": 922,
+      "impressions": 37252,
+      "conversions": 44.2243,
+      "revenue_czk": 48644.39
+    },
+    {
+      "date": "2026-02-12",
+      "cost_czk": 3883.03,
+      "clicks": 857,
+      "impressions": 37364,
+      "conversions": 41.3396,
+      "revenue_czk": 43515.94
+    },
+    {
+      "date": "2026-02-13",
+      "cost_czk": 4021.78,
+      "clicks": 921,
+      "impressions": 41308,
+      "conversions": 53.6776,
+      "revenue_czk": 48308.33
+    },
+    {
+      "date": "2026-02-14",
+      "cost_czk": 4030.47,
+      "clicks": 866,
+      "impressions": 38211,
+      "conversions": 29.4794,
+      "revenue_czk": 40392.6
+    },
+    {
+      "date": "2026-02-15",
+      "cost_czk": 3970.56,
+      "clicks": 922,
+      "impressions": 41237,
+      "conversions": 45.8436,
+      "revenue_czk": 40118.36
+    },
+    {
+      "date": "2026-02-16",
+      "cost_czk": 4313.97,
+      "clicks": 958,
+      "impressions": 40792,
+      "conversions": 46.6901,
+      "revenue_czk": 57474.95
+    },
+    {
+      "date": "2026-02-17",
+      "cost_czk": 4334.85,
+      "clicks": 1061,
+      "impressions": 46617,
+      "conversions": 46.4134,
+      "revenue_czk": 82023.67
+    },
+    {
+      "date": "2026-02-18",
+      "cost_czk": 4760.39,
+      "clicks": 1172,
+      "impressions": 55482,
+      "conversions": 45.3597,
+      "revenue_czk": 65208.95
+    },
+    {
+      "date": "2026-02-19",
+      "cost_czk": 4405.02,
+      "clicks": 1116,
+      "impressions": 51319,
+      "conversions": 54.0334,
+      "revenue_czk": 64071.32
+    },
+    {
+      "date": "2026-02-20",
+      "cost_czk": 4579.09,
+      "clicks": 1138,
+      "impressions": 49222,
+      "conversions": 59.4324,
+      "revenue_czk": 101460.96
+    },
+    {
+      "date": "2026-02-21",
+      "cost_czk": 4182.68,
+      "clicks": 1118,
+      "impressions": 50786,
+      "conversions": 31.6428,
+      "revenue_czk": 35036.67
+    },
+    {
+      "date": "2026-02-22",
+      "cost_czk": 5664.18,
+      "clicks": 1481,
+      "impressions": 56275,
+      "conversions": 45.8081,
+      "revenue_czk": 67527.66
+    },
+    {
+      "date": "2026-02-23",
+      "cost_czk": 5603.27,
+      "clicks": 1392,
+      "impressions": 56068,
+      "conversions": 55.956,
+      "revenue_czk": 72002.88
+    },
+    {
+      "date": "2026-02-24",
+      "cost_czk": 5951.41,
+      "clicks": 1408,
+      "impressions": 54587,
+      "conversions": 66.6407,
+      "revenue_czk": 81698.1
+    },
+    {
+      "date": "2026-02-25",
+      "cost_czk": 4805.26,
+      "clicks": 1069,
+      "impressions": 45441,
+      "conversions": 65.2934,
+      "revenue_czk": 87847.29
+    },
+    {
+      "date": "2026-02-26",
+      "cost_czk": 4001.83,
+      "clicks": 862,
+      "impressions": 32594,
+      "conversions": 36.4334,
+      "revenue_czk": 48499.78
+    },
+    {
+      "date": "2026-02-27",
+      "cost_czk": 4488.56,
+      "clicks": 853,
+      "impressions": 37912,
+      "conversions": 46.5325,
+      "revenue_czk": 70404.7
+    },
+    {
+      "date": "2026-02-28",
+      "cost_czk": 3803.22,
+      "clicks": 760,
+      "impressions": 38370,
+      "conversions": 24.398,
+      "revenue_czk": 40771.61
+    },
+    {
+      "date": "2026-03-01",
+      "cost_czk": 3735.81,
+      "clicks": 771,
+      "impressions": 38352,
+      "conversions": 30.2882,
+      "revenue_czk": 47037.98
+    },
+    {
+      "date": "2026-03-02",
+      "cost_czk": 3408.56,
+      "clicks": 587,
+      "impressions": 31430,
+      "conversions": 50.8536,
+      "revenue_czk": 73257.06
+    },
+    {
+      "date": "2026-03-03",
+      "cost_czk": 2963.7,
+      "clicks": 479,
+      "impressions": 27971,
+      "conversions": 31.0253,
+      "revenue_czk": 43582.72
+    },
+    {
+      "date": "2026-03-04",
+      "cost_czk": 2740.75,
+      "clicks": 441,
+      "impressions": 26674,
+      "conversions": 47.2864,
+      "revenue_czk": 55185.03
+    },
+    {
+      "date": "2026-03-05",
+      "cost_czk": 2693.35,
+      "clicks": 445,
+      "impressions": 24730,
+      "conversions": 23.0638,
+      "revenue_czk": 24310.98
+    },
+    {
+      "date": "2026-03-06",
+      "cost_czk": 2557.27,
+      "clicks": 409,
+      "impressions": 27139,
+      "conversions": 32.4703,
+      "revenue_czk": 35868.89
+    },
+    {
+      "date": "2026-03-07",
+      "cost_czk": 2302.65,
+      "clicks": 377,
+      "impressions": 21537,
+      "conversions": 18.1553,
+      "revenue_czk": 15260.1
+    },
+    {
+      "date": "2026-03-08",
+      "cost_czk": 2257.99,
+      "clicks": 412,
+      "impressions": 21556,
+      "conversions": 24.0497,
+      "revenue_czk": 43113.43
+    },
+    {
+      "date": "2026-03-09",
+      "cost_czk": 1667.13,
+      "clicks": 344,
+      "impressions": 19826,
+      "conversions": 34.2465,
+      "revenue_czk": 38758.24
+    },
+    {
+      "date": "2026-03-10",
+      "cost_czk": 2007.42,
+      "clicks": 342,
+      "impressions": 22033,
+      "conversions": 34.5571,
+      "revenue_czk": 40142.73
+    },
+    {
+      "date": "2026-03-11",
+      "cost_czk": 1298.21,
+      "clicks": 197,
+      "impressions": 13606,
+      "conversions": 35.0134,
+      "revenue_czk": 43534.07
+    },
+    {
+      "date": "2026-03-12",
+      "cost_czk": 882.83,
+      "clicks": 131,
+      "impressions": 10810,
+      "conversions": 27.3515,
+      "revenue_czk": 31863.26
+    },
+    {
+      "date": "2026-03-13",
+      "cost_czk": 792.16,
+      "clicks": 109,
+      "impressions": 9989,
+      "conversions": 26.1496,
+      "revenue_czk": 34918.46
+    },
+    {
+      "date": "2026-03-14",
+      "cost_czk": 743.89,
+      "clicks": 172,
+      "impressions": 7593,
+      "conversions": 11.0481,
+      "revenue_czk": 13765.55
+    },
+    {
+      "date": "2026-03-15",
+      "cost_czk": 1444.37,
+      "clicks": 247,
+      "impressions": 9706,
+      "conversions": 11.589,
+      "revenue_czk": 22245.94
+    },
+    {
+      "date": "2026-03-16",
+      "cost_czk": 2660.14,
+      "clicks": 579,
+      "impressions": 27736,
+      "conversions": 16.4421,
+      "revenue_czk": 25508.55
+    }
+  ],
+  "daily_control": [
+    {
+      "date": "2025-12-20",
+      "cost_czk": 4300.8,
+      "clicks": 792,
+      "impressions": 49691,
+      "conversions": 55.509,
+      "revenue_czk": 61039.47
+    },
+    {
+      "date": "2025-12-21",
+      "cost_czk": 4829.64,
+      "clicks": 905,
+      "impressions": 55042,
+      "conversions": 59.359,
+      "revenue_czk": 56758.08
+    },
+    {
+      "date": "2025-12-22",
+      "cost_czk": 5016.66,
+      "clicks": 1151,
+      "impressions": 71990,
+      "conversions": 52.137,
+      "revenue_czk": 51730.48
+    },
+    {
+      "date": "2025-12-23",
+      "cost_czk": 3201.22,
+      "clicks": 720,
+      "impressions": 40274,
+      "conversions": 29.3228,
+      "revenue_czk": 56048.22
+    },
+    {
+      "date": "2025-12-24",
+      "cost_czk": 3326.31,
+      "clicks": 774,
+      "impressions": 41903,
+      "conversions": 61.3566,
+      "revenue_czk": 96220.33
+    },
+    {
+      "date": "2025-12-25",
+      "cost_czk": 4483.65,
+      "clicks": 1520,
+      "impressions": 73896,
+      "conversions": 39.0264,
+      "revenue_czk": 42454.99
+    },
+    {
+      "date": "2025-12-26",
+      "cost_czk": 6852.53,
+      "clicks": 2120,
+      "impressions": 116453,
+      "conversions": 48.6376,
+      "revenue_czk": 44054.18
+    },
+    {
+      "date": "2025-12-27",
+      "cost_czk": 5992.0,
+      "clicks": 1865,
+      "impressions": 103939,
+      "conversions": 44.741,
+      "revenue_czk": 41313.49
+    },
+    {
+      "date": "2025-12-28",
+      "cost_czk": 5891.81,
+      "clicks": 1796,
+      "impressions": 96211,
+      "conversions": 44.8204,
+      "revenue_czk": 39927.77
+    },
+    {
+      "date": "2025-12-29",
+      "cost_czk": 4972.37,
+      "clicks": 1629,
+      "impressions": 78186,
+      "conversions": 53.5824,
+      "revenue_czk": 62247.99
+    },
+    {
+      "date": "2025-12-30",
+      "cost_czk": 4595.36,
+      "clicks": 1375,
+      "impressions": 72853,
+      "conversions": 51.5391,
+      "revenue_czk": 54794.03
+    },
+    {
+      "date": "2025-12-31",
+      "cost_czk": 4174.23,
+      "clicks": 1144,
+      "impressions": 72625,
+      "conversions": 41.956,
+      "revenue_czk": 67175.21
+    },
+    {
+      "date": "2026-01-01",
+      "cost_czk": 5162.12,
+      "clicks": 1502,
+      "impressions": 75601,
+      "conversions": 42.0254,
+      "revenue_czk": 54651.11
+    },
+    {
+      "date": "2026-01-02",
+      "cost_czk": 5928.53,
+      "clicks": 1832,
+      "impressions": 91307,
+      "conversions": 46.4529,
+      "revenue_czk": 41779.58
+    },
+    {
+      "date": "2026-01-03",
+      "cost_czk": 5447.29,
+      "clicks": 1765,
+      "impressions": 78341,
+      "conversions": 41.0541,
+      "revenue_czk": 43075.04
+    },
+    {
+      "date": "2026-01-04",
+      "cost_czk": 3943.69,
+      "clicks": 1187,
+      "impressions": 61381,
+      "conversions": 30.9505,
+      "revenue_czk": 35538.8
+    },
+    {
+      "date": "2026-01-05",
+      "cost_czk": 5160.63,
+      "clicks": 1273,
+      "impressions": 69175,
+      "conversions": 46.0484,
+      "revenue_czk": 53785.15
+    },
+    {
+      "date": "2026-01-06",
+      "cost_czk": 4820.65,
+      "clicks": 1266,
+      "impressions": 64367,
+      "conversions": 59.7605,
+      "revenue_czk": 58055.55
+    },
+    {
+      "date": "2026-01-07",
+      "cost_czk": 3333.29,
+      "clicks": 844,
+      "impressions": 37541,
+      "conversions": 49.4735,
+      "revenue_czk": 46381.08
+    },
+    {
+      "date": "2026-01-08",
+      "cost_czk": 1851.61,
+      "clicks": 497,
+      "impressions": 19082,
+      "conversions": 46.3344,
+      "revenue_czk": 48256.98
+    },
+    {
+      "date": "2026-01-09",
+      "cost_czk": 2674.29,
+      "clicks": 599,
+      "impressions": 20886,
+      "conversions": 53.9356,
+      "revenue_czk": 71733.52
+    },
+    {
+      "date": "2026-01-10",
+      "cost_czk": 1699.4,
+      "clicks": 427,
+      "impressions": 17974,
+      "conversions": 31.1814,
+      "revenue_czk": 36735.34
+    },
+    {
+      "date": "2026-01-11",
+      "cost_czk": 3593.77,
+      "clicks": 968,
+      "impressions": 42360,
+      "conversions": 41.9202,
+      "revenue_czk": 42111.56
+    },
+    {
+      "date": "2026-01-12",
+      "cost_czk": 2808.14,
+      "clicks": 580,
+      "impressions": 25648,
+      "conversions": 53.9863,
+      "revenue_czk": 67979.16
+    },
+    {
+      "date": "2026-01-13",
+      "cost_czk": 4003.84,
+      "clicks": 858,
+      "impressions": 43013,
+      "conversions": 46.0903,
+      "revenue_czk": 47071.12
+    },
+    {
+      "date": "2026-01-14",
+      "cost_czk": 3389.0,
+      "clicks": 685,
+      "impressions": 41074,
+      "conversions": 43.2221,
+      "revenue_czk": 71191.37
+    },
+    {
+      "date": "2026-01-15",
+      "cost_czk": 4888.23,
+      "clicks": 872,
+      "impressions": 47330,
+      "conversions": 40.4752,
+      "revenue_czk": 47837.43
+    },
+    {
+      "date": "2026-01-16",
+      "cost_czk": 2779.92,
+      "clicks": 527,
+      "impressions": 28904,
+      "conversions": 38.97,
+      "revenue_czk": 43100.62
+    },
+    {
+      "date": "2026-01-17",
+      "cost_czk": 3536.98,
+      "clicks": 718,
+      "impressions": 34225,
+      "conversions": 25.8485,
+      "revenue_czk": 28106.85
+    },
+    {
+      "date": "2026-01-18",
+      "cost_czk": 4738.04,
+      "clicks": 990,
+      "impressions": 47290,
+      "conversions": 37.3162,
+      "revenue_czk": 35827.62
+    },
+    {
+      "date": "2026-01-19",
+      "cost_czk": 5077.78,
+      "clicks": 992,
+      "impressions": 54415,
+      "conversions": 48.4323,
+      "revenue_czk": 55475.41
+    },
+    {
+      "date": "2026-01-20",
+      "cost_czk": 2353.12,
+      "clicks": 470,
+      "impressions": 25863,
+      "conversions": 22.7258,
+      "revenue_czk": 29522.05
+    },
+    {
+      "date": "2026-01-21",
+      "cost_czk": 2513.97,
+      "clicks": 430,
+      "impressions": 25648,
+      "conversions": 32.0907,
+      "revenue_czk": 46725.17
+    },
+    {
+      "date": "2026-01-22",
+      "cost_czk": 2753.9,
+      "clicks": 559,
+      "impressions": 30939,
+      "conversions": 35.6084,
+      "revenue_czk": 40809.37
+    },
+    {
+      "date": "2026-01-23",
+      "cost_czk": 2991.38,
+      "clicks": 563,
+      "impressions": 28863,
+      "conversions": 28.9484,
+      "revenue_czk": 30124.52
+    },
+    {
+      "date": "2026-01-24",
+      "cost_czk": 2252.32,
+      "clicks": 430,
+      "impressions": 25573,
+      "conversions": 16.5642,
+      "revenue_czk": 22532.91
+    },
+    {
+      "date": "2026-01-25",
+      "cost_czk": 3435.59,
+      "clicks": 683,
+      "impressions": 40492,
+      "conversions": 31.3151,
+      "revenue_czk": 27303.76
+    },
+    {
+      "date": "2026-01-26",
+      "cost_czk": 3240.6,
+      "clicks": 640,
+      "impressions": 39538,
+      "conversions": 31.6984,
+      "revenue_czk": 40582.15
+    },
+    {
+      "date": "2026-01-27",
+      "cost_czk": 2465.45,
+      "clicks": 523,
+      "impressions": 39468,
+      "conversions": 23.437,
+      "revenue_czk": 20031.44
+    },
+    {
+      "date": "2026-01-28",
+      "cost_czk": 2554.58,
+      "clicks": 530,
+      "impressions": 41274,
+      "conversions": 34.2052,
+      "revenue_czk": 31411.08
+    },
+    {
+      "date": "2026-01-29",
+      "cost_czk": 2682.42,
+      "clicks": 521,
+      "impressions": 35199,
+      "conversions": 15.7242,
+      "revenue_czk": 13569.09
+    },
+    {
+      "date": "2026-01-30",
+      "cost_czk": 2689.85,
+      "clicks": 505,
+      "impressions": 35067,
+      "conversions": 26.2112,
+      "revenue_czk": 27847.52
+    },
+    {
+      "date": "2026-01-31",
+      "cost_czk": 2580.3,
+      "clicks": 507,
+      "impressions": 27288,
+      "conversions": 22.169,
+      "revenue_czk": 30177.46
+    },
+    {
+      "date": "2026-02-01",
+      "cost_czk": 3222.08,
+      "clicks": 613,
+      "impressions": 32191,
+      "conversions": 21.6688,
+      "revenue_czk": 21352.41
+    },
+    {
+      "date": "2026-02-02",
+      "cost_czk": 2938.03,
+      "clicks": 644,
+      "impressions": 35347,
+      "conversions": 22.2051,
+      "revenue_czk": 24846.67
+    },
+    {
+      "date": "2026-02-03",
+      "cost_czk": 2519.82,
+      "clicks": 511,
+      "impressions": 29682,
+      "conversions": 11.0711,
+      "revenue_czk": 10773.87
+    },
+    {
+      "date": "2026-02-04",
+      "cost_czk": 2537.11,
+      "clicks": 553,
+      "impressions": 32071,
+      "conversions": 20.7714,
+      "revenue_czk": 26415.55
+    },
+    {
+      "date": "2026-02-05",
+      "cost_czk": 2360.55,
+      "clicks": 525,
+      "impressions": 26663,
+      "conversions": 17.7016,
+      "revenue_czk": 37767.17
+    },
+    {
+      "date": "2026-02-06",
+      "cost_czk": 2603.79,
+      "clicks": 554,
+      "impressions": 28697,
+      "conversions": 25.5909,
+      "revenue_czk": 29124.31
+    },
+    {
+      "date": "2026-02-07",
+      "cost_czk": 2699.93,
+      "clicks": 577,
+      "impressions": 26558,
+      "conversions": 16.7648,
+      "revenue_czk": 22146.52
+    },
+    {
+      "date": "2026-02-08",
+      "cost_czk": 2777.12,
+      "clicks": 592,
+      "impressions": 26067,
+      "conversions": 20.6307,
+      "revenue_czk": 19262.73
+    },
+    {
+      "date": "2026-02-09",
+      "cost_czk": 2847.06,
+      "clicks": 612,
+      "impressions": 26818,
+      "conversions": 30.3894,
+      "revenue_czk": 37386.55
+    },
+    {
+      "date": "2026-02-10",
+      "cost_czk": 2727.96,
+      "clicks": 604,
+      "impressions": 28910,
+      "conversions": 22.7135,
+      "revenue_czk": 39263.79
+    },
+    {
+      "date": "2026-02-11",
+      "cost_czk": 2483.16,
+      "clicks": 602,
+      "impressions": 30884,
+      "conversions": 19.5378,
+      "revenue_czk": 17285.42
+    },
+    {
+      "date": "2026-02-12",
+      "cost_czk": 3074.69,
+      "clicks": 621,
+      "impressions": 31908,
+      "conversions": 29.2673,
+      "revenue_czk": 29347.77
+    },
+    {
+      "date": "2026-02-13",
+      "cost_czk": 2738.42,
+      "clicks": 588,
+      "impressions": 29104,
+      "conversions": 33.0298,
+      "revenue_czk": 41656.64
+    },
+    {
+      "date": "2026-02-14",
+      "cost_czk": 2746.22,
+      "clicks": 610,
+      "impressions": 30390,
+      "conversions": 14.9824,
+      "revenue_czk": 16400.58
+    },
+    {
+      "date": "2026-02-15",
+      "cost_czk": 3085.8,
+      "clicks": 660,
+      "impressions": 33039,
+      "conversions": 26.9706,
+      "revenue_czk": 27115.81
+    },
+    {
+      "date": "2026-02-16",
+      "cost_czk": 2845.06,
+      "clicks": 608,
+      "impressions": 32086,
+      "conversions": 34.3252,
+      "revenue_czk": 51503.21
+    },
+    {
+      "date": "2026-02-17",
+      "cost_czk": 1567.4,
+      "clicks": 332,
+      "impressions": 19315,
+      "conversions": 28.667,
+      "revenue_czk": 36904.33
+    },
+    {
+      "date": "2026-02-18",
+      "cost_czk": 489.47,
+      "clicks": 107,
+      "impressions": 6044,
+      "conversions": 18.7495,
+      "revenue_czk": 28376.58
+    },
+    {
+      "date": "2026-02-19",
+      "cost_czk": 624.65,
+      "clicks": 110,
+      "impressions": 7041,
+      "conversions": 18.5113,
+      "revenue_czk": 47320.63
+    },
+    {
+      "date": "2026-02-20",
+      "cost_czk": 574.69,
+      "clicks": 116,
+      "impressions": 8090,
+      "conversions": 13.1864,
+      "revenue_czk": 10217.94
+    },
+    {
+      "date": "2026-02-21",
+      "cost_czk": 524.01,
+      "clicks": 130,
+      "impressions": 7615,
+      "conversions": 10.4693,
+      "revenue_czk": 10935.67
+    },
+    {
+      "date": "2026-02-22",
+      "cost_czk": 587.6,
+      "clicks": 122,
+      "impressions": 7617,
+      "conversions": 17.7702,
+      "revenue_czk": 29103.95
+    },
+    {
+      "date": "2026-02-23",
+      "cost_czk": 499.74,
+      "clicks": 115,
+      "impressions": 7708,
+      "conversions": 14.9017,
+      "revenue_czk": 13166.84
+    },
+    {
+      "date": "2026-02-24",
+      "cost_czk": 548.04,
+      "clicks": 133,
+      "impressions": 9564,
+      "conversions": 15.1769,
+      "revenue_czk": 17204.65
+    },
+    {
+      "date": "2026-02-25",
+      "cost_czk": 720.94,
+      "clicks": 157,
+      "impressions": 9405,
+      "conversions": 17.75,
+      "revenue_czk": 22346.46
+    },
+    {
+      "date": "2026-02-26",
+      "cost_czk": 3352.43,
+      "clicks": 650,
+      "impressions": 37123,
+      "conversions": 14.4655,
+      "revenue_czk": 14557.49
+    },
+    {
+      "date": "2026-02-27",
+      "cost_czk": 2934.39,
+      "clicks": 561,
+      "impressions": 37168,
+      "conversions": 21.5995,
+      "revenue_czk": 31180.92
+    },
+    {
+      "date": "2026-02-28",
+      "cost_czk": 3173.51,
+      "clicks": 629,
+      "impressions": 37718,
+      "conversions": 14.448,
+      "revenue_czk": 14257.74
+    },
+    {
+      "date": "2026-03-01",
+      "cost_czk": 3898.43,
+      "clicks": 796,
+      "impressions": 44798,
+      "conversions": 21.5379,
+      "revenue_czk": 29707.66
+    },
+    {
+      "date": "2026-03-02",
+      "cost_czk": 3625.53,
+      "clicks": 734,
+      "impressions": 48605,
+      "conversions": 33.7768,
+      "revenue_czk": 53101.46
+    },
+    {
+      "date": "2026-03-03",
+      "cost_czk": 3291.74,
+      "clicks": 696,
+      "impressions": 40832,
+      "conversions": 22.6982,
+      "revenue_czk": 23997.58
+    },
+    {
+      "date": "2026-03-04",
+      "cost_czk": 3801.18,
+      "clicks": 675,
+      "impressions": 40787,
+      "conversions": 26.2207,
+      "revenue_czk": 31412.09
+    },
+    {
+      "date": "2026-03-05",
+      "cost_czk": 3646.69,
+      "clicks": 692,
+      "impressions": 38213,
+      "conversions": 22.2327,
+      "revenue_czk": 20290.07
+    },
+    {
+      "date": "2026-03-06",
+      "cost_czk": 2882.73,
+      "clicks": 636,
+      "impressions": 41683,
+      "conversions": 19.9437,
+      "revenue_czk": 17483.61
+    },
+    {
+      "date": "2026-03-07",
+      "cost_czk": 2528.44,
+      "clicks": 541,
+      "impressions": 33871,
+      "conversions": 20.8482,
+      "revenue_czk": 21461.64
+    },
+    {
+      "date": "2026-03-08",
+      "cost_czk": 2827.19,
+      "clicks": 634,
+      "impressions": 36183,
+      "conversions": 23.7431,
+      "revenue_czk": 27641.17
+    },
+    {
+      "date": "2026-03-09",
+      "cost_czk": 3080.53,
+      "clicks": 592,
+      "impressions": 35136,
+      "conversions": 24.8673,
+      "revenue_czk": 24711.49
+    },
+    {
+      "date": "2026-03-10",
+      "cost_czk": 2482.64,
+      "clicks": 517,
+      "impressions": 35231,
+      "conversions": 24.223,
+      "revenue_czk": 26157.07
+    },
+    {
+      "date": "2026-03-11",
+      "cost_czk": 5299.89,
+      "clicks": 940,
+      "impressions": 57865,
+      "conversions": 35.8637,
+      "revenue_czk": 34053.95
+    },
+    {
+      "date": "2026-03-12",
+      "cost_czk": 6723.44,
+      "clicks": 1049,
+      "impressions": 69233,
+      "conversions": 26.7296,
+      "revenue_czk": 32392.56
+    },
+    {
+      "date": "2026-03-13",
+      "cost_czk": 5916.14,
+      "clicks": 951,
+      "impressions": 63953,
+      "conversions": 24.4311,
+      "revenue_czk": 30621.81
+    },
+    {
+      "date": "2026-03-14",
+      "cost_czk": 6855.74,
+      "clicks": 1178,
+      "impressions": 76065,
+      "conversions": 30.13,
+      "revenue_czk": 36178.06
+    },
+    {
+      "date": "2026-03-15",
+      "cost_czk": 8817.52,
+      "clicks": 1445,
+      "impressions": 87906,
+      "conversions": 25.443,
+      "revenue_czk": 22269.44
+    },
+    {
+      "date": "2026-03-16",
+      "cost_czk": 3583.27,
+      "clicks": 720,
+      "impressions": 42816,
+      "conversions": 25.2623,
+      "revenue_czk": 38736.28
+    }
+  ]
+}

@@ -1,0 +1,831 @@
+{
+  "fetched_at": "2026-03-17T21:48:14.671770",
+  "period": {
+    "start": "2026-02-15",
+    "end": "2026-03-16",
+    "days": 30
+  },
+  "period_60d": {
+    "start": "2026-01-16",
+    "end": "2026-03-16",
+    "days": 60
+  },
+  "property_id": "302145992",
+  "totals": {
+    "sessions": 319237,
+    "users": 232869,
+    "engaged_sessions": 152812,
+    "event_count": 3440991,
+    "engagement_rate_pct": 47.9
+  },
+  "daily": [
+    {
+      "date": "2026-02-15",
+      "sessions": 8349,
+      "users": 6062,
+      "engaged_sessions": 4289,
+      "event_count": 103715,
+      "engagement_rate": 51.4
+    },
+    {
+      "date": "2026-02-16",
+      "sessions": 12295,
+      "users": 9022,
+      "engaged_sessions": 6222,
+      "event_count": 133322,
+      "engagement_rate": 50.6
+    },
+    {
+      "date": "2026-02-17",
+      "sessions": 10773,
+      "users": 8049,
+      "engaged_sessions": 5354,
+      "event_count": 124439,
+      "engagement_rate": 49.7
+    },
+    {
+      "date": "2026-02-18",
+      "sessions": 10461,
+      "users": 7505,
+      "engaged_sessions": 5134,
+      "event_count": 117729,
+      "engagement_rate": 49.1
+    },
+    {
+      "date": "2026-02-19",
+      "sessions": 9754,
+      "users": 7156,
+      "engaged_sessions": 4912,
+      "event_count": 109357,
+      "engagement_rate": 50.4
+    },
+    {
+      "date": "2026-02-20",
+      "sessions": 10502,
+      "users": 7823,
+      "engaged_sessions": 5133,
+      "event_count": 118341,
+      "engagement_rate": 48.9
+    },
+    {
+      "date": "2026-02-21",
+      "sessions": 9055,
+      "users": 7035,
+      "engaged_sessions": 4326,
+      "event_count": 99897,
+      "engagement_rate": 47.8
+    },
+    {
+      "date": "2026-02-22",
+      "sessions": 10028,
+      "users": 7626,
+      "engaged_sessions": 4765,
+      "event_count": 109641,
+      "engagement_rate": 47.5
+    },
+    {
+      "date": "2026-02-23",
+      "sessions": 12100,
+      "users": 8885,
+      "engaged_sessions": 6326,
+      "event_count": 148007,
+      "engagement_rate": 52.3
+    },
+    {
+      "date": "2026-02-24",
+      "sessions": 12666,
+      "users": 8702,
+      "engaged_sessions": 6236,
+      "event_count": 145081,
+      "engagement_rate": 49.2
+    },
+    {
+      "date": "2026-02-25",
+      "sessions": 12370,
+      "users": 8243,
+      "engaged_sessions": 5539,
+      "event_count": 133868,
+      "engagement_rate": 44.8
+    },
+    {
+      "date": "2026-02-26",
+      "sessions": 11840,
+      "users": 8289,
+      "engaged_sessions": 5667,
+      "event_count": 125583,
+      "engagement_rate": 47.9
+    },
+    {
+      "date": "2026-02-27",
+      "sessions": 11732,
+      "users": 8483,
+      "engaged_sessions": 5938,
+      "event_count": 130316,
+      "engagement_rate": 50.6
+    },
+    {
+      "date": "2026-02-28",
+      "sessions": 9551,
+      "users": 7214,
+      "engaged_sessions": 4746,
+      "event_count": 105968,
+      "engagement_rate": 49.7
+    },
+    {
+      "date": "2026-03-01",
+      "sessions": 9713,
+      "users": 7125,
+      "engaged_sessions": 4907,
+      "event_count": 112027,
+      "engagement_rate": 50.5
+    },
+    {
+      "date": "2026-03-02",
+      "sessions": 12661,
+      "users": 9149,
+      "engaged_sessions": 6084,
+      "event_count": 144503,
+      "engagement_rate": 48.1
+    },
+    {
+      "date": "2026-03-03",
+      "sessions": 12371,
+      "users": 8953,
+      "engaged_sessions": 5507,
+      "event_count": 126247,
+      "engagement_rate": 44.5
+    },
+    {
+      "date": "2026-03-04",
+      "sessions": 11477,
+      "users": 8357,
+      "engaged_sessions": 5344,
+      "event_count": 113640,
+      "engagement_rate": 46.6
+    },
+    {
+      "date": "2026-03-05",
+      "sessions": 9479,
+      "users": 6652,
+      "engaged_sessions": 4891,
+      "event_count": 103594,
+      "engagement_rate": 51.6
+    },
+    {
+      "date": "2026-03-06",
+      "sessions": 9170,
+      "users": 6790,
+      "engaged_sessions": 4662,
+      "event_count": 101292,
+      "engagement_rate": 50.8
+    },
+    {
+      "date": "2026-03-07",
+      "sessions": 8874,
+      "users": 6293,
+      "engaged_sessions": 3894,
+      "event_count": 91956,
+      "engagement_rate": 43.9
+    },
+    {
+      "date": "2026-03-08",
+      "sessions": 8902,
+      "users": 6337,
+      "engaged_sessions": 3942,
+      "event_count": 96494,
+      "engagement_rate": 44.3
+    },
+    {
+      "date": "2026-03-09",
+      "sessions": 11227,
+      "users": 8353,
+      "engaged_sessions": 4939,
+      "event_count": 105408,
+      "engagement_rate": 44.0
+    },
+    {
+      "date": "2026-03-10",
+      "sessions": 9231,
+      "users": 7085,
+      "engaged_sessions": 4460,
+      "event_count": 100127,
+      "engagement_rate": 48.3
+    },
+    {
+      "date": "2026-03-11",
+      "sessions": 9884,
+      "users": 7264,
+      "engaged_sessions": 4981,
+      "event_count": 107732,
+      "engagement_rate": 50.4
+    },
+    {
+      "date": "2026-03-12",
+      "sessions": 9778,
+      "users": 7114,
+      "engaged_sessions": 4782,
+      "event_count": 105834,
+      "engagement_rate": 48.9
+    },
+    {
+      "date": "2026-03-13",
+      "sessions": 11078,
+      "users": 8184,
+      "engaged_sessions": 5081,
+      "event_count": 106943,
+      "engagement_rate": 45.9
+    },
+    {
+      "date": "2026-03-14",
+      "sessions": 11789,
+      "users": 8866,
+      "engaged_sessions": 4518,
+      "event_count": 102440,
+      "engagement_rate": 38.3
+    },
+    {
+      "date": "2026-03-15",
+      "sessions": 11580,
+      "users": 8611,
+      "engaged_sessions": 4895,
+      "event_count": 107452,
+      "engagement_rate": 42.3
+    },
+    {
+      "date": "2026-03-16",
+      "sessions": 10547,
+      "users": 7642,
+      "engaged_sessions": 5338,
+      "event_count": 110038,
+      "engagement_rate": 50.6
+    }
+  ],
+  "daily_60d": [
+    {
+      "date": "2026-01-16",
+      "sessions": 12870,
+      "users": 9640,
+      "engaged_sessions": 6998,
+      "event_count": 159849,
+      "engagement_rate": 54.4
+    },
+    {
+      "date": "2026-01-17",
+      "sessions": 12526,
+      "users": 9487,
+      "engaged_sessions": 6526,
+      "event_count": 148340,
+      "engagement_rate": 52.1
+    },
+    {
+      "date": "2026-01-18",
+      "sessions": 13205,
+      "users": 10079,
+      "engaged_sessions": 7184,
+      "event_count": 170651,
+      "engagement_rate": 54.4
+    },
+    {
+      "date": "2026-01-19",
+      "sessions": 14279,
+      "users": 10307,
+      "engaged_sessions": 7840,
+      "event_count": 165157,
+      "engagement_rate": 54.9
+    },
+    {
+      "date": "2026-01-20",
+      "sessions": 12914,
+      "users": 9810,
+      "engaged_sessions": 6724,
+      "event_count": 151948,
+      "engagement_rate": 52.1
+    },
+    {
+      "date": "2026-01-21",
+      "sessions": 12595,
+      "users": 9712,
+      "engaged_sessions": 6670,
+      "event_count": 154727,
+      "engagement_rate": 53.0
+    },
+    {
+      "date": "2026-01-22",
+      "sessions": 12561,
+      "users": 9537,
+      "engaged_sessions": 6493,
+      "event_count": 141134,
+      "engagement_rate": 51.7
+    },
+    {
+      "date": "2026-01-23",
+      "sessions": 13604,
+      "users": 10180,
+      "engaged_sessions": 7124,
+      "event_count": 165237,
+      "engagement_rate": 52.4
+    },
+    {
+      "date": "2026-01-24",
+      "sessions": 12875,
+      "users": 9783,
+      "engaged_sessions": 6249,
+      "event_count": 148814,
+      "engagement_rate": 48.5
+    },
+    {
+      "date": "2026-01-25",
+      "sessions": 13455,
+      "users": 10099,
+      "engaged_sessions": 6769,
+      "event_count": 157403,
+      "engagement_rate": 50.3
+    },
+    {
+      "date": "2026-01-26",
+      "sessions": 12559,
+      "users": 9461,
+      "engaged_sessions": 6790,
+      "event_count": 151739,
+      "engagement_rate": 54.1
+    },
+    {
+      "date": "2026-01-27",
+      "sessions": 11764,
+      "users": 8930,
+      "engaged_sessions": 6270,
+      "event_count": 138129,
+      "engagement_rate": 53.3
+    },
+    {
+      "date": "2026-01-28",
+      "sessions": 11751,
+      "users": 8566,
+      "engaged_sessions": 5836,
+      "event_count": 134911,
+      "engagement_rate": 49.7
+    },
+    {
+      "date": "2026-01-29",
+      "sessions": 11581,
+      "users": 8675,
+      "engaged_sessions": 6320,
+      "event_count": 139944,
+      "engagement_rate": 54.6
+    },
+    {
+      "date": "2026-01-30",
+      "sessions": 12207,
+      "users": 9064,
+      "engaged_sessions": 6445,
+      "event_count": 141826,
+      "engagement_rate": 52.8
+    },
+    {
+      "date": "2026-01-31",
+      "sessions": 11199,
+      "users": 8593,
+      "engaged_sessions": 5650,
+      "event_count": 134286,
+      "engagement_rate": 50.5
+    },
+    {
+      "date": "2026-02-01",
+      "sessions": 11956,
+      "users": 9062,
+      "engaged_sessions": 6142,
+      "event_count": 136889,
+      "engagement_rate": 51.4
+    },
+    {
+      "date": "2026-02-02",
+      "sessions": 13073,
+      "users": 9471,
+      "engaged_sessions": 6863,
+      "event_count": 147760,
+      "engagement_rate": 52.5
+    },
+    {
+      "date": "2026-02-03",
+      "sessions": 11815,
+      "users": 8701,
+      "engaged_sessions": 6159,
+      "event_count": 136833,
+      "engagement_rate": 52.1
+    },
+    {
+      "date": "2026-02-04",
+      "sessions": 10760,
+      "users": 8129,
+      "engaged_sessions": 5663,
+      "event_count": 126916,
+      "engagement_rate": 52.6
+    },
+    {
+      "date": "2026-02-05",
+      "sessions": 11170,
+      "users": 7938,
+      "engaged_sessions": 5642,
+      "event_count": 119028,
+      "engagement_rate": 50.5
+    },
+    {
+      "date": "2026-02-06",
+      "sessions": 12325,
+      "users": 8785,
+      "engaged_sessions": 6284,
+      "event_count": 134602,
+      "engagement_rate": 51.0
+    },
+    {
+      "date": "2026-02-07",
+      "sessions": 10811,
+      "users": 7983,
+      "engaged_sessions": 5531,
+      "event_count": 113943,
+      "engagement_rate": 51.2
+    },
+    {
+      "date": "2026-02-08",
+      "sessions": 11418,
+      "users": 8508,
+      "engaged_sessions": 5860,
+      "event_count": 127519,
+      "engagement_rate": 51.3
+    },
+    {
+      "date": "2026-02-09",
+      "sessions": 13426,
+      "users": 10108,
+      "engaged_sessions": 7801,
+      "event_count": 166913,
+      "engagement_rate": 58.1
+    },
+    {
+      "date": "2026-02-10",
+      "sessions": 12353,
+      "users": 9193,
+      "engaged_sessions": 6565,
+      "event_count": 145267,
+      "engagement_rate": 53.1
+    },
+    {
+      "date": "2026-02-11",
+      "sessions": 12071,
+      "users": 8853,
+      "engaged_sessions": 6258,
+      "event_count": 139551,
+      "engagement_rate": 51.8
+    },
+    {
+      "date": "2026-02-12",
+      "sessions": 11655,
+      "users": 8312,
+      "engaged_sessions": 5901,
+      "event_count": 128972,
+      "engagement_rate": 50.6
+    },
+    {
+      "date": "2026-02-13",
+      "sessions": 11585,
+      "users": 8337,
+      "engaged_sessions": 5905,
+      "event_count": 130519,
+      "engagement_rate": 51.0
+    },
+    {
+      "date": "2026-02-14",
+      "sessions": 9452,
+      "users": 7174,
+      "engaged_sessions": 4719,
+      "event_count": 109043,
+      "engagement_rate": 49.9
+    },
+    {
+      "date": "2026-02-15",
+      "sessions": 8349,
+      "users": 6062,
+      "engaged_sessions": 4289,
+      "event_count": 103715,
+      "engagement_rate": 51.4
+    },
+    {
+      "date": "2026-02-16",
+      "sessions": 12295,
+      "users": 9022,
+      "engaged_sessions": 6222,
+      "event_count": 133322,
+      "engagement_rate": 50.6
+    },
+    {
+      "date": "2026-02-17",
+      "sessions": 10773,
+      "users": 8049,
+      "engaged_sessions": 5354,
+      "event_count": 124439,
+      "engagement_rate": 49.7
+    },
+    {
+      "date": "2026-02-18",
+      "sessions": 10461,
+      "users": 7505,
+      "engaged_sessions": 5134,
+      "event_count": 117729,
+      "engagement_rate": 49.1
+    },
+    {
+      "date": "2026-02-19",
+      "sessions": 9754,
+      "users": 7156,
+      "engaged_sessions": 4912,
+      "event_count": 109357,
+      "engagement_rate": 50.4
+    },
+    {
+      "date": "2026-02-20",
+      "sessions": 10502,
+      "users": 7823,
+      "engaged_sessions": 5133,
+      "event_count": 118341,
+      "engagement_rate": 48.9
+    },
+    {
+      "date": "2026-02-21",
+      "sessions": 9055,
+      "users": 7035,
+      "engaged_sessions": 4326,
+      "event_count": 99897,
+      "engagement_rate": 47.8
+    },
+    {
+      "date": "2026-02-22",
+      "sessions": 10028,
+      "users": 7626,
+      "engaged_sessions": 4765,
+      "event_count": 109641,
+      "engagement_rate": 47.5
+    },
+    {
+      "date": "2026-02-23",
+      "sessions": 12100,
+      "users": 8885,
+      "engaged_sessions": 6326,
+      "event_count": 148007,
+      "engagement_rate": 52.3
+    },
+    {
+      "date": "2026-02-24",
+      "sessions": 12666,
+      "users": 8702,
+      "engaged_sessions": 6236,
+      "event_count": 145081,
+      "engagement_rate": 49.2
+    },
+    {
+      "date": "2026-02-25",
+      "sessions": 12370,
+      "users": 8243,
+      "engaged_sessions": 5539,
+      "event_count": 133868,
+      "engagement_rate": 44.8
+    },
+    {
+      "date": "2026-02-26",
+      "sessions": 11840,
+      "users": 8289,
+      "engaged_sessions": 5667,
+      "event_count": 125583,
+      "engagement_rate": 47.9
+    },
+    {
+      "date": "2026-02-27",
+      "sessions": 11732,
+      "users": 8483,
+      "engaged_sessions": 5938,
+      "event_count": 130316,
+      "engagement_rate": 50.6
+    },
+    {
+      "date": "2026-02-28",
+      "sessions": 9551,
+      "users": 7214,
+      "engaged_sessions": 4746,
+      "event_count": 105968,
+      "engagement_rate": 49.7
+    },
+    {
+      "date": "2026-03-01",
+      "sessions": 9713,
+      "users": 7125,
+      "engaged_sessions": 4907,
+      "event_count": 112027,
+      "engagement_rate": 50.5
+    },
+    {
+      "date": "2026-03-02",
+      "sessions": 12661,
+      "users": 9149,
+      "engaged_sessions": 6084,
+      "event_count": 144503,
+      "engagement_rate": 48.1
+    },
+    {
+      "date": "2026-03-03",
+      "sessions": 12371,
+      "users": 8953,
+      "engaged_sessions": 5507,
+      "event_count": 126247,
+      "engagement_rate": 44.5
+    },
+    {
+      "date": "2026-03-04",
+      "sessions": 11477,
+      "users": 8357,
+      "engaged_sessions": 5344,
+      "event_count": 113640,
+      "engagement_rate": 46.6
+    },
+    {
+      "date": "2026-03-05",
+      "sessions": 9479,
+      "users": 6652,
+      "engaged_sessions": 4891,
+      "event_count": 103594,
+      "engagement_rate": 51.6
+    },
+    {
+      "date": "2026-03-06",
+      "sessions": 9170,
+      "users": 6790,
+      "engaged_sessions": 4662,
+      "event_count": 101292,
+      "engagement_rate": 50.8
+    },
+    {
+      "date": "2026-03-07",
+      "sessions": 8874,
+      "users": 6293,
+      "engaged_sessions": 3894,
+      "event_count": 91956,
+      "engagement_rate": 43.9
+    },
+    {
+      "date": "2026-03-08",
+      "sessions": 8902,
+      "users": 6337,
+      "engaged_sessions": 3942,
+      "event_count": 96494,
+      "engagement_rate": 44.3
+    },
+    {
+      "date": "2026-03-09",
+      "sessions": 11227,
+      "users": 8353,
+      "engaged_sessions": 4939,
+      "event_count": 105408,
+      "engagement_rate": 44.0
+    },
+    {
+      "date": "2026-03-10",
+      "sessions": 9231,
+      "users": 7085,
+      "engaged_sessions": 4460,
+      "event_count": 100127,
+      "engagement_rate": 48.3
+    },
+    {
+      "date": "2026-03-11",
+      "sessions": 9884,
+      "users": 7264,
+      "engaged_sessions": 4981,
+      "event_count": 107732,
+      "engagement_rate": 50.4
+    },
+    {
+      "date": "2026-03-12",
+      "sessions": 9778,
+      "users": 7114,
+      "engaged_sessions": 4782,
+      "event_count": 105834,
+      "engagement_rate": 48.9
+    },
+    {
+      "date": "2026-03-13",
+      "sessions": 11078,
+      "users": 8184,
+      "engaged_sessions": 5081,
+      "event_count": 106943,
+      "engagement_rate": 45.9
+    },
+    {
+      "date": "2026-03-14",
+      "sessions": 11789,
+      "users": 8866,
+      "engaged_sessions": 4518,
+      "event_count": 102440,
+      "engagement_rate": 38.3
+    },
+    {
+      "date": "2026-03-15",
+      "sessions": 11580,
+      "users": 8611,
+      "engaged_sessions": 4895,
+      "event_count": 107452,
+      "engagement_rate": 42.3
+    },
+    {
+      "date": "2026-03-16",
+      "sessions": 10547,
+      "users": 7642,
+      "engaged_sessions": 5338,
+      "event_count": 110038,
+      "engagement_rate": 50.6
+    }
+  ],
+  "channels": [
+    {
+      "channel": "Organic Search",
+      "sessions": 77841,
+      "users": 36445,
+      "engaged_sessions": 31873
+    },
+    {
+      "channel": "Paid Social",
+      "sessions": 65920,
+      "users": 29748,
+      "engaged_sessions": 25113
+    },
+    {
+      "channel": "Cross-network",
+      "sessions": 62377,
+      "users": 29755,
+      "engaged_sessions": 36342
+    },
+    {
+      "channel": "Direct",
+      "sessions": 23198,
+      "users": 9484,
+      "engaged_sessions": 10237
+    },
+    {
+      "channel": "Paid Search",
+      "sessions": 23170,
+      "users": 9064,
+      "engaged_sessions": 14391
+    },
+    {
+      "channel": "Affiliates",
+      "sessions": 17843,
+      "users": 8802,
+      "engaged_sessions": 10052
+    },
+    {
+      "channel": "Unassigned",
+      "sessions": 15139,
+      "users": 7743,
+      "engaged_sessions": 7879
+    },
+    {
+      "channel": "Referral",
+      "sessions": 10285,
+      "users": 3764,
+      "engaged_sessions": 5954
+    },
+    {
+      "channel": "Email",
+      "sessions": 8688,
+      "users": 3230,
+      "engaged_sessions": 4944
+    },
+    {
+      "channel": "Organic Social",
+      "sessions": 6575,
+      "users": 3262,
+      "engaged_sessions": 2761
+    },
+    {
+      "channel": "Paid Shopping",
+      "sessions": 2462,
+      "users": 1567,
+      "engaged_sessions": 884
+    },
+    {
+      "channel": "Organic Video",
+      "sessions": 261,
+      "users": 96,
+      "engaged_sessions": 145
+    },
+    {
+      "channel": "Paid Other",
+      "sessions": 12,
+      "users": 6,
+      "engaged_sessions": 3
+    },
+    {
+      "channel": "Display",
+      "sessions": 8,
+      "users": 3,
+      "engaged_sessions": 4
+    }
+  ]
+}

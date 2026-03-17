@@ -1,0 +1,2559 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TLAMA games – Performance Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="./static/chart.umd.min.js"></script>
+  <script src="./static/chartjs-plugin-datalabels.min.js"></script>
+  <style>
+    :root {
+      --bg:      #F5F6F8;
+      --card:    #FFFFFF;
+      --border:  #E5E7EB;
+      --t1:      #111827;
+      --t2:      #4B5563;
+      --t3:      #9CA3AF;
+      --brand:   #E85D04;
+      --brandL:  #FFF3EC;
+      --brandB:  rgba(232,93,4,.12);
+      --blue:    #2563EB;
+      --blueL:   #EFF6FF;
+      --green:   #16A34A;
+      --red:     #DC2626;
+      --orange:  #F97316;
+      --greenBg: #F0FDF4;
+      --redBg:   #FEF2F2;
+      --orBg:    #FFF7ED;
+    }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    body { font-family:'Inter',sans-serif; background:var(--bg); color:var(--t1); font-size:14px; line-height:1.5; }
+
+    /* ── Topbar ── */
+    .topbar { position:sticky; top:0; z-index:100; background:var(--card); border-bottom:1px solid var(--border); box-shadow:0 1px 4px rgba(0,0,0,.06); display:flex; align-items:center; justify-content:space-between; padding:0 24px; height:56px; gap:16px; }
+    .logo { display:flex; align-items:center; gap:7px; font-weight:700; font-size:16px; color:var(--t1); text-decoration:none; white-space:nowrap; }
+    .logo-dot { width:9px; height:9px; background:var(--brand); border-radius:50%; }
+    .topbar-title { font-size:13px; font-weight:600; color:var(--t2); }
+    .topbar-right { display:flex; align-items:center; gap:10px; white-space:nowrap; }
+    .update-ts { font-size:12px; color:var(--t3); }
+    .btn { border:none; border-radius:8px; padding:7px 16px; font-size:13px; font-weight:600; cursor:pointer; transition:.15s; }
+    .btn-brand { background:var(--brand); color:#fff; }
+    .btn-brand:hover { background:#c94f02; }
+    .btn-brand:disabled { background:#ccc; cursor:not-allowed; }
+
+    /* ── Layout ── */
+    .main { max-width:1440px; margin:0 auto; padding:18px 24px 56px; }
+    .row { display:grid; gap:12px; margin-bottom:12px; }
+    .row-75  { grid-template-columns:7fr 5fr; }
+    .row-57  { grid-template-columns:5fr 7fr; }
+    .row-333 { grid-template-columns:1fr 1fr 1fr; }
+    .row-5   { grid-template-columns:repeat(5,1fr); }
+    @media(max-width:1100px){ .row-5{ grid-template-columns:repeat(3,1fr); } }
+    @media(max-width:900px){ .row-75,.row-57{ grid-template-columns:1fr; } }
+    @media(max-width:700px){ .row-5{ grid-template-columns:1fr 1fr; } .row-333{ grid-template-columns:1fr; } }
+    .mb16 { margin-bottom:16px; }
+    .mb20 { margin-bottom:20px; }
+
+    /* ── Card ── */
+    .card { background:var(--card); border:1px solid var(--border); border-radius:14px; padding:20px; }
+    .card-title { font-size:11px; font-weight:600; letter-spacing:.07em; text-transform:uppercase; color:var(--t3); margin-bottom:14px; }
+
+    /* ── Control strip ── */
+    .control-strip { display:flex; align-items:center; gap:16px; margin-bottom:18px; flex-wrap:wrap; }
+    .filter-group { display:flex; gap:3px; background:var(--card); border:1px solid var(--border); border-radius:10px; padding:3px; }
+    .pill { padding:5px 13px; border-radius:7px; border:none; background:transparent; font-size:12px; font-weight:500; color:var(--t2); cursor:pointer; transition:.15s; white-space:nowrap; }
+    .pill.active { background:var(--brand); color:#fff; }
+    .pill:not(.active):hover { background:var(--bg); }
+    /* ── KPI cards ── */
+    .kpi-card { background:var(--card); border:1px solid var(--border); border-radius:14px; padding:18px 20px; }
+    .kpi-lbl { font-size:11px; font-weight:600; letter-spacing:.07em; text-transform:uppercase; color:var(--t3); margin-bottom:6px; }
+    .kpi-val { font-size:26px; font-weight:700; color:var(--t1); line-height:1.1; margin-bottom:8px; }
+    .kpi-deltas { display:flex; flex-direction:column; gap:3px; }
+    .delta { display:inline-flex; align-items:center; gap:3px; font-size:11px; font-weight:600; padding:2px 7px; border-radius:20px; width:fit-content; }
+    .delta-up   { background:var(--greenBg); color:var(--green); }
+    .delta-down { background:var(--redBg);   color:var(--red); }
+    .delta-neu  { background:var(--bg);      color:var(--t3); }
+    .delta-lbl  { font-size:10px; color:var(--t3); margin-left:2px; font-weight:400; }
+
+    /* ── Chart wrap ── */
+    .chart-wrap { position:relative; }
+    .chart-wrap canvas { width:100%!important; }
+
+    /* ── Revenue + ROAS charts ── */
+    .section-hdr { font-size:11px; font-weight:600; letter-spacing:.07em; text-transform:uppercase; color:var(--t3); margin-bottom:14px; display:flex; align-items:center; justify-content:space-between; }
+
+    /* ── AOV / CLV section ── */
+    .ltv-journey { display:flex; align-items:center; margin-top:12px; gap:0; }
+    .ltv-step { flex:1; padding:12px 8px; background:var(--bg); border-radius:10px; text-align:center; }
+    .ltv-step.hl { background:var(--brandL); border:1px solid rgba(232,93,4,.2); }
+    .ltv-icon { font-size:22px; margin-bottom:4px; }
+    .ltv-lbl { font-size:10px; text-transform:uppercase; letter-spacing:.06em; color:var(--t3); font-weight:600; }
+    .ltv-val { font-size:17px; font-weight:700; color:var(--t1); margin-top:2px; }
+    .ltv-arrow { flex:0 0 auto; padding:0 6px; text-align:center; }
+    .ltv-arrow-icon { font-size:18px; color:var(--t3); }
+    .ltv-arrow-lbl { font-size:10px; color:var(--t3); font-weight:600; white-space:nowrap; }
+    .aov-vs { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:12px; }
+    .aov-vs-item { background:var(--bg); border-radius:8px; padding:10px 12px; }
+    .aov-vs-lbl { font-size:10px; text-transform:uppercase; letter-spacing:.06em; color:var(--t3); font-weight:600; margin-bottom:3px; }
+    .aov-vs-val { font-size:16px; font-weight:700; }
+
+    /* ── BS vs Control ── */
+    .vs-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:16px; }
+    .vs-badge { display:inline-flex; align-items:center; gap:5px; padding:4px 10px; border-radius:20px; font-size:12px; font-weight:600; }
+    .vs-badge-bs   { background:var(--brandL); color:var(--brand); }
+    .vs-badge-ctrl { background:var(--blueL);  color:var(--blue); }
+    .vs-table { width:100%; border-collapse:collapse; }
+    .vs-table th { font-size:10px; font-weight:600; text-transform:uppercase; letter-spacing:.06em; color:var(--t3); padding:8px 12px; }
+    .vs-table th.th-bs   { text-align:right; color:var(--brand); }
+    .vs-table th.th-ctrl { text-align:left;  color:var(--blue); }
+    .vs-table th.th-mid  { text-align:center; }
+    .vs-table td { padding:10px 12px; border-top:1px solid var(--border); font-size:13px; }
+    .vs-table td.val-bs   { text-align:right; font-weight:700; font-variant-numeric:tabular-nums; }
+    .vs-table td.val-ctrl { text-align:left;  font-weight:700; font-variant-numeric:tabular-nums; }
+    .vs-table td.mid      { text-align:center; }
+    .vs-winner { display:inline-flex; align-items:center; gap:3px; font-size:11px; }
+    .win-bs   { color:var(--brand); }
+    .win-ctrl { color:var(--blue); }
+    .win-tie  { color:var(--t3); }
+    .val-win-bs   { color:var(--brand); }
+    .val-win-ctrl { color:var(--blue); }
+    .share-row { display:flex; align-items:center; gap:10px; margin-top:12px; }
+    .share-lbl { font-size:11px; color:var(--t3); font-weight:600; width:70px; white-space:nowrap; }
+    .share-bar-wrap { flex:1; height:18px; background:var(--bg); border-radius:20px; overflow:hidden; display:flex; }
+    .share-bs   { background:var(--brand); display:flex; align-items:center; justify-content:center; }
+    .share-ctrl { background:var(--blue);  display:flex; align-items:center; justify-content:center; flex:1; }
+    .share-bar-lbl { font-size:10px; font-weight:700; color:#fff; white-space:nowrap; padding:0 5px; }
+    .vs-summary { margin-top:14px; padding:12px 14px; background:var(--bg); border-radius:10px; font-size:13px; color:var(--t2); }
+
+    /* ── Budget pace ── */
+    .pace-number { font-size:28px; font-weight:700; color:var(--t1); }
+    .pace-bar-wrap { height:10px; background:var(--border); border-radius:20px; overflow:hidden; margin:10px 0 6px; }
+    .pace-bar-fill { height:100%; border-radius:20px; transition:width .4s; }
+    .pace-rows { display:flex; flex-direction:column; gap:8px; margin-top:12px; }
+    .pace-row { display:flex; justify-content:space-between; align-items:center; font-size:13px; }
+    .pace-row-lbl { color:var(--t2); }
+    .pace-row-val { font-weight:600; }
+    .pace-divider { border:none; border-top:1px solid var(--border); margin:10px 0; }
+    .pace-yoy { background:var(--blueL); border-radius:10px; padding:10px 12px; margin-top:10px; }
+    .pace-yoy-title { font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:.06em; color:var(--blue); margin-bottom:5px; }
+    .pace-yoy-row { display:flex; justify-content:space-between; font-size:12px; color:var(--t2); margin-top:3px; }
+    .pace-yoy-val { font-weight:600; }
+
+    /* ── Alerts ── */
+    .alert-card { border-radius:14px; padding:16px 18px; display:flex; gap:12px; align-items:flex-start; border:1px solid transparent; }
+    .alert-card.red    { background:var(--redBg);  border-color:#fecaca; }
+    .alert-card.yellow { background:var(--orBg);   border-color:#fed7aa; }
+    .alert-card.green  { background:var(--greenBg);border-color:#bbf7d0; }
+    .alert-icon  { font-size:20px; line-height:1; }
+    .alert-body  { flex:1; }
+    .alert-title { font-size:13px; font-weight:700; margin-bottom:2px; }
+    .alert-card.red    .alert-title { color:var(--red); }
+    .alert-card.yellow .alert-title { color:#c2410c; }
+    .alert-card.green  .alert-title { color:var(--green); }
+    .alert-desc  { font-size:12px; color:var(--t2); line-height:1.45; }
+
+    /* ── Campaign table ── */
+    .tbl-wrap { overflow-x:auto; margin-top:4px; }
+    table { width:100%; border-collapse:collapse; font-size:12px; }
+    thead th { background:var(--bg); color:var(--t3); font-size:10px; font-weight:600; letter-spacing:.06em; text-transform:uppercase; padding:9px 12px; text-align:left; white-space:nowrap; }
+    tbody tr { border-bottom:1px solid var(--border); transition:background .1s; }
+    tbody tr:last-child { border-bottom:none; }
+    tbody tr:nth-child(even) { background:#FAFAFA; }
+    tbody tr:hover { background:var(--blueL); }
+    td { padding:9px 12px; vertical-align:middle; }
+    .cn { max-width:240px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; font-weight:500; }
+    .badge { display:inline-block; padding:2px 7px; border-radius:20px; font-size:10px; font-weight:600; }
+    .badge-bs    { background:var(--brandL); color:var(--brand); }
+    .badge-ctrl  { background:var(--blueL);  color:var(--blue); }
+    .badge-brand { background:#F0FDF4;       color:#16A34A; }
+    .badge-on    { background:var(--greenBg);color:var(--green); }
+    .badge-off   { background:var(--bg);     color:var(--t3); }
+    .num  { text-align:right; font-variant-numeric:tabular-nums; }
+    .num-pos { color:var(--green); font-weight:600; }
+    .num-neg { color:var(--red);   font-weight:600; }
+
+    /* ── Custom date picker ── */
+    .date-picker { display:flex; align-items:center; gap:6px; }
+    .date-input { border:1px solid var(--border); border-radius:8px; padding:5px 10px; font-size:12px; font-weight:500; color:var(--t2); background:var(--card); cursor:pointer; font-family:'Inter',sans-serif; height:32px; }
+    .date-input:focus { outline:none; border-color:var(--brand); box-shadow:0 0 0 2px var(--brandB); }
+    .date-sep { font-size:12px; color:var(--t3); font-weight:500; }
+    .pill-bs-launch { background:var(--brandL) !important; color:var(--brand) !important; border:1px solid rgba(232,93,4,.25); }
+    .pill-bs-launch.active { background:var(--brand) !important; color:#fff !important; }
+
+    /* ── Loading / Toast ── */
+    #loading { position:fixed; inset:0; background:rgba(255,255,255,.75); display:flex; align-items:center; justify-content:center; z-index:999; font-size:15px; font-weight:600; color:var(--brand); gap:10px; }
+    #loading.hidden { display:none; }
+    .spinner { width:20px; height:20px; border:3px solid var(--brandL); border-top-color:var(--brand); border-radius:50%; animation:spin .7s linear infinite; }
+    @keyframes spin { to { transform:rotate(360deg); } }
+    #toast { position:fixed; bottom:24px; right:24px; background:var(--t1); color:#fff; padding:10px 18px; border-radius:10px; font-size:13px; opacity:0; pointer-events:none; transition:opacity .3s; z-index:1000; }
+    #toast.show { opacity:1; }
+    .note { font-size:11px; color:var(--t3); font-style:italic; margin-top:6px; }
+
+    /* ── Page tabs ── */
+    .tab-bar { display:flex; gap:2px; border-bottom:2px solid var(--border); padding:0 24px; background:var(--card); }
+    .tab-btn { padding:10px 18px; font-size:13px; font-weight:600; color:var(--t3); border:none; background:none; cursor:pointer; border-bottom:2px solid transparent; margin-bottom:-2px; transition:.15s; }
+    .tab-btn.active { color:var(--brand); border-bottom-color:var(--brand); }
+    .tab-btn:hover:not(.active) { color:var(--t2); }
+    .tab-pane { display:none; }
+    .tab-pane.active { display:block; }
+
+    /* ── Boost.space Impact tab ── */
+    .impact-hero { background:linear-gradient(135deg,#1b3a5c 0%,#0f2a45 100%); border-radius:16px; padding:32px 36px; color:#fff; margin-bottom:20px; }
+    .impact-hero-title { font-size:22px; font-weight:800; margin-bottom:10px; }
+    .impact-hero-sub { font-size:14px; opacity:.8; line-height:1.6; max-width:700px; }
+    .impact-period { display:inline-flex; align-items:center; gap:6px; background:rgba(255,255,255,.15); border-radius:20px; padding:5px 14px; font-size:12px; font-weight:600; margin-top:14px; }
+
+    .cmp-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-bottom:16px; }
+    @media(max-width:1100px){ .cmp-grid{ grid-template-columns:repeat(2,1fr); } }
+    @media(max-width:600px){ .cmp-grid{ grid-template-columns:1fr; } }
+
+    .cmp-card { background:var(--card); border:1px solid var(--border); border-radius:14px; padding:16px 18px; }
+    .cmp-metric { font-size:10px; font-weight:600; letter-spacing:.07em; text-transform:uppercase; color:var(--t3); margin-bottom:10px; }
+    .cmp-row { display:flex; justify-content:space-between; align-items:flex-end; gap:8px; }
+    .cmp-group { flex:1; }
+    .cmp-lbl { font-size:9px; text-transform:uppercase; letter-spacing:.06em; font-weight:600; margin-bottom:3px; }
+    .cmp-lbl-bs { color:var(--brand); }
+    .cmp-lbl-ctrl { color:var(--blue); }
+    .cmp-val { font-size:20px; font-weight:700; color:var(--t1); line-height:1.1; }
+    .cmp-sub { font-size:10px; color:var(--t3); margin-top:2px; }
+    .cmp-winner { display:flex; flex-direction:column; align-items:center; gap:2px; }
+    .cmp-win-badge { font-size:10px; font-weight:700; padding:3px 8px; border-radius:20px; white-space:nowrap; }
+    .cmp-win-bs { background:var(--brandL); color:var(--brand); }
+    .cmp-win-ctrl { background:var(--blueL); color:var(--blue); }
+    .cmp-win-tie { background:var(--bg); color:var(--t3); }
+    .cmp-win-pct { font-size:11px; font-weight:700; }
+    .cmp-bar-wrap { height:6px; background:var(--bg); border-radius:20px; overflow:hidden; display:flex; margin-top:10px; }
+    .cmp-bar-bs   { background:var(--brand); height:100%; }
+    .cmp-bar-ctrl { background:var(--blue); height:100%; flex:1; }
+
+    .impact-table-wrap { overflow-x:auto; margin-top:8px; }
+    .impact-table { width:100%; border-collapse:collapse; font-size:12px; }
+    .impact-table thead th { background:var(--bg); color:var(--t3); font-size:10px; font-weight:600; letter-spacing:.06em; text-transform:uppercase; padding:9px 12px; text-align:left; white-space:nowrap; }
+    .impact-table tbody tr { border-bottom:1px solid var(--border); }
+    .impact-table tbody tr:last-child { border-bottom:none; }
+    .impact-table tbody tr:hover { background:var(--blueL); }
+    .impact-table td { padding:9px 12px; vertical-align:middle; }
+    .impact-table td.num { text-align:right; font-variant-numeric:tabular-nums; }
+
+    .meta-section { margin-top:16px; }
+    .meta-badge { display:inline-flex; align-items:center; gap:6px; background:#1877F2; color:#fff; padding:4px 12px; border-radius:20px; font-size:12px; font-weight:700; margin-bottom:14px; }
+    .meta-error { font-size:13px; color:var(--t3); padding:20px; text-align:center; }
+
+    /* ── Insight panels ── */
+    .insight-header { display:flex; align-items:center; gap:10px; margin-bottom:18px; }
+    .insight-platform-badge { font-size:11px; font-weight:700; letter-spacing:.07em; text-transform:uppercase; padding:4px 12px; border-radius:20px; }
+    .insight-title { font-size:15px; font-weight:700; color:var(--t1); }
+    .insight-summary { font-size:13px; color:var(--t2); line-height:1.7; margin-bottom:20px; background:var(--bg); border-radius:10px; padding:14px 16px; border-left:3px solid var(--brand); }
+    .insight-cols { display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; }
+    @media(max-width:900px){ .insight-cols{ grid-template-columns:1fr; } }
+    .insight-col { border-radius:10px; padding:14px 16px; }
+    .insight-col-green { background:#f0fdf4; border:1px solid #bbf7d0; }
+    .insight-col-amber { background:#fffbeb; border:1px solid #fde68a; }
+    .insight-col-red   { background:#fef2f2; border:1px solid #fecaca; }
+    .insight-col-title { font-size:10px; font-weight:700; letter-spacing:.07em; text-transform:uppercase; margin-bottom:10px; }
+    .insight-col-green .insight-col-title { color:#15803d; }
+    .insight-col-amber .insight-col-title { color:#b45309; }
+    .insight-col-red   .insight-col-title { color:#b91c1c; }
+    .insight-items { display:flex; flex-direction:column; gap:7px; }
+    .insight-item { font-size:12px; color:var(--t2); line-height:1.5; display:flex; gap:7px; }
+    .insight-item::before { content:''; flex-shrink:0; }
+    .insight-divider { border:none; border-top:1px solid var(--border); margin:22px 0; }
+  </style>
+</head>
+<body>
+
+<div id="loading"><div class="spinner"></div> Načítám data…</div>
+<div id="toast"></div>
+
+<!-- ── Topbar ── -->
+<header class="topbar">
+  <a href="javascript:void(0)" class="logo" onclick="scrollTo(0,0)">🎲 <div class="logo-dot"></div> TLAMA games</a>
+  <span class="topbar-title">Performance Dashboard</span>
+  <div class="topbar-right">
+    <span class="update-ts" id="update-ts">–</span>
+    <button class="btn btn-brand" id="btn-refresh" onclick="refreshData()">↻ Refresh</button>
+  </div>
+</header>
+
+<!-- ── Tab bar ── -->
+<nav class="tab-bar">
+  <button class="tab-btn active" id="tab-dashboard-btn" onclick="switchTab('dashboard')">📊 Dashboard</button>
+  <button class="tab-btn" id="tab-impact-btn" onclick="switchTab('impact')">🔵 Google Ads</button>
+  <button class="tab-btn" id="tab-meta-btn" onclick="switchTab('meta')">📘 Meta</button>
+  <button class="tab-btn" id="tab-combined-btn" onclick="switchTab('combined')">🌐 Combined View</button>
+</nav>
+
+<div class="tab-pane active" id="tab-dashboard">
+<!-- ── Main ── -->
+<main class="main">
+
+  <!-- Control strip -->
+  <div class="control-strip">
+    <div class="filter-group" id="range-filter">
+      <button class="pill" onclick="setPreset(this,7)">7 dní</button>
+      <button class="pill" onclick="setPreset(this,14)">14 dní</button>
+      <button class="pill active" onclick="setPreset(this,30)">30 dní</button>
+      <button class="pill" onclick="setPreset(this,60)">60 dní</button>
+      <button class="pill" onclick="setPreset(this,90)">90 dní</button>
+      <button class="pill" onclick="setPreset(this,180)">180 dní</button>
+      <button class="pill" onclick="setPreset(this,365)">12 měs.</button>
+      <button class="pill pill-bs-launch" id="pill-bs-launch" onclick="setBSLaunch(this)">🟠 BS od 20.12.</button>
+    </div>
+    <div class="date-picker">
+      <input type="date" id="date-from" class="date-input" onchange="applyCustomRange()" min="2025-12-20" title="Od" />
+      <span class="date-sep">→</span>
+      <input type="date" id="date-to" class="date-input" onchange="applyCustomRange()" title="Do" />
+    </div>
+    <div class="filter-group" id="camp-filter">
+      <button class="pill active" onclick="setCamp(this,'all')">Všechny</button>
+      <button class="pill" onclick="setCamp(this,'BS')">🟠 BS</button>
+      <button class="pill" onclick="setCamp(this,'Control')">🔵 Control</button>
+    </div>
+  </div>
+
+  <!-- KPI bar (5 cards) -->
+  <div class="row row-5 mb20" id="kpi-bar">
+    <div class="kpi-card">
+      <div class="kpi-lbl">Útrata</div>
+      <div class="kpi-val" id="kpi-cost">–</div>
+      <div class="kpi-deltas">
+        <div><span class="delta delta-neu" id="d-cost">–</span><span class="delta-lbl" id="dl-cost">vs. předchozí</span></div>
+        <div><span class="delta delta-neu" id="yoy-cost">–</span><span class="delta-lbl">vs. loni</span></div>
+      </div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-lbl">Revenue</div>
+      <div class="kpi-val" id="kpi-rev">–</div>
+      <div class="kpi-deltas">
+        <div><span class="delta delta-neu" id="d-rev">–</span><span class="delta-lbl" id="dl-rev">vs. předchozí</span></div>
+        <div><span class="delta delta-neu" id="yoy-rev">–</span><span class="delta-lbl">vs. loni</span></div>
+      </div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-lbl">ROAS</div>
+      <div class="kpi-val" id="kpi-roas">–</div>
+      <div class="kpi-deltas">
+        <div><span class="delta delta-neu" id="d-roas">–</span><span class="delta-lbl" id="dl-roas">vs. předchozí</span></div>
+        <div><span class="delta delta-neu" id="yoy-roas">–</span><span class="delta-lbl">vs. loni</span></div>
+      </div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-lbl">Avg. Order Value</div>
+      <div class="kpi-val" id="kpi-aov">–</div>
+      <div class="kpi-deltas">
+        <div><span class="delta delta-neu" id="d-aov">–</span><span class="delta-lbl" id="dl-aov">vs. předchozí</span></div>
+        <div><span class="delta delta-neu" id="yoy-aov">–</span><span class="delta-lbl">vs. loni</span></div>
+      </div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-lbl">Konverze</div>
+      <div class="kpi-val" id="kpi-conv">–</div>
+      <div class="kpi-deltas">
+        <div><span class="delta delta-neu" id="d-conv">–</span><span class="delta-lbl" id="dl-conv">vs. předchozí</span></div>
+        <div><span class="delta delta-neu" id="yoy-conv">–</span><span class="delta-lbl">vs. loni</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Revenue + Spend — full width prominent chart -->
+  <div class="card mb20">
+    <div class="section-hdr">
+      <span>Revenue &amp; Útrata v čase</span>
+      <span id="revenue-period-lbl" style="font-size:11px;color:var(--t3);font-weight:400;"></span>
+    </div>
+    <div class="chart-wrap" style="height:260px"><canvas id="chartRevenue"></canvas></div>
+  </div>
+
+  <!-- ROAS timeline | Budget Pace -->
+  <div class="row row-75 mb20">
+    <div class="card">
+      <div class="section-hdr">
+        <span>ROAS v čase</span>
+        <span id="roas-target-lbl" style="font-size:11px;color:var(--red);font-weight:600;"></span>
+      </div>
+      <div class="chart-wrap" style="height:200px"><canvas id="chartROAS"></canvas></div>
+    </div>
+    <div class="card" id="budget-pace-card">
+      <div class="card-title">YoY srovnání — stejné období loni</div>
+      <div id="budget-pace-content">–</div>
+    </div>
+  </div>
+
+  <!-- AOV / CLV | BS vs Control AOV -->
+  <div class="row row-57 mb20">
+    <div class="card">
+      <div class="card-title">Customer Lifetime Value — Odhad</div>
+      <div id="ltv-content">–</div>
+      <div style="margin-top:16px;border-top:1px solid var(--border);padding-top:14px">
+        <div class="kpi-lbl" style="margin-bottom:8px">AOV v čase — vývoj průměrné objednávky</div>
+        <div class="chart-wrap" style="height:160px"><canvas id="chartAOVTime"></canvas></div>
+      </div>
+      <div id="aov-interpretation" style="margin-top:14px;border-top:1px solid var(--border);padding-top:12px"></div>
+      <p class="note">Předpoklady: 2.5 nákupů/rok, 2 roky životnost zákazníka (gaming e-shop)</p>
+    </div>
+    <div class="card">
+      <div class="card-title">AOV — BS vs Control</div>
+      <div id="aov-vs-content">–</div>
+      <div class="chart-wrap" style="height:140px;margin-top:12px"><canvas id="chartAOV"></canvas></div>
+    </div>
+  </div>
+
+  <!-- BS vs Control comparison -->
+  <div class="card mb20">
+    <div class="vs-header">
+      <div style="display:flex;align-items:center;gap:10px">
+        <div class="card-title" style="margin:0">BS vs Control — Výkonnostní srovnání</div>
+        <span id="vs-period-lbl" style="font-size:11px;color:var(--t3);font-weight:400"></span>
+      </div>
+      <div style="display:flex;gap:8px">
+        <span class="vs-badge vs-badge-bs">🟠 BS kampaně</span>
+        <span class="vs-badge vs-badge-ctrl">🔵 Control</span>
+      </div>
+    </div>
+    <div id="vs-content">–</div>
+  </div>
+
+  <!-- Alerts -->
+  <div class="row row-333 mb20" id="alerts-strip"><!-- js --></div>
+
+  <!-- Sessions + Channels -->
+  <div class="row row-75 mb20">
+    <div class="card">
+      <div class="card-title">Sessions &amp; Engaged sessions</div>
+      <div class="chart-wrap" style="height:200px"><canvas id="chartSessions"></canvas></div>
+    </div>
+    <div class="card">
+      <div class="card-title">Sessions dle kanálu</div>
+      <div class="chart-wrap" style="height:200px"><canvas id="chartChannels"></canvas></div>
+    </div>
+  </div>
+
+  <!-- Campaign bar + table -->
+  <div class="card mb20">
+    <div class="card-title">Top kampaně – útrata vs conv. value (posledních 30 dní)</div>
+    <div class="chart-wrap" style="height:380px"><canvas id="chartCampaigns"></canvas></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Přehled kampaní</div>
+    <div class="tbl-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Kampaň</th><th>Typ</th>
+            <th class="num">Útrata</th><th class="num">Revenue</th><th class="num">ROAS</th>
+            <th class="num">AOV</th><th class="num">Kliky</th>
+            <th class="num">Konverze</th><th class="num">CPA</th><th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="camp-tbody">
+          <tr><td colspan="10" style="text-align:center;color:var(--t3);padding:32px">Načítám…</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</main>
+</div><!-- end tab-dashboard -->
+
+<div class="tab-pane" id="tab-impact">
+  <main class="main">
+
+    <!-- Hero -->
+    <div class="impact-hero">
+      <div class="impact-hero-title">Boost.space First-Party Data Impact</div>
+      <div class="impact-hero-sub">The true value of running campaigns through Boost.space lies in data synchronization. Instead of having audience segments scattered across different platforms, we are centralizing your "Source of Truth."</div>
+      <div class="impact-period" id="impact-period-lbl">📅 27. 11. 2025 – dnes</div>
+    </div>
+
+    <!-- Controls -->
+    <div class="control-strip">
+      <button class="btn btn-brand" id="btn-refresh-comparison" onclick="refreshComparison()">↻ Fetch new data</button>
+      <span id="impact-update-ts" style="font-size:12px;color:var(--t3)"></span>
+    </div>
+
+    <!-- 8 KPI comparison cards -->
+    <div class="cmp-grid mb20" id="cmp-kpi-grid">
+      <div style="text-align:center;color:var(--t3);grid-column:1/-1;padding:40px">Načítám data…</div>
+    </div>
+
+    <!-- Daily chart: Revenue BS vs Control over time -->
+    <div class="card mb20">
+      <div class="section-hdr">
+        <span>Revenue v čase — Boost.space vs Control</span>
+        <div style="display:flex;gap:10px">
+          <span class="vs-badge vs-badge-bs">🟠 BS kampaně</span>
+          <span class="vs-badge vs-badge-ctrl">🔵 Control</span>
+        </div>
+      </div>
+      <div class="chart-wrap" style="height:240px"><canvas id="chartImpactRevenue"></canvas></div>
+    </div>
+
+    <!-- ROAS chart -->
+    <div class="card mb20">
+      <div class="section-hdr">
+        <span>ROAS v čase — Boost.space vs Control</span>
+      </div>
+      <div class="chart-wrap" style="height:200px"><canvas id="chartImpactROAS"></canvas></div>
+    </div>
+
+    <!-- Campaign-level table -->
+    <div class="card mb20">
+      <div class="card-title">Přehled kampaní — Boost.space vs Control (od 27. 11. 2025)</div>
+      <div class="impact-table-wrap">
+        <table class="impact-table">
+          <thead>
+            <tr>
+              <th>Kampaň</th><th>Skupina</th>
+              <th class="num">Útrata</th>
+              <th class="num">Conv. Value</th>
+              <th class="num">ROAS</th>
+              <th class="num">CTR</th>
+              <th class="num">CPC</th>
+              <th class="num">Conv. Rate</th>
+              <th class="num">AOV</th>
+              <th class="num">LTV</th>
+            </tr>
+          </thead>
+          <tbody id="impact-tbody">
+            <tr><td colspan="10" style="text-align:center;color:var(--t3);padding:32px">Načítám…</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Meta section -->
+    <div class="card meta-section">
+      <div class="meta-badge">f Meta Ads</div>
+      <div id="meta-content"><div class="meta-error">Meta data nejsou k dispozici. Klikni na "Fetch new data".</div></div>
+    </div>
+
+    <!-- Google Ads Insights -->
+    <div class="card" id="impact-insights" style="margin-top:14px"></div>
+
+  </main>
+</div><!-- end tab-impact -->
+
+<!-- ══════════════════════════════════════════════════════
+     META IMPACT TAB
+     ══════════════════════════════════════════════════════ -->
+<div class="tab-pane" id="tab-meta">
+  <main class="main">
+
+    <div class="impact-hero">
+      <div class="impact-hero-title">Meta Ads — Boost.space First-Party Data Impact</div>
+      <div class="impact-hero-sub">Comparing Boost.space audience-powered campaigns vs standard Control campaigns on Meta (Facebook/Instagram). Same period as Google Ads comparison.</div>
+      <div class="impact-period" id="meta-period-lbl">📅 27. 11. 2025 – dnes</div>
+    </div>
+
+    <div class="control-strip">
+      <button class="btn btn-brand" id="btn-refresh-meta" onclick="refreshComparison()">↻ Fetch new data</button>
+      <span id="meta-update-ts" style="font-size:12px;color:var(--t3)"></span>
+    </div>
+
+    <!-- KPI comparison cards -->
+    <div class="cmp-grid mb20" id="meta-kpi-grid">
+      <div style="text-align:center;color:var(--t3);grid-column:1/-1;padding:40px">Načítám data…</div>
+    </div>
+
+    <!-- Revenue over time -->
+    <div class="card mb20">
+      <div class="section-hdr">
+        <span>Revenue v čase — Boost.space vs Control (Meta)</span>
+        <div style="display:flex;gap:10px">
+          <span class="vs-badge vs-badge-bs">🟠 BS kampaně</span>
+          <span class="vs-badge vs-badge-ctrl">🔵 Control</span>
+        </div>
+      </div>
+      <div class="chart-wrap" style="height:240px"><canvas id="chartMetaRevenue"></canvas></div>
+    </div>
+
+    <!-- ROAS over time -->
+    <div class="card mb20">
+      <div class="section-hdr"><span>ROAS v čase — Boost.space vs Control (Meta)</span></div>
+      <div class="chart-wrap" style="height:200px"><canvas id="chartMetaROAS"></canvas></div>
+    </div>
+
+    <!-- Campaign table -->
+    <div class="card mb20">
+      <div class="card-title">Meta kampaně — Boost.space vs Control (od 27. 11. 2025)</div>
+      <div class="impact-table-wrap">
+        <table class="impact-table">
+          <thead>
+            <tr>
+              <th>Kampaň</th><th>Skupina</th>
+              <th class="num">Spend (EUR)</th>
+              <th class="num">Conv. Value</th>
+              <th class="num">ROAS</th>
+              <th class="num">CTR</th>
+              <th class="num">CPC</th>
+              <th class="num">Conv. Rate</th>
+              <th class="num">AOV</th>
+              <th class="num">LTV</th>
+            </tr>
+          </thead>
+          <tbody id="meta-tbody">
+            <tr><td colspan="10" style="text-align:center;color:var(--t3);padding:32px">Načítám…</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Meta Insights -->
+    <div class="card" id="meta-insights" style="margin-top:14px"></div>
+
+  </main>
+</div><!-- end tab-meta -->
+
+<!-- ══════════════════════════════════════════════════════
+     COMBINED VIEW TAB
+     ══════════════════════════════════════════════════════ -->
+<div class="tab-pane" id="tab-combined">
+  <main class="main">
+
+    <div class="impact-hero">
+      <div class="impact-hero-title">Cross-Platform Summary — Google Ads + Meta Ads</div>
+      <div class="impact-hero-sub">Unified view of Boost.space first-party data impact across all paid channels. BS campaigns vs Control — same period, both platforms.</div>
+      <div class="impact-period" id="combined-period-lbl">📅 27. 11. 2025 – dnes</div>
+    </div>
+
+    <div class="control-strip">
+      <button class="btn btn-brand" id="btn-refresh-combined" onclick="refreshComparison()">↻ Fetch new data</button>
+      <span id="combined-update-ts" style="font-size:12px;color:var(--t3)"></span>
+    </div>
+
+    <!-- Platform summary cards row -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px" id="combined-platform-cards">
+      <div style="text-align:center;color:var(--t3);grid-column:1/-1;padding:40px">Načítám data…</div>
+    </div>
+
+    <!-- BS wins scoreboard -->
+    <div class="card mb20" id="combined-scoreboard" style="padding:24px"></div>
+
+    <!-- Revenue over time — both platforms side by side -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px">
+      <div class="card">
+        <div class="section-hdr">
+          <span>Google Ads — Revenue (CZK)</span>
+          <div style="display:flex;gap:8px"><span class="vs-badge vs-badge-bs">🟠 BS</span><span class="vs-badge vs-badge-ctrl">🔵 Control</span></div>
+        </div>
+        <div class="chart-wrap" style="height:200px"><canvas id="chartCombGoogleRev"></canvas></div>
+      </div>
+      <div class="card">
+        <div class="section-hdr">
+          <span>Meta Ads — Revenue (EUR)</span>
+          <div style="display:flex;gap:8px"><span class="vs-badge vs-badge-bs">🟠 BS</span><span class="vs-badge vs-badge-ctrl">🔵 Control</span></div>
+        </div>
+        <div class="chart-wrap" style="height:200px"><canvas id="chartCombMetaRev"></canvas></div>
+      </div>
+    </div>
+
+    <!-- ROAS side by side -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px">
+      <div class="card">
+        <div class="section-hdr"><span>Google Ads — ROAS</span></div>
+        <div class="chart-wrap" style="height:180px"><canvas id="chartCombGoogleROAS"></canvas></div>
+      </div>
+      <div class="card">
+        <div class="section-hdr"><span>Meta Ads — ROAS</span></div>
+        <div class="chart-wrap" style="height:180px"><canvas id="chartCombMetaROAS"></canvas></div>
+      </div>
+    </div>
+
+    <!-- Unified campaign table -->
+    <div class="card">
+      <div class="card-title">Všechny kampaně — Google Ads + Meta Ads (od 27. 11. 2025)</div>
+      <div class="impact-table-wrap">
+        <table class="impact-table">
+          <thead>
+            <tr>
+              <th>Platforma</th><th>Kampaň</th><th>Skupina</th>
+              <th class="num">Cost</th>
+              <th class="num">Conv. Value</th>
+              <th class="num">ROAS</th>
+              <th class="num">CTR</th>
+              <th class="num">CPC</th>
+              <th class="num">Conv. Rate</th>
+              <th class="num">AOV</th>
+            </tr>
+          </thead>
+          <tbody id="combined-tbody">
+            <tr><td colspan="10" style="text-align:center;color:var(--t3);padding:32px">Načítám…</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Performance Insights -->
+    <div class="card mt14" id="combined-insights" style="margin-top:14px"></div>
+
+  </main>
+</div><!-- end tab-combined -->
+
+<script>
+/* ════════════════════════════════════════════════════════════
+   STATE
+   ════════════════════════════════════════════════════════════ */
+let RAW    = null;
+let charts = {};
+const ST   = { activeDays: 30, activeCamp: 'all', customStart: null, customEnd: null };
+
+// Formatters — must be at top (const has TDZ)
+const CZK = new Intl.NumberFormat('cs-CZ',{style:'currency',currency:'CZK',maximumFractionDigits:0});
+const NUM  = new Intl.NumberFormat('cs-CZ',{maximumFractionDigits:1});
+
+/* ════════════════════════════════════════════════════════════
+   BOOT
+   ════════════════════════════════════════════════════════════ */
+// Disable datalabels globally; enable per-chart
+try { Chart.defaults.plugins.datalabels.display = false; } catch(e) { console.warn('Chart init:', e.message); }
+
+// Robust init — multiple fallbacks
+let _booted = false;
+function boot() {
+  if (_booted) return;
+  _booted = true;
+  loadData();
+}
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', boot);
+} else {
+  boot();
+}
+window.addEventListener('load', boot); // fallback if DOMContentLoaded already fired
+
+async function loadData() {
+  showLoading(true);
+  try {
+    const [adsResp, ga4Resp] = await Promise.all([
+      fetch('./data/ads_data.json'),
+      fetch('./data/ga4_data.json'),
+    ]);
+    if (!adsResp.ok || !ga4Resp.ok) throw new Error('Žádná data.');
+    const ads = await adsResp.json();
+    const ga4 = await ga4Resp.json();
+    RAW = { ads, ga4, shoptet: null };
+    render();
+  } catch(e) { showToast('⚠️ ' + e.message, 5000); }
+  finally { showLoading(false); }
+}
+
+async function refreshData() {
+  showToast('ℹ️ Data jsou aktualizována automaticky každý den v 09:00.', 4000);
+}
+
+/* ════════════════════════════════════════════════════════════
+   PRESETS
+   ════════════════════════════════════════════════════════════ */
+function setPreset(el, days) {
+  ST.activeDays = days;
+  ST.customStart = null;
+  ST.customEnd   = null;
+  document.querySelectorAll('#range-filter .pill').forEach(p => p.classList.remove('active'));
+  el.classList.add('active');
+  // Clear custom inputs
+  document.getElementById('date-from').value = '';
+  document.getElementById('date-to').value   = '';
+  render();
+}
+
+function setBSLaunch(el) {
+  const today = new Date().toISOString().slice(0, 10);
+  ST.customStart = '2025-12-20';
+  ST.customEnd   = today;
+  ST.activeDays  = null;
+  document.querySelectorAll('#range-filter .pill').forEach(p => p.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('date-from').value = '2025-12-20';
+  document.getElementById('date-to').value   = today;
+  render();
+}
+
+function applyCustomRange() {
+  const from = document.getElementById('date-from').value;
+  const to   = document.getElementById('date-to').value;
+  if (!from || !to || from > to) return;
+  ST.customStart = from;
+  ST.customEnd   = to;
+  ST.activeDays  = null;
+  document.querySelectorAll('#range-filter .pill').forEach(p => p.classList.remove('active'));
+  render();
+}
+
+function setCamp(el, val) {
+  ST.activeCamp = val;
+  document.querySelectorAll('#camp-filter .pill').forEach(p => p.classList.remove('active'));
+  el.classList.add('active');
+  render();
+}
+
+/* ════════════════════════════════════════════════════════════
+   DATA HELPERS
+   ════════════════════════════════════════════════════════════ */
+function getActiveDailyAds() {
+  if (!RAW?.ads) return [];
+  const all = RAW.ads.daily_365d || RAW.ads.daily_60d || RAW.ads.daily || [];
+  if (ST.customStart && ST.customEnd) {
+    return all.filter(d => d.date >= ST.customStart && d.date <= ST.customEnd);
+  }
+  return all.slice(-(ST.activeDays || 30));
+}
+
+function getActiveDailyGA4() {
+  if (!RAW?.ga4) return [];
+  const all = RAW.ga4.daily_60d || RAW.ga4.daily || [];
+  if (ST.customStart && ST.customEnd) {
+    return all.filter(d => d.date >= ST.customStart && d.date <= ST.customEnd);
+  }
+  return all.slice(-(ST.activeDays || 30));
+}
+
+// Dynamický YoY delta pro aktuálně zvolené okno (7/14/30/60/90/180/365d nebo custom range)
+function getYoYDelta() {
+  const yoyAll = RAW.ads?.yoy?.daily || [];
+  if (!yoyAll.length) return null;
+  const currSlice = getActiveDailyAds();
+  if (!currSlice.length) return null;
+  let yoySlice;
+  if (ST.customStart && ST.customEnd) {
+    // Pro custom range: posun stejné datumy o 364 dní zpět
+    const shiftDay = 364;
+    const yStart = new Date(ST.customStart); yStart.setDate(yStart.getDate() - shiftDay);
+    const yEnd   = new Date(ST.customEnd);   yEnd.setDate(yEnd.getDate()   - shiftDay);
+    const yStartStr = yStart.toISOString().slice(0, 10);
+    const yEndStr   = yEnd.toISOString().slice(0, 10);
+    yoySlice = yoyAll.filter(d => d.date >= yStartStr && d.date <= yEndStr);
+  } else {
+    const n = ST.activeDays || 30;
+    yoySlice = yoyAll.slice(-Math.min(n, yoyAll.length));
+  }
+  if (!yoySlice.length) return null;
+  const curr = calcTotals(currSlice);
+  const prev = calcTotals(yoySlice);
+  const pct  = (c, p) => p > 0 ? Math.round((c - p) / p * 1000) / 10 : null;
+  return {
+    cost_czk_pct:    pct(curr.cost_czk,    prev.cost_czk),
+    revenue_pct:     pct(curr.revenue_czk, prev.revenue_czk),
+    roas_pct:        pct(curr.roas,        prev.roas),
+    aov_pct:         pct(curr.aov,         prev.aov),
+    conversions_pct: pct(curr.conversions,  prev.conversions),
+  };
+}
+
+function getActiveCampaigns() {
+  // Pokud máme denní data po kampaních, agregujeme za aktivní okno (7/14/30/60/... dní)
+  if (!RAW?.ads?.campaign_daily?.length) return RAW?.ads?.campaigns || [];
+
+  const active = getActiveDailyAds();
+  if (!active.length) return RAW.ads.campaigns || [];
+  const fromDate = active[0].date;
+  const toDate   = active[active.length - 1].date;
+
+  const filtered = RAW.ads.campaign_daily.filter(
+    d => d.date >= fromDate && d.date <= toDate
+  );
+  if (!filtered.length) return RAW.ads.campaigns || [];
+
+  // Agregace po kampani
+  const campMap = {};
+  filtered.forEach(row => {
+    if (!campMap[row.id]) {
+      campMap[row.id] = {
+        id: row.id, name: row.name, type: row.type, status: row.status,
+        cost_czk: 0, clicks: 0, impressions: 0, conversions: 0, revenue_czk: 0,
+      };
+    }
+    const c = campMap[row.id];
+    c.cost_czk    += row.cost_czk;
+    c.clicks      += row.clicks;
+    c.impressions += row.impressions;
+    c.conversions += row.conversions;
+    c.revenue_czk += row.revenue_czk;
+  });
+
+  return Object.values(campMap)
+    .map(c => ({
+      ...c,
+      cost_czk:    Math.round(c.cost_czk    * 100) / 100,
+      revenue_czk: Math.round(c.revenue_czk * 100) / 100,
+      conversions: Math.round(c.conversions * 100) / 100,
+      roas:    c.cost_czk    > 0 ? c.revenue_czk / c.cost_czk    : 0,
+      cpa:     c.conversions > 0 ? c.cost_czk    / c.conversions : 0,
+      aov:     c.conversions > 0 ? c.revenue_czk / c.conversions : 0,
+      avg_cpc: c.clicks      > 0 ? c.cost_czk    / c.clicks      : 0,
+    }))
+    .filter(c => c.cost_czk > 0)
+    .sort((a, b) => b.cost_czk - a.cost_czk);
+}
+
+function calcTotals(daily) {
+  const cost = daily.reduce((s,d) => s + (d.cost_czk||0), 0);
+  const rev  = daily.reduce((s,d) => s + (d.revenue_czk||0), 0);
+  const conv = daily.reduce((s,d) => s + (d.conversions||0), 0);
+  return { cost_czk:cost, revenue_czk:rev, conversions:conv,
+           cpa:cost/(conv||1), roas:rev/(cost||1), aov:rev/(conv||1) };
+}
+
+function calcSegmentStats(campaigns, type) {
+  const c = type==='all' ? campaigns : campaigns.filter(x => x.type===type);
+  if (!c.length) return null;
+  const cost = c.reduce((s,x) => s+x.cost_czk,0);
+  const rev  = c.reduce((s,x) => s+x.revenue_czk,0);
+  const conv = c.reduce((s,x) => s+x.conversions,0);
+  const n    = c.length;
+  return { count:n, cost_czk:cost, revenue_czk:rev, conversions:conv,
+           roas:rev/(cost||1), cpa:cost/(conv||1), aov:rev/(conv||1),
+           rev_per_camp:rev/n, cost_per_camp:cost/n, conv_per_camp:conv/n };
+}
+
+function calcDynamicDelta(currentDaily) {
+  // Preferuj daily_365d pro look-up (pokrývá všechny presets 7–365d)
+  const all = RAW.ads?.daily_365d || RAW.ads?.daily_60d;
+  if (!all || currentDaily.length < 1) return null;
+  const n   = currentDaily.length;
+  const idx = all.findIndex(d => d.date === currentDaily[0].date);
+  if (idx < n) return null;   // není dost dat pro předchozí okno
+  const prev = all.slice(Math.max(0, idx - n), idx);
+  if (!prev.length) return null;
+  const curr  = calcTotals(currentDaily);
+  const prior = calcTotals(prev);
+  const pct = (c, p) => p > 0 ? Math.round((c - p) / p * 1000) / 10 : null;
+  return {
+    cost_pct: pct(curr.cost_czk,    prior.cost_czk),
+    rev_pct:  pct(curr.revenue_czk, prior.revenue_czk),
+    roas_pct: pct(curr.roas,        prior.roas),
+    aov_pct:  pct(curr.aov,         prior.aov),
+    conv_pct: pct(curr.conversions,  prior.conversions),
+    label: `${prev[0].date.slice(5)}–${prev[prev.length-1].date.slice(5)}`,
+  };
+}
+
+function rollingAvg(arr, win) {
+  return arr.map((_,i) => {
+    const s = arr.slice(Math.max(0,i-win+1), i+1);
+    return s.reduce((a,b)=>a+b,0)/s.length;
+  });
+}
+
+/* ════════════════════════════════════════════════════════════
+   MAIN RENDER
+   ════════════════════════════════════════════════════════════ */
+function render() {
+  if (!RAW) return;
+  const daily    = getActiveDailyAds();
+  const ga4daily = getActiveDailyGA4();
+  const yoy      = RAW.ads?.yoy;
+  const allCamps = getActiveCampaigns();
+  const camps    = allCamps.filter(c => ST.activeCamp==='all' || c.type===ST.activeCamp);
+
+  // daily_60d rows are all-campaign aggregates — no per-type breakdown.
+  // When a segment filter is active, compute KPI totals from campaign-level data instead.
+  let totals, delta;
+  if (ST.activeCamp !== 'all') {
+    const seg = calcSegmentStats(allCamps, ST.activeCamp);
+    totals = seg || calcTotals(daily);
+    delta  = null; // period-delta not computable per-type from daily
+  } else {
+    totals = calcTotals(daily);
+    delta  = calcDynamicDelta(daily);
+  }
+
+  // Timestamp
+  if (RAW.ads?.fetched_at) {
+    const d = new Date(RAW.ads.fetched_at);
+    document.getElementById('update-ts').textContent =
+      'Aktualizováno: ' + d.toLocaleDateString('cs-CZ') + ' ' +
+      d.toLocaleTimeString('cs-CZ',{hour:'2-digit',minute:'2-digit'});
+  }
+
+  renderKPIs(totals, delta, yoy);
+  renderRevenueChart(daily);
+  renderROASChart(daily);
+  renderBudgetPace(daily, totals, yoy);
+  renderLTV(totals);
+  renderAOVTimeChart(getActiveDailyAds());
+  renderAOVInterpretation(getActiveDailyAds(), totals);
+  renderAOVvs(allCamps);
+  renderBSvsControl(allCamps);
+  renderAlerts(daily, totals, allCamps);
+  renderSessionsChart(ga4daily);
+  renderChannelsChart(RAW.ga4);
+  renderCampaignChart(camps);
+  renderTable(camps);
+}
+
+/* ════════════════════════════════════════════════════════════
+   KPIs
+   ════════════════════════════════════════════════════════════ */
+function renderKPIs(totals, delta, yoy) {
+  setText('kpi-cost', fmtCZK(totals.cost_czk));
+  setText('kpi-rev',  totals.revenue_czk>0 ? fmtCZK(totals.revenue_czk) : 'N/A');
+  setText('kpi-roas', totals.revenue_czk>0 ? totals.roas.toFixed(2)+'×' : 'N/A');
+  setText('kpi-aov',  totals.aov>0 ? fmtCZK(totals.aov) : 'N/A');
+  setText('kpi-conv', fmtNum(totals.conversions));
+
+  // Period-over-period delta (dynamic)
+  if (delta) {
+    const lbl = `vs. ${delta.label}`;
+    setDelta('d-cost',  delta.cost_pct, false); setText('dl-cost', lbl);
+    setDelta('d-rev',   delta.rev_pct,  true);  setText('dl-rev',  lbl);
+    setDelta('d-roas',  delta.roas_pct, true);  setText('dl-roas', lbl);
+    setDelta('d-aov',   delta.aov_pct,  true);  setText('dl-aov',  lbl);
+    setDelta('d-conv',  delta.conv_pct, true);  setText('dl-conv', lbl);
+  }
+
+  // YoY delta – dynamicky pro jakýkoliv preset (7/14/30/60/90/180/365d)
+  const yoyDelta = getYoYDelta();
+  setDelta('yoy-cost', yoyDelta?.cost_czk_pct    ?? null, false);
+  setDelta('yoy-rev',  yoyDelta?.revenue_pct     ?? null, true);
+  setDelta('yoy-roas', yoyDelta?.roas_pct        ?? null, true);
+  setDelta('yoy-aov',  yoyDelta?.aov_pct         ?? null, true);
+  setDelta('yoy-conv', yoyDelta?.conversions_pct ?? null, true);
+}
+
+function setDelta(id, pct, positiveGood) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  if (pct === null || pct === undefined) {
+    el.textContent = '–'; el.className = 'delta delta-neu'; return;
+  }
+  const good  = positiveGood ? pct>0 : pct<0;
+  const arrow = pct>0 ? '↑' : '↓';
+  el.textContent = `${arrow} ${Math.abs(pct).toFixed(1)} %`;
+  el.className = 'delta ' + (good ? 'delta-up' : 'delta-down');
+}
+
+/* ════════════════════════════════════════════════════════════
+   REVENUE + SPEND CHART (full-width)
+   ════════════════════════════════════════════════════════════ */
+function renderRevenueChart(daily) {
+  destroyChart('rev');
+  const labels = daily.map(d => d.date.slice(5));
+  const rev    = daily.map(d => d.revenue_czk || 0);
+  const spend  = daily.map(d => d.cost_czk);
+  const hasRev = rev.some(v => v > 0);
+
+  document.getElementById('revenue-period-lbl').textContent =
+    daily.length ? `${daily[0].date} – ${daily[daily.length-1].date}` : '';
+
+  charts['rev'] = new Chart(document.getElementById('chartRevenue'), {
+    type: 'line',
+    data: { labels, datasets: [
+      { label:'Revenue (CZK)', data:rev,
+        borderColor:'#2563EB', backgroundColor:'rgba(37,99,235,.10)',
+        fill:true, tension:.35, pointRadius:2, borderWidth:2.5, yAxisID:'yR',
+        hidden: !hasRev },
+      { label:'Útrata (CZK)', data:spend,
+        borderColor:'#E85D04', backgroundColor:'rgba(232,93,4,.06)',
+        fill:true, tension:.35, pointRadius:2, borderWidth:2, yAxisID:hasRev?'yL':'yR' },
+    ]},
+    options: { ...baseOpts(),
+      plugins: { ...baseOpts().plugins, datalabels:{ display:false } },
+      scales: {
+        x:  { ticks:{ font:{family:'Inter',size:11}, color:'#9CA3AF', maxTicksLimit:12 }, grid:{ display:false } },
+        yR: { position:'right', ticks:{ font:{family:'Inter',size:11}, color:'#9CA3AF', callback:v=>fmtK(v) }, grid:{ color:'#F3F4F6' } },
+        ...(hasRev ? { yL:{ position:'left', ticks:{ font:{family:'Inter',size:11}, color:'#9CA3AF', callback:v=>fmtK(v) }, grid:{ display:false } } } : {}),
+      },
+    },
+  });
+}
+
+/* ════════════════════════════════════════════════════════════
+   ROAS CHART (bars + rolling avg + target line)
+   ════════════════════════════════════════════════════════════ */
+function renderROASChart(daily) {
+  destroyChart('roas');
+  const target = RAW.ads?.target_roas || 12;
+  document.getElementById('roas-target-lbl').textContent = `Target: ${target}×`;
+  const labels  = daily.map(d => d.date.slice(5));
+  const roasArr = daily.map(d => d.roas || 0);
+  const avgArr  = rollingAvg(roasArr, 7);
+  const targetA = Array(labels.length).fill(target);
+
+  charts['roas'] = new Chart(document.getElementById('chartROAS'), {
+    type: 'bar',
+    data: { labels, datasets: [
+      { label:'ROAS (denní)', data:roasArr, type:'bar',
+        backgroundColor: roasArr.map(v => v>=target ? 'rgba(22,163,74,.55)' : 'rgba(220,38,38,.4)'),
+        borderRadius:3, order:2 },
+      { label:'7d průměr', data:avgArr, type:'line',
+        borderColor:'#2563EB', borderWidth:2, pointRadius:0, tension:.4, order:1,
+        datalabels:{ display:false } },
+      { label:`Target ${target}×`, data:targetA, type:'line',
+        borderColor:'#DC2626', borderDash:[6,3], borderWidth:1.5, pointRadius:0, fill:false, order:0,
+        datalabels:{ display:false } },
+    ]},
+    options: { ...baseOpts(),
+      plugins: { ...baseOpts().plugins, datalabels:{ display:false } },
+      scales: {
+        x:{ ticks:{ font:{family:'Inter',size:11}, color:'#9CA3AF', maxTicksLimit:10 }, grid:{ display:false } },
+        y:{ ticks:{ font:{family:'Inter',size:11}, color:'#9CA3AF', callback:v=>v.toFixed(1)+'×' }, grid:{ color:'#F3F4F6' } },
+      },
+    },
+  });
+}
+
+/* ════════════════════════════════════════════════════════════
+   BUDGET PACE
+   ════════════════════════════════════════════════════════════ */
+function renderBudgetPace(daily, totals, yoy) {
+  const yoySpent   = yoy?.totals?.cost_czk;
+  const yoyRev     = yoy?.totals?.revenue_czk;
+  const yoyDeltaCost = yoy?.delta?.cost_czk_pct;
+  const yoyDeltaRev  = yoy?.delta?.revenue_pct;
+  const yoyPeriod  = yoy?.period;
+  const showYoY    = ST.activeDays === 30;
+  const days       = daily.length || 30;
+  const spent      = totals.cost_czk;
+  const dailyAvg   = spent / (days || 1);
+
+  if (!showYoY || !yoySpent) {
+    document.getElementById('budget-pace-content').innerHTML =
+      '<p class="note" style="margin-top:6px">YoY srovnání dostupné pouze pro preset 30 dní.</p>';
+    return;
+  }
+
+  document.getElementById('budget-pace-content').innerHTML = `
+    <div class="pace-rows" style="margin-top:0">
+      <div class="pace-row">
+        <span class="pace-row-lbl">Útrata letos</span>
+        <span class="pace-row-val">${fmtCZK(Math.round(spent))}</span>
+      </div>
+      <div class="pace-row">
+        <span class="pace-row-lbl">Avg/den</span>
+        <span class="pace-row-val">${fmtCZK(Math.round(dailyAvg))}</span>
+      </div>
+    </div>
+    <div class="pace-yoy" style="margin-top:12px">
+      <div class="pace-yoy-title">📅 Stejné období loni (${yoyPeriod?.start?.slice(5)} – ${yoyPeriod?.end?.slice(5)})</div>
+      <div class="pace-yoy-row">
+        <span>Útrata loni</span>
+        <span class="pace-yoy-val">${fmtCZK(yoySpent)}</span>
+      </div>
+      <div class="pace-yoy-row">
+        <span>YoY útrata</span>
+        <span class="pace-yoy-val" style="color:${yoyDeltaCost<0?'var(--green)':'var(--red)'}">
+          ${yoyDeltaCost<0?'↓':'↑'} ${Math.abs(yoyDeltaCost).toFixed(1)} % ${yoyDeltaCost<0?'✅':'⚠️'}
+        </span>
+      </div>
+      ${yoyRev ? `
+      <div class="pace-yoy-row">
+        <span>Revenue loni</span>
+        <span class="pace-yoy-val">${fmtCZK(yoyRev)}</span>
+      </div>
+      <div class="pace-yoy-row">
+        <span>YoY revenue</span>
+        <span class="pace-yoy-val" style="color:${yoyDeltaRev>0?'var(--green)':'var(--red)'}">
+          ${yoyDeltaRev>0?'↑':'↓'} ${Math.abs(yoyDeltaRev).toFixed(1)} % ${yoyDeltaRev>0?'✅':'⚠️'}
+        </span>
+      </div>` : ''}
+      <div class="pace-yoy-row">
+        <span>ROAS loni</span>
+        <span class="pace-yoy-val">${yoy.totals?.roas?.toFixed(2)}×</span>
+      </div>
+      <div class="pace-yoy-row">
+        <span>ROAS letos</span>
+        <span class="pace-yoy-val">${totals.roas?.toFixed(2)}×</span>
+      </div>
+    </div>
+  `;
+}
+
+/* ════════════════════════════════════════════════════════════
+   CLV / LTV JOURNEY
+   ════════════════════════════════════════════════════════════ */
+function renderLTV(totals) {
+  const aov  = totals.aov || 0;
+  const freq = 2.5;  // nákupů/rok (gaming e-shop avg)
+  const life = 2;    // roky
+  const ltv  = aov * freq * life;
+
+  document.getElementById('ltv-content').innerHTML = `
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px">
+      <div style="background:var(--bg);border-radius:10px;padding:14px">
+        <div class="kpi-lbl">Aktuální AOV</div>
+        <div style="font-size:24px;font-weight:700;margin-top:4px">${aov>0?fmtCZK(aov):'N/A'}</div>
+        <div style="font-size:11px;color:var(--t3);margin-top:3px">Revenue / Konverze</div>
+      </div>
+      <div style="background:var(--brandL);border:1px solid rgba(232,93,4,.2);border-radius:10px;padding:14px">
+        <div class="kpi-lbl" style="color:var(--brand)">Odhadovaný LTV</div>
+        <div style="font-size:24px;font-weight:700;margin-top:4px;color:var(--brand)">${ltv>0?fmtCZK(Math.round(ltv)):'N/A'}</div>
+        <div style="font-size:11px;color:var(--brand);margin-top:3px;opacity:.8">AOV × ${freq} × ${life} let</div>
+      </div>
+    </div>
+    <div class="ltv-journey">
+      <div class="ltv-step">
+        <div class="ltv-icon">🛒</div>
+        <div class="ltv-lbl">Nákup</div>
+        <div class="ltv-val">${aov>0?fmtCZK(Math.round(aov)):'–'}</div>
+      </div>
+      <div class="ltv-arrow">
+        <div class="ltv-arrow-icon">→</div>
+        <div class="ltv-arrow-lbl">×${freq}/rok</div>
+      </div>
+      <div class="ltv-step">
+        <div class="ltv-icon">📅</div>
+        <div class="ltv-lbl">Roční hodnota</div>
+        <div class="ltv-val">${aov>0?fmtCZK(Math.round(aov*freq)):'–'}</div>
+      </div>
+      <div class="ltv-arrow">
+        <div class="ltv-arrow-icon">→</div>
+        <div class="ltv-arrow-lbl">×${life} roky</div>
+      </div>
+      <div class="ltv-step hl">
+        <div class="ltv-icon">💎</div>
+        <div class="ltv-lbl">LTV odhad</div>
+        <div class="ltv-val" style="color:var(--brand)">${ltv>0?fmtCZK(Math.round(ltv)):'–'}</div>
+      </div>
+    </div>
+  `;
+}
+
+/* ════════════════════════════════════════════════════════════
+   AOV V ČASE — line chart s 7d rolling avg + LTV trend
+   ════════════════════════════════════════════════════════════ */
+function renderAOVTimeChart(daily) {
+  destroyChart('aov-time');
+  const pts = daily.filter(d => d.conversions > 0).map(d => ({
+    date: d.date,
+    aov:  Math.round(d.revenue_czk / d.conversions),
+  }));
+  if (pts.length < 2) return;
+
+  // 7-day rolling average
+  const roll7 = pts.map((_, i) => {
+    const slice = pts.slice(Math.max(0, i - 6), i + 1);
+    return Math.round(slice.reduce((s, p) => s + p.aov, 0) / slice.length);
+  });
+
+  const FREQ = 2.5, LIFE = 2;
+  const ltvTrend = roll7.map(v => Math.round(v * FREQ * LIFE));
+
+  charts['aov-time'] = new Chart(document.getElementById('chartAOVTime'), {
+    type: 'line',
+    data: {
+      labels: pts.map(d => d.date.slice(5)),
+      datasets: [
+        { label: 'AOV denní', data: pts.map(p => p.aov),
+          borderColor: 'rgba(232,93,4,.25)', backgroundColor: 'transparent',
+          borderWidth: 1, pointRadius: 0, tension: 0.3, order: 3 },
+        { label: 'AOV 7d avg', data: roll7,
+          borderColor: 'rgba(232,93,4,1)', backgroundColor: 'rgba(232,93,4,.08)',
+          borderWidth: 2.5, pointRadius: 0, tension: 0.4, fill: true, order: 2 },
+        { label: 'LTV odhad (×5)', data: ltvTrend,
+          borderColor: 'rgba(37,99,235,.55)', backgroundColor: 'transparent',
+          borderWidth: 1.5, borderDash: [5, 4], pointRadius: 0, tension: 0.4, order: 1,
+          yAxisID: 'yLTV' },
+      ],
+    },
+    options: { ...baseOpts(),
+      plugins: { ...baseOpts().plugins,
+        legend: { display: true, position: 'top',
+          labels: { font: { family: 'Inter', size:11 }, color: '#4B5563', boxWidth: 10, padding: 12 } },
+        tooltip: { callbacks: { label: ctx => ` ${ctx.dataset.label}: ${CZK.format(ctx.parsed.y)}` } },
+      },
+      scales: {
+        x: { ticks: { font: { family:'Inter', size:10 }, color:'#9CA3AF',
+               maxTicksLimit: 8, maxRotation: 0 }, grid: { color:'#F3F4F6' } },
+        y: { position:'left', title: { display:true, text:'AOV (Kč)', font:{family:'Inter',size:10}, color:'#9CA3AF' },
+             ticks: { font:{family:'Inter',size:10}, color:'#9CA3AF', callback: v => fmtK(v) },
+             grid: { color:'#F3F4F6' } },
+        yLTV: { position:'right', title: { display:true, text:'LTV odhad (Kč)', font:{family:'Inter',size:10}, color:'#9CA3AF' },
+                ticks: { font:{family:'Inter',size:10}, color:'#9CA3AF', callback: v => fmtK(v) },
+                grid: { display:false } },
+      },
+    },
+  });
+}
+
+/* ════════════════════════════════════════════════════════════
+   AOV — INTERPRETACE, SHRNUTÍ A DOPORUČENÍ
+   ════════════════════════════════════════════════════════════ */
+function renderAOVInterpretation(daily, totals) {
+  const el = document.getElementById('aov-interpretation');
+  if (!el) return;
+
+  const pts = daily.filter(d => d.conversions > 0).map(d => ({
+    date: d.date,
+    aov:  Math.round(d.revenue_czk / d.conversions),
+  }));
+  if (pts.length < 7) { el.innerHTML = ''; return; }
+
+  // Hodnoty
+  const firstAOV   = pts[0].aov;
+  const lastAOV    = pts[pts.length - 1].aov;
+  const currentAOV = totals.aov || lastAOV;
+  const growthPct  = firstAOV > 0 ? ((lastAOV - firstAOV) / firstAOV * 100) : 0;
+
+  // 7d rolling avg aktuální vs první týden
+  const roll7 = pts.map((_, i) => {
+    const slice = pts.slice(Math.max(0, i - 6), i + 1);
+    return Math.round(slice.reduce((s, p) => s + p.aov, 0) / slice.length);
+  });
+  const avgFirst7  = roll7.slice(0, 7).reduce((s, v) => s + v, 0) / 7;
+  const avgLast7   = roll7.slice(-7).reduce((s, v) => s + v, 0) / 7;
+  const trendPct   = avgFirst7 > 0 ? ((avgLast7 - avgFirst7) / avgFirst7 * 100) : 0;
+
+  // Trend akcelerace (posledních 14d vs předchozích 14d)
+  const mid = Math.floor(roll7.length / 2);
+  const avgPrevHalf = roll7.slice(0, mid).reduce((s, v) => s + v, 0) / mid;
+  const avgCurrHalf = roll7.slice(mid).reduce((s, v) => s + v, 0) / (roll7.length - mid);
+  const accelPct    = avgPrevHalf > 0 ? ((avgCurrHalf - avgPrevHalf) / avgPrevHalf * 100) : 0;
+
+  // Volatilita (std dev denního AOV jako % průměru)
+  const mean    = pts.reduce((s, p) => s + p.aov, 0) / pts.length;
+  const stdDev  = Math.sqrt(pts.reduce((s, p) => s + Math.pow(p.aov - mean, 2), 0) / pts.length);
+  const volPct  = mean > 0 ? (stdDev / mean * 100) : 0;
+
+  // LTV projekce
+  const FREQ = 2.5, LIFE = 2;
+  const ltvNow   = Math.round(currentAOV * FREQ * LIFE);
+  const ltvFirst = Math.round(firstAOV * FREQ * LIFE);
+  const ltvGain  = ltvNow - ltvFirst;
+
+  // Hodnocení trendu
+  let trendIcon, trendLabel, trendColor;
+  if (trendPct >= 15) {
+    trendIcon = '🚀'; trendLabel = 'Silný růst AOV'; trendColor = '#16a34a';
+  } else if (trendPct >= 5) {
+    trendIcon = '📈'; trendLabel = 'Mírný růst AOV'; trendColor = '#65a30d';
+  } else if (trendPct >= -5) {
+    trendIcon = '→'; trendLabel = 'Stabilní AOV'; trendColor = '#ca8a04';
+  } else {
+    trendIcon = '📉'; trendLabel = 'Klesající AOV'; trendColor = '#dc2626';
+  }
+
+  // Doporučení
+  const recs = [];
+  if (currentAOV < 1200) {
+    recs.push({ icon: '💡', text: 'AOV pod 1 200 Kč — zaměř se na upsell a cross-sell v e-mailu i na produktových stránkách.', prio: 'high' });
+  }
+  if (volPct > 60) {
+    recs.push({ icon: '⚠️', text: `Vysoká denní volatilita AOV (σ=${Math.round(volPct)} % průměru) — sleduj, zda ji netáhnou sezónní špičky nebo velké B2B objednávky.`, prio: 'medium' });
+  }
+  if (trendPct >= 10) {
+    recs.push({ icon: '✅', text: 'AOV roste — zvažuj postupné zvyšování tROAS cíle, abys capture víc objemu s lepším marží profilem.', prio: 'low' });
+  }
+  if (accelPct < -5) {
+    recs.push({ icon: '🔍', text: 'Růst AOV zpomaluje v druhé polovině období — zkontroluj mix kampaní a klíčových slov (možná přibývají nízko-hodnotné dotazy).', prio: 'medium' });
+  }
+  if (currentAOV >= 2000) {
+    recs.push({ icon: '🎯', text: `AOV ${fmtCZK(Math.round(currentAOV))} → zákazníci kupují prémiové tituly. Testuj bundle nabídky a "frequently bought together".`, prio: 'low' });
+  }
+  if (recs.length === 0) {
+    recs.push({ icon: '✅', text: 'AOV v normálním pásmu bez výrazných anomálií — pokračuj v aktuální strategii.', prio: 'low' });
+  }
+
+  const prioColor = { high: '#dc2626', medium: '#ca8a04', low: '#16a34a' };
+
+  el.innerHTML = `
+    <div style="font-size:11px;font-weight:600;color:#6B7280;text-transform:uppercase;letter-spacing:.05em;margin-bottom:10px">
+      Shrnutí & interpretace
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px">
+      <div style="background:var(--bg);border-radius:8px;padding:10px">
+        <div class="kpi-lbl">Růst AOV (celé období)</div>
+        <div style="font-size:18px;font-weight:700;color:${growthPct>=0?'#16a34a':'#dc2626'}">${growthPct>=0?'+':''}${Math.round(growthPct)} %</div>
+        <div style="font-size:10px;color:#9CA3AF">${fmtCZK(firstAOV)} → ${fmtCZK(lastAOV)}</div>
+      </div>
+      <div style="background:var(--bg);border-radius:8px;padding:10px">
+        <div class="kpi-lbl">Trend (první vs poslední týden)</div>
+        <div style="font-size:18px;font-weight:700;color:${trendColor}">${trendIcon} ${trendPct>=0?'+':''}${Math.round(trendPct)} %</div>
+        <div style="font-size:10px;color:#9CA3AF">${trendLabel}</div>
+      </div>
+      <div style="background:var(--bg);border-radius:8px;padding:10px">
+        <div class="kpi-lbl">Přírůstek LTV (AOV efekt)</div>
+        <div style="font-size:18px;font-weight:700;color:#2563eb">${ltvGain >= 0 ? '+' : ''}${fmtCZK(ltvGain)}</div>
+        <div style="font-size:10px;color:#9CA3AF">${fmtCZK(ltvFirst)} → ${fmtCZK(ltvNow)}</div>
+      </div>
+    </div>
+    <div style="font-size:11px;color:#374151;line-height:1.55;margin-bottom:10px">
+      <strong>Interpretace:</strong>
+      AOV vzrostl z <strong>${fmtCZK(firstAOV)}</strong> na <strong>${fmtCZK(lastAOV)}</strong>
+      (<strong>${growthPct>=0?'+':''}${Math.round(growthPct)} %</strong>),
+      7d průměr poslední týden <strong>${fmtCZK(Math.round(avgLast7))}</strong> vs první týden <strong>${fmtCZK(Math.round(avgFirst7))}</strong>.
+      ${accelPct >= 3 ? `Trend <em>akceleruje</em> (+${Math.round(accelPct)} % v druhé půlce období).` :
+        accelPct <= -3 ? `Trend <em>zpomaluje</em> (${Math.round(accelPct)} % ve druhé půlce) — sleduj mix.` :
+        'Tempo růstu je rovnoměrné.'}
+      Denní volatilita <strong>${Math.round(volPct)} %</strong>
+      ${volPct > 60 ? '— pravděpodobně způsobena sezónními špičkami nebo B2B objednávkami.' :
+        volPct > 35 ? '— mírná, odpovídá běžné e-commerce variabilitě.' : '— nízká, stabilní objednávkový profil.'}
+      LTV odhad vzrostl o <strong>${fmtCZK(ltvGain)}</strong> na zákazníka, jen díky vyššímu AOV.
+    </div>
+    <div style="font-size:11px;font-weight:600;color:#6B7280;text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px">Doporučení</div>
+    ${recs.map(r => `
+      <div style="display:flex;align-items:flex-start;gap:6px;margin-bottom:5px;padding:7px 9px;background:var(--bg);border-radius:7px;border-left:3px solid ${prioColor[r.prio]}">
+        <span style="font-size:13px;flex-shrink:0">${r.icon}</span>
+        <span style="font-size:11px;color:#374151;line-height:1.45">${r.text}</span>
+      </div>`).join('')}
+  `;
+}
+
+/* ════════════════════════════════════════════════════════════
+   AOV: BS vs Control (bar chart)
+   ════════════════════════════════════════════════════════════ */
+function renderAOVvs(allCamps) {
+  const bs   = calcSegmentStats(allCamps, 'BS');
+  const ctrl = calcSegmentStats(allCamps, 'Control');
+  if (!bs && !ctrl) return;
+
+  document.getElementById('aov-vs-content').innerHTML = `
+    <div class="aov-vs">
+      <div class="aov-vs-item">
+        <div class="aov-vs-lbl" style="color:var(--brand)">🟠 BS AOV</div>
+        <div class="aov-vs-val" style="color:var(--brand)">${bs ? fmtCZK(Math.round(bs.aov)) : '–'}</div>
+      </div>
+      <div class="aov-vs-item">
+        <div class="aov-vs-lbl" style="color:var(--blue)">🔵 Control AOV</div>
+        <div class="aov-vs-val" style="color:var(--blue)">${ctrl ? fmtCZK(Math.round(ctrl.aov)) : '–'}</div>
+      </div>
+    </div>`;
+
+  destroyChart('aov-vs');
+  charts['aov-vs'] = new Chart(document.getElementById('chartAOV'), {
+    type: 'bar',
+    data: { labels:['AOV (Kč)'],
+      datasets: [
+        { label:'BS',      data:[ bs ? Math.round(bs.aov)   : 0 ], backgroundColor:'rgba(232,93,4,.7)',  borderRadius:6 },
+        { label:'Control', data:[ ctrl ? Math.round(ctrl.aov) : 0 ], backgroundColor:'rgba(37,99,235,.7)', borderRadius:6 },
+      ]},
+    options: { ...baseOpts(), indexAxis:'x',
+      plugins: { ...baseOpts().plugins,
+        datalabels:{ display:true, anchor:'end', align:'end', font:{family:'Inter',size:11,weight:'600'}, color:'#4B5563',
+                     formatter: v => fmtCZK(v) } },
+      scales: {
+        x:{ ticks:{ font:{family:'Inter',size:11}, color:'#9CA3AF' }, grid:{ display:false } },
+        y:{ ticks:{ font:{family:'Inter',size:11}, color:'#9CA3AF', callback:v=>fmtK(v) }, grid:{ color:'#F3F4F6' } },
+      },
+    },
+  });
+}
+
+/* ════════════════════════════════════════════════════════════
+   BS vs CONTROL VERSUS TABLE
+   ════════════════════════════════════════════════════════════ */
+function renderBSvsControl(allCamps) {
+  const bs   = calcSegmentStats(allCamps, 'BS');
+  const ctrl = calcSegmentStats(allCamps, 'Control');
+
+  // Period label
+  const active = getActiveDailyAds();
+  const pLbl = document.getElementById('vs-period-lbl');
+  if (pLbl && active.length) {
+    pLbl.textContent = `${active[0].date.slice(5)} – ${active[active.length-1].date.slice(5)} (${active.length} dní)`;
+  }
+
+  if (!bs || !ctrl) {
+    document.getElementById('vs-content').innerHTML = '<p class="note">Nedostatek dat pro srovnání segmentů.</p>';
+    return;
+  }
+
+  // Only ratio/normalized metrics — raw totals are misleading with unequal campaign counts
+  const metrics = [
+    { key:'roas',         lbl:'ROAS',            fmt: v => v.toFixed(2)+'×',           higherWins: true  },
+    { key:'cpa',          lbl:'CPA',             fmt: fmtCZK,                           higherWins: false },
+    { key:'aov',          lbl:'Prům. AOV',       fmt: v => fmtCZK(Math.round(v)),       higherWins: true  },
+    { key:'rev_per_camp', lbl:'Revenue/kampaň',  fmt: v => fmtCZK(Math.round(v)),       higherWins: true  },
+    { key:'conv_per_camp',lbl:'Konverze/kampaň', fmt: v => fmtNum(Math.round(v*10)/10), higherWins: true  },
+  ];
+
+  const rows = metrics.map(m => {
+    const bv = bs[m.key] || 0;
+    const cv = ctrl[m.key] || 0;
+    const bWins = m.higherWins ? bv > cv : bv < cv;
+    const cWins = m.higherWins ? cv > bv : cv < bv;
+    const tie   = Math.abs(bv-cv) < 0.01;
+    const wicon  = tie ? '<span class="vs-winner win-tie">–</span>' :
+                   bWins ? '<span class="vs-winner win-bs">🟠 BS</span>' :
+                           '<span class="vs-winner win-ctrl">🔵 Control</span>';
+    return `<tr>
+      <td class="val-bs ${bWins?'val-win-bs':''}" style="text-align:right">${m.fmt(bv)}</td>
+      <td class="mid" style="font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--t3);text-align:center;padding:10px 16px">${m.lbl}</td>
+      <td class="mid" style="text-align:center">${wicon}</td>
+      <td class="val-ctrl ${cWins?'val-win-ctrl':''}" style="text-align:left">${m.fmt(cv)}</td>
+    </tr>`;
+  }).join('');
+
+  // Share bars
+  const totalRev  = bs.revenue_czk + ctrl.revenue_czk;
+  const totalCost = bs.cost_czk + ctrl.cost_czk;
+  const totalAOV  = bs.aov + ctrl.aov;
+  const bsRevShare  = totalRev  > 0 ? Math.round(bs.revenue_czk / totalRev  * 100) : 0;
+  const bsCostShare = totalCost > 0 ? Math.round(bs.cost_czk    / totalCost * 100) : 0;
+  const bsAOVShare  = totalAOV  > 0 ? Math.round(bs.aov         / totalAOV  * 100) : 0;
+
+  // Decision recommendation based on ROAS vs target and relative efficiency
+  const TARGET = RAW.ads?.target_roas || 12;
+  const bsAboveTarget   = bs.roas  >= TARGET;
+  const ctrlAboveTarget = ctrl.roas >= TARGET;
+  const roasGapPct = ((ctrl.roas - bs.roas) / ctrl.roas * 100).toFixed(1);
+  let recText, recColor, recIcon;
+  if (!bsAboveTarget && ctrlAboveTarget) {
+    recIcon  = '🔴 Zastavit BS?';
+    recColor = 'var(--red)';
+    recText  = `BS kampaně jsou pod cílovým ROAS (${bs.roas.toFixed(2)}× &lt; ${TARGET}×), zatímco Control segment cíl plní (${ctrl.roas.toFixed(2)}×). Doporučujeme přesunout BS budget do Control nebo agresivně optimalizovat BS publikum.`;
+  } else if (bs.roas >= ctrl.roas) {
+    recIcon  = '✅ Škálovat BS';
+    recColor = 'var(--green)';
+    recText  = `BS kampaně překonávají Control v ROAS (${bs.roas.toFixed(2)}× vs ${ctrl.roas.toFixed(2)}×) i přes nižší počet kampaní. BS budget je opodstatněný — zvažte navýšení.`;
+  } else if (bsAboveTarget) {
+    recIcon  = '⚠️ Monitorovat';
+    recColor = '#C2410C';
+    recText  = `BS kampaně jsou nad cílem (${bs.roas.toFixed(2)}×), ale Control je efektivnější o ${roasGapPct}% ROAS. BS spotřebovává ${bsCostShare}% budgetu a přináší ${bsRevShare}% revenue. Zachovejte BS — ale nastavte hranici: pokud ROAS klesne pod ${TARGET}×, přesuňte budget.`;
+  } else {
+    recIcon  = '🔴 Pozor';
+    recColor = 'var(--red)';
+    recText  = `Oba segmenty jsou pod cílovým ROAS (${TARGET}×). Zkontrolujte celkovou strategii a produktový mix.`;
+  }
+
+  document.getElementById('vs-content').innerHTML = `
+    <table class="vs-table">
+      <thead><tr>
+        <th class="th-bs" style="text-align:right">🟠 BS kampaně (${bs.count})</th>
+        <th class="th-mid">Metrika</th>
+        <th class="th-mid">Winner</th>
+        <th class="th-ctrl">🔵 Control (${ctrl.count})</th>
+      </tr></thead>
+      <tbody>${rows}</tbody>
+    </table>
+    <div style="margin-top:14px">
+      <div class="share-row">
+        <span class="share-lbl">Revenue</span>
+        <div class="share-bar-wrap">
+          <div class="share-bs"   style="width:${bsRevShare}%"><span class="share-bar-lbl">${bsRevShare}%</span></div>
+          <div class="share-ctrl" style="flex:1"><span class="share-bar-lbl">${100-bsRevShare}%</span></div>
+        </div>
+      </div>
+      <div class="share-row">
+        <span class="share-lbl">Útrata</span>
+        <div class="share-bar-wrap">
+          <div class="share-bs"   style="width:${bsCostShare}%"><span class="share-bar-lbl">${bsCostShare}%</span></div>
+          <div class="share-ctrl" style="flex:1"><span class="share-bar-lbl">${100-bsCostShare}%</span></div>
+        </div>
+      </div>
+      <div class="share-row">
+        <span class="share-lbl">Avg. AOV</span>
+        <div class="share-bar-wrap">
+          <div class="share-bs"   style="width:${bsAOVShare}%"><span class="share-bar-lbl">${fmtCZK(Math.round(bs.aov))}</span></div>
+          <div class="share-ctrl" style="flex:1"><span class="share-bar-lbl">${fmtCZK(Math.round(ctrl.aov))}</span></div>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:14px;padding:14px 16px;border-left:3px solid ${recColor};background:#F9FAFB;border-radius:0 10px 10px 0">
+      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:${recColor};margin-bottom:6px">${recIcon}</div>
+      <div style="font-size:13px;color:var(--t2);line-height:1.55">${recText}</div>
+    </div>
+  `;
+}
+
+/* ════════════════════════════════════════════════════════════
+   ALERTS (audience fatigue + top performer; budget is separate)
+   ════════════════════════════════════════════════════════════ */
+function renderAlerts(daily, totals, allCamps) {
+  const strip  = document.getElementById('alerts-strip');
+  const alerts = [];
+
+  // 1. Audience fatigue
+  if (daily.length>=7 && totals.cpa>0) {
+    const last7  = daily.slice(-7);
+    const cpa7   = last7.reduce((s,d)=>s+(d.cpa||0),0)/last7.length;
+    const avgCPA = totals.cpa;
+    if (cpa7 > avgCPA*1.5) {
+      const overpct = Math.round((cpa7/avgCPA-1)*100);
+      alerts.push({ type:'red', icon:'🔴', title:'Audience Fatigue',
+        desc:`CPA posl. 7 dní: ${fmtCZK(Math.round(cpa7))} (+${overpct}% nad průměrem ${fmtCZK(Math.round(avgCPA))}). Doporučujeme obnovit publikum v Boost.space.` });
+    }
+  }
+
+  // 2. Below target ROAS alert
+  const TARGET = RAW.ads?.target_roas || 12;
+  if (totals.roas > 0 && totals.roas < TARGET) {
+    const gap = ((TARGET - totals.roas) / TARGET * 100).toFixed(1);
+    alerts.push({ type:'yellow', icon:'📉', title:`ROAS pod cílem`,
+      desc:`Aktuální ROAS: ${totals.roas.toFixed(2)}× — cíl: ${TARGET}× (rozdíl: ${gap}%). Zkontroluj kampaně s nízkým ROAS v tabulce níže.` });
+  }
+
+  // 3. Top performer
+  const eligible = allCamps.filter(c => c.conversions>=50 && c.type!=='Brand' && (ST.activeCamp==='all' || c.type===ST.activeCamp));
+  if (eligible.length) {
+    const top = eligible.reduce((a,b) => a.roas>b.roas?a:b);
+    alerts.push({ type:'green', icon:'🏆', title:'Top performer (ROAS)',
+      desc:`${truncate(top.name,50)} — ROAS ${top.roas.toFixed(2)}×, Revenue ${fmtCZK(top.revenue_czk)}, ${fmtNum(top.conversions)} konverzí.` });
+  }
+
+  while (alerts.length<3) alerts.push({ type:'green', icon:'✅', title:'Vše v pořádku', desc:'Žádné další upozornění.' });
+  strip.innerHTML = alerts.slice(0,3).map(a=>`
+    <div class="alert-card ${a.type}">
+      <div class="alert-icon">${a.icon}</div>
+      <div class="alert-body">
+        <div class="alert-title">${a.title}</div>
+        <div class="alert-desc">${a.desc}</div>
+      </div>
+    </div>`).join('');
+}
+
+/* ════════════════════════════════════════════════════════════
+   SESSIONS + CHANNELS
+   ════════════════════════════════════════════════════════════ */
+function renderSessionsChart(ga4daily) {
+  destroyChart('sess');
+  if (!ga4daily.length) return;
+  const labels   = ga4daily.map(d => d.date.slice(5));
+  const sessions = ga4daily.map(d => d.sessions);
+  const engaged  = ga4daily.map(d => d.engaged_sessions||0);
+  charts['sess'] = new Chart(document.getElementById('chartSessions'), {
+    type:'line', data:{ labels, datasets:[
+      { label:'Sessions', data:sessions, borderColor:'#2563EB', backgroundColor:'rgba(37,99,235,.10)', fill:true, tension:.35, pointRadius:1.5, borderWidth:2 },
+      { label:'Engaged',  data:engaged,  borderColor:'#16A34A', backgroundColor:'rgba(22,163,74,.08)',  fill:true, tension:.35, pointRadius:1.5, borderWidth:2 },
+    ]},
+    options:{ ...baseOpts(), plugins:{ ...baseOpts().plugins, datalabels:{ display:false } },
+      scales:{
+        x:{ ticks:{ font:{family:'Inter',size:11}, color:'#9CA3AF', maxTicksLimit:10 }, grid:{ display:false } },
+        y:{ ticks:{ font:{family:'Inter',size:11}, color:'#9CA3AF', callback:v=>fmtK(v) }, grid:{ color:'#F3F4F6' } },
+      },
+    },
+  });
+}
+
+function renderChannelsChart(ga4) {
+  destroyChart('channels');
+  if (!ga4?.channels) return;
+  const sorted = [...ga4.channels].sort((a,b)=>b.sessions-a.sessions);
+  const top6   = sorted.slice(0,6);
+  const rest   = sorted.slice(6).reduce((s,c)=>s+c.sessions,0);
+  if (rest>0) top6.push({ channel:'Ostatní', sessions:rest });
+  const COLORS = ['#E85D04','#2563EB','#16A34A','#F97316','#7C3AED','#0891B2','#9CA3AF'];
+  const total  = top6.reduce((s,c)=>s+c.sessions,0);
+
+  charts['channels'] = new Chart(document.getElementById('chartChannels'), {
+    type:'doughnut',
+    data:{ labels:top6.map(c=>c.channel), datasets:[{
+      data:top6.map(c=>c.sessions), backgroundColor:COLORS, borderWidth:2, borderColor:'#fff', hoverOffset:6
+    }]},
+    options:{ ...baseOpts(), cutout:'60%',
+      plugins:{ ...baseOpts().plugins,
+        legend:{ position:'right', labels:{ font:{family:'Inter',size:11}, color:'#4B5563', boxWidth:10, padding:10 } },
+        datalabels:{ display:true, color:'#fff',
+          font:{ family:'Inter', size:10, weight:'700' },
+          formatter:(v)=>{
+            const pct=Math.round(v/total*100);
+            return pct>6 ? pct+'%' : '';
+          }
+        },
+      },
+    },
+  });
+}
+
+/* ════════════════════════════════════════════════════════════
+   CAMPAIGN BAR (with data labels)
+   ════════════════════════════════════════════════════════════ */
+function renderCampaignChart(camps) {
+  destroyChart('camps');
+  const top10   = [...camps].sort((a,b)=>b.cost_czk-a.cost_czk).slice(0,10);
+  const labels  = top10.map(c=>truncate(c.name,32));
+  const campColor = c => c.type==='BS'?'rgba(232,93,4,X)' : (c.type==='Brand'?'rgba(22,163,74,X)':'rgba(37,99,235,X)');
+  const costClr = top10.map(c=>campColor(c).replace('X','.85'));
+  const revClr  = top10.map(c=>campColor(c).replace('X','.25'));
+  const revBord = top10.map(c=>campColor(c).replace('X','.55'));
+  charts['camps'] = new Chart(document.getElementById('chartCampaigns'), {
+    type:'bar',
+    data:{ labels, datasets:[
+      { label:'Útrata (Kč)',      data:top10.map(c=>c.cost_czk),    backgroundColor:costClr,
+        borderRadius:3, borderSkipped:false, xAxisID:'xCost' },
+      { label:'Conv. value (Kč)', data:top10.map(c=>c.revenue_czk), backgroundColor:revClr,
+        borderColor:revBord, borderWidth:1, borderRadius:3, borderSkipped:false, xAxisID:'xRev' },
+    ]},
+    options:{ ...baseOpts(), indexAxis:'y',
+      plugins:{ ...baseOpts().plugins,
+        legend:{ display:true, position:'top',
+          labels:{ font:{family:'Inter',size:12}, color:'#4B5563', boxWidth:12, padding:14 } },
+        datalabels:{ display:true, anchor:'end', align:'start',
+          color: ctx => ctx.datasetIndex===0 ? '#fff' : '#6B7280',
+          font:{ family:'Inter', size:10, weight:'700' },
+          formatter: v => v>0 ? (v>=1000000?(v/1000000).toFixed(1)+'M':(v>=1000?Math.round(v/1000)+'k':Math.round(v))) : '',
+        },
+        tooltip:{ callbacks:{
+          label: ctx => {
+            const label = ctx.dataset.label || '';
+            return ` ${label}: ${CZK.format(ctx.parsed.x)}`;
+          }
+        }},
+      },
+      scales:{
+        xCost:{ position:'bottom', title:{ display:true, text:'Útrata (Kč)', font:{family:'Inter',size:11}, color:'#9CA3AF' },
+          ticks:{ font:{family:'Inter',size:11}, color:'#9CA3AF', callback:v=>fmtK(v) }, grid:{ color:'#F3F4F6' } },
+        xRev:{  position:'top',    title:{ display:true, text:'Conv. value (Kč)', font:{family:'Inter',size:11}, color:'#9CA3AF' },
+          ticks:{ font:{family:'Inter',size:11}, color:'#9CA3AF', callback:v=>fmtK(v) }, grid:{ display:false } },
+        y:{ ticks:{ font:{family:'Inter',size:11}, color:'#4B5563' }, grid:{ display:false } },
+      },
+    },
+  });
+}
+
+/* ════════════════════════════════════════════════════════════
+   CAMPAIGN TABLE
+   ════════════════════════════════════════════════════════════ */
+function renderTable(camps) {
+  const tbody = document.getElementById('camp-tbody');
+  const TARGET_ROAS = RAW.ads?.target_roas || 12;
+  if (!camps.length) {
+    tbody.innerHTML='<tr><td colspan="10" style="text-align:center;color:var(--t3);padding:32px">Žádné kampaně</td></tr>';
+    return;
+  }
+  tbody.innerHTML = camps.map(c=>`
+    <tr>
+      <td><div class="cn" title="${esc(c.name)}">${esc(c.name)}</div></td>
+      <td><span class="badge ${c.type==='BS'?'badge-bs':(c.type==='Brand'?'badge-brand':'badge-ctrl')}">${c.type}</span></td>
+      <td class="num">${fmtCZK(c.cost_czk)}</td>
+      <td class="num">${c.revenue_czk>0?fmtCZK(c.revenue_czk):'–'}</td>
+      <td class="num ${c.roas>=TARGET_ROAS?'num-pos':(c.roas>0&&c.roas<TARGET_ROAS?'num-neg':'')}">${c.roas>0?c.roas.toFixed(2)+'×':'–'}</td>
+      <td class="num">${c.aov>0?fmtCZK(Math.round(c.aov)):'–'}</td>
+      <td class="num">${fmtNum(c.clicks)}</td>
+      <td class="num">${fmtNum(c.conversions)}</td>
+      <td class="num">${fmtCZK(c.cpa)}</td>
+      <td><span class="badge ${c.status==='ENABLED'?'badge-on':'badge-off'}">${c.status==='ENABLED'?'Aktivní':'Pozast.'}</span></td>
+    </tr>`).join('');
+}
+
+/* ════════════════════════════════════════════════════════════
+   BASE CHART OPTIONS
+   ════════════════════════════════════════════════════════════ */
+function baseOpts() {
+  return {
+    animation: false,
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend:    { labels:{ font:{ family:'Inter', size:12 }, color:'#4B5563', boxWidth:12, padding:14 } },
+      tooltip:   { bodyFont:{ family:'Inter' }, titleFont:{ family:'Inter', weight:'600' } },
+      datalabels:{ display: false },
+    },
+  };
+}
+
+function destroyChart(k) { if (charts[k]) { charts[k].destroy(); delete charts[k]; } }
+
+/* ════════════════════════════════════════════════════════════
+   HELPERS
+   ════════════════════════════════════════════════════════════ */
+// (CZK and NUM declared at top of script)
+function fmtCZK(v) { return (v==null)?'–':CZK.format(v); }
+function fmtNum(v) { return (v==null)?'–':NUM.format(v); }
+function fmtK(v)   { return v>=1000000?(v/1000000).toFixed(1)+'M':(v>=1000?(v/1000).toFixed(0)+'k':v); }
+function truncate(s,n) { return s.length>n?s.slice(0,n)+'…':s; }
+function esc(s) { return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+function setText(id,val) { const e=document.getElementById(id); if(e) e.textContent=val; }
+function showLoading(v) { document.getElementById('loading').classList.toggle('hidden',!v); }
+function showToast(msg,ms=3000) {
+  const t=document.getElementById('toast');
+  t.textContent=msg; t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),ms);
+}
+
+/* ════════════════════════════════════════════════════════════
+   TAB SWITCHING
+   ════════════════════════════════════════════════════════════ */
+function switchTab(tab) {
+  document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + tab).classList.add('active');
+  document.getElementById('tab-' + tab + '-btn').classList.add('active');
+  if ((tab === 'impact' || tab === 'meta' || tab === 'combined') && !COMP) loadComparison();
+  if (tab === 'meta'     && COMP) { renderMetaImpact(META_RAW); renderAllInsights(COMP, META_RAW); }
+  if (tab === 'combined' && COMP) { renderCombined(COMP, META_RAW); renderAllInsights(COMP, META_RAW); }
+  if (tab === 'impact'   && COMP) renderAllInsights(COMP, META_RAW);
+}
+
+/* ════════════════════════════════════════════════════════════
+   COMPARISON DATA
+   ════════════════════════════════════════════════════════════ */
+let COMP     = null;
+let META_RAW = null;
+
+async function loadComparison() {
+  try {
+    const [compResp, metaResp] = await Promise.all([
+      fetch('./data/comparison_data.json'),
+      fetch('./data/meta_data.json'),
+    ]);
+    const d = {
+      comparison: compResp.ok ? await compResp.json() : null,
+      meta:       metaResp.ok ? await metaResp.json() : null,
+    };
+    COMP     = d.comparison;
+    META_RAW = d.meta;
+    renderImpact(COMP, META_RAW);
+    if (document.getElementById('tab-meta')?.classList.contains('active'))     renderMetaImpact(META_RAW);
+    if (document.getElementById('tab-combined')?.classList.contains('active')) renderCombined(COMP, META_RAW);
+    renderAllInsights(COMP, META_RAW);
+  } catch(e) {
+    document.getElementById('cmp-kpi-grid').innerHTML =
+      `<div style="grid-column:1/-1;text-align:center;color:var(--t3);padding:40px">
+         ⚠️ ${e.message} — klikni na "Fetch new data"
+       </div>`;
+  }
+}
+
+async function refreshComparison() {
+  showToast('ℹ️ Data jsou aktualizována automaticky každý den v 09:00.', 4000);
+}
+
+/* ════════════════════════════════════════════════════════════
+   RENDER IMPACT TAB
+   ════════════════════════════════════════════════════════════ */
+function renderImpact(comp, meta) {
+  if (!comp) return;
+
+  // Period label
+  const periodEl = document.getElementById('impact-period-lbl');
+  if (periodEl) periodEl.textContent = `📅 ${comp.date_start} – ${comp.date_end}`;
+
+  // Timestamp
+  if (comp.fetched_at) {
+    const d = new Date(comp.fetched_at);
+    const el = document.getElementById('impact-update-ts');
+    if (el) el.textContent = 'Aktualizováno: ' + d.toLocaleDateString('cs-CZ') + ' ' +
+      d.toLocaleTimeString('cs-CZ',{hour:'2-digit',minute:'2-digit'});
+  }
+
+  const bs   = comp.bs_totals;
+  const ctrl = comp.control_totals;
+
+  renderCmpKPIs(bs, ctrl);
+  renderImpactRevenueChart(comp);
+  renderImpactROASChart(comp);
+  renderImpactTable(comp.campaigns);
+  if (meta) renderMetaSection(meta);
+}
+
+function renderCmpKPIs(bs, ctrl) {
+  const grid = document.getElementById('cmp-kpi-grid');
+  if (!grid) return;
+
+  const metrics = [
+    { key:'cost_czk',      label:'Cost',             fmt: v=>fmtCZK(Math.round(v)),  lowerIsBetter:true  },
+    { key:'revenue_czk',   label:'Conv. Value',       fmt: v=>fmtCZK(Math.round(v)),  lowerIsBetter:false },
+    { key:'roas',          label:'ROAS',              fmt: v=>v.toFixed(2)+'×',       lowerIsBetter:false },
+    { key:'ctr_pct',       label:'CTR',               fmt: v=>v.toFixed(2)+'%',       lowerIsBetter:false },
+    { key:'avg_cpc',       label:'CPC',               fmt: v=>fmtCZK(v.toFixed(2)),   lowerIsBetter:true  },
+    { key:'conv_rate_pct', label:'Conversion Rate',   fmt: v=>v.toFixed(2)+'%',       lowerIsBetter:false },
+    { key:'aov',           label:'AOV',               fmt: v=>fmtCZK(Math.round(v)),  lowerIsBetter:false },
+    { key:'ltv',           label:'LTV (est.)',        fmt: v=>fmtCZK(Math.round(v)),  lowerIsBetter:false },
+  ];
+
+  grid.innerHTML = metrics.map(m => {
+    const bsVal   = bs?.[m.key]   || 0;
+    const ctrlVal = ctrl?.[m.key] || 0;
+    const pct     = ctrlVal > 0 ? ((bsVal - ctrlVal) / ctrlVal * 100) : null;
+    const total   = bsVal + ctrlVal;
+    const bsShare = total > 0 ? (bsVal / total * 100) : 50;
+
+    let winClass, winLabel, winPct;
+    if (pct === null || Math.abs(pct) < 1) {
+      winClass = 'cmp-win-tie'; winLabel = '≈ Tie'; winPct = '';
+    } else {
+      const bsWins = m.lowerIsBetter ? bsVal < ctrlVal : bsVal > ctrlVal;
+      if (bsWins) {
+        winClass = 'cmp-win-bs'; winLabel = '🟠 BS wins';
+        winPct = (m.lowerIsBetter ? '↓' : '↑') + Math.abs(pct).toFixed(1) + '%';
+      } else {
+        winClass = 'cmp-win-ctrl'; winLabel = '🔵 Control wins';
+        winPct = (m.lowerIsBetter ? '↑' : '↓') + Math.abs(pct).toFixed(1) + '%';
+      }
+    }
+
+    return `
+      <div class="cmp-card">
+        <div class="cmp-metric">${m.label}</div>
+        <div class="cmp-row">
+          <div class="cmp-group">
+            <div class="cmp-lbl cmp-lbl-bs">🟠 BS</div>
+            <div class="cmp-val">${m.fmt(bsVal)}</div>
+          </div>
+          <div class="cmp-winner">
+            <span class="cmp-win-badge ${winClass}">${winLabel}</span>
+            <span class="cmp-win-pct" style="color:${winClass==='cmp-win-bs'?'var(--brand)':winClass==='cmp-win-ctrl'?'var(--blue)':'var(--t3)'}">${winPct}</span>
+          </div>
+          <div class="cmp-group" style="text-align:right">
+            <div class="cmp-lbl cmp-lbl-ctrl" style="text-align:right">Control 🔵</div>
+            <div class="cmp-val">${m.fmt(ctrlVal)}</div>
+          </div>
+        </div>
+        <div class="cmp-bar-wrap">
+          <div class="cmp-bar-bs" style="width:${bsShare.toFixed(1)}%"></div>
+        </div>
+      </div>`;
+  }).join('');
+}
+
+function renderImpactRevenueChart(comp) {
+  destroyChart('impact-rev');
+  const bsDaily   = comp.daily_bs   || [];
+  const ctrlDaily = comp.daily_control || [];
+  const allDates  = [...new Set([...bsDaily.map(d=>d.date), ...ctrlDaily.map(d=>d.date)])].sort();
+  if (!allDates.length) return;
+
+  const bsMap   = Object.fromEntries(bsDaily.map(d=>[d.date, d.revenue_czk||0]));
+  const ctrlMap = Object.fromEntries(ctrlDaily.map(d=>[d.date, d.revenue_czk||0]));
+
+  charts['impact-rev'] = new Chart(document.getElementById('chartImpactRevenue'), {
+    type: 'line',
+    data: {
+      labels: allDates.map(d=>d.slice(5)),
+      datasets: [
+        { label:'BS Revenue', data: allDates.map(d=>bsMap[d]||0),
+          borderColor:'#E85D04', backgroundColor:'rgba(232,93,4,.08)',
+          fill:true, tension:.35, pointRadius:0, borderWidth:2 },
+        { label:'Control Revenue', data: allDates.map(d=>ctrlMap[d]||0),
+          borderColor:'#2563EB', backgroundColor:'rgba(37,99,235,.06)',
+          fill:true, tension:.35, pointRadius:0, borderWidth:2 },
+      ]
+    },
+    options: { ...baseOpts(),
+      plugins: { ...baseOpts().plugins, datalabels:{ display:false } },
+      scales: {
+        x: { ticks:{ font:{family:'Inter',size:10}, color:'#9CA3AF', maxTicksLimit:12 }, grid:{ display:false } },
+        y: { ticks:{ font:{family:'Inter',size:10}, color:'#9CA3AF', callback:v=>fmtK(v) }, grid:{ color:'#F3F4F6' } },
+      }
+    }
+  });
+}
+
+function renderImpactROASChart(comp) {
+  destroyChart('impact-roas');
+  const bsDaily   = comp.daily_bs   || [];
+  const ctrlDaily = comp.daily_control || [];
+  const allDates  = [...new Set([...bsDaily.map(d=>d.date), ...ctrlDaily.map(d=>d.date)])].sort();
+  if (!allDates.length) return;
+
+  const roasOf = arr => {
+    const m = Object.fromEntries(arr.map(d=>[d.date, { cost:d.cost_czk||0, rev:d.revenue_czk||0 }]));
+    return allDates.map(d => {
+      const x = m[d]; return (x && x.cost > 0) ? Math.round(x.rev/x.cost*100)/100 : 0;
+    });
+  };
+
+  charts['impact-roas'] = new Chart(document.getElementById('chartImpactROAS'), {
+    type: 'line',
+    data: {
+      labels: allDates.map(d=>d.slice(5)),
+      datasets: [
+        { label:'BS ROAS', data: roasOf(bsDaily),
+          borderColor:'#E85D04', pointRadius:0, borderWidth:2, tension:.35, fill:false,
+          datalabels:{display:false} },
+        { label:'Control ROAS', data: roasOf(ctrlDaily),
+          borderColor:'#2563EB', pointRadius:0, borderWidth:2, tension:.35, fill:false,
+          datalabels:{display:false} },
+        { label:'Target 12×', data: Array(allDates.length).fill(12),
+          borderColor:'#DC2626', borderDash:[6,3], borderWidth:1.5, pointRadius:0, fill:false,
+          datalabels:{display:false} },
+      ]
+    },
+    options: { ...baseOpts(),
+      plugins: { ...baseOpts().plugins, datalabels:{display:false} },
+      scales: {
+        x: { ticks:{ font:{family:'Inter',size:10}, color:'#9CA3AF', maxTicksLimit:12 }, grid:{ display:false } },
+        y: { ticks:{ font:{family:'Inter',size:10}, color:'#9CA3AF', callback:v=>v.toFixed(1)+'×' }, grid:{ color:'#F3F4F6' } },
+      }
+    }
+  });
+}
+
+function renderImpactTable(campaigns) {
+  const tbody = document.getElementById('impact-tbody');
+  if (!tbody || !campaigns?.length) return;
+  const FREQ=2.5, LIFE=2;
+  tbody.innerHTML = campaigns.map(c => {
+    const t = c.totals;
+    const isBs = c.group === 'BS';
+    return `<tr>
+      <td class="cn" title="${c.name}">${c.name}</td>
+      <td><span class="badge ${isBs?'badge-bs':'badge-ctrl'}">${c.group}</span></td>
+      <td class="num">${fmtCZK(Math.round(t.cost_czk||0))}</td>
+      <td class="num">${fmtCZK(Math.round(t.revenue_czk||0))}</td>
+      <td class="num ${(t.roas||0)>=15?'num-pos':''}">${(t.roas||0).toFixed(2)}×</td>
+      <td class="num">${(t.ctr_pct||0).toFixed(2)}%</td>
+      <td class="num">${fmtCZK((t.avg_cpc||0).toFixed(2))}</td>
+      <td class="num">${(t.conv_rate_pct||0).toFixed(2)}%</td>
+      <td class="num">${fmtCZK(Math.round(t.aov||0))}</td>
+      <td class="num">${fmtCZK(Math.round((t.aov||0)*FREQ*LIFE))}</td>
+    </tr>`;
+  }).join('');
+}
+
+function renderMetaSection(meta) {
+  const el = document.getElementById('meta-content');
+  if (!el) return;
+  if (!meta || meta.error) {
+    el.innerHTML = `<div class="meta-error">Meta data nejsou k dispozici: ${meta?.error||'no data'}</div>`;
+    return;
+  }
+  const t = meta.totals || {};
+  el.innerHTML = `
+    <div class="row row-5" style="gap:10px">
+      ${[
+        ['Spend', '€'+Number(t.spend||0).toFixed(0)],
+        ['Revenue', '€'+Number(t.revenue||0).toFixed(0)],
+        ['ROAS', (t.roas||0).toFixed(2)+'×'],
+        ['CTR', (t.ctr_pct||0).toFixed(2)+'%'],
+        ['CPC', '€'+(t.cpc||0).toFixed(2)],
+      ].map(([lbl,val])=>`
+        <div class="kpi-card">
+          <div class="kpi-lbl">${lbl}</div>
+          <div class="kpi-val" style="font-size:20px">${val}</div>
+        </div>`).join('')}
+    </div>`;
+}
+
+/* ════════════════════════════════════════════════════════════
+   COMBINED VIEW TAB
+   ════════════════════════════════════════════════════════════ */
+function renderCombined(comp, meta) {
+  if (!comp) return;
+
+  // Period + timestamp from Google Ads comparison
+  const pEl = document.getElementById('combined-period-lbl');
+  if (pEl) pEl.textContent = `📅 ${comp.date_start} – ${comp.date_end}`;
+  const tsEl = document.getElementById('combined-update-ts');
+  if (tsEl && comp.fetched_at) {
+    const d = new Date(comp.fetched_at);
+    tsEl.textContent = 'Aktualizováno: ' + d.toLocaleDateString('cs-CZ') + ' ' + d.toLocaleTimeString('cs-CZ',{hour:'2-digit',minute:'2-digit'});
+  }
+
+  const gBs   = comp.bs_totals   || {};
+  const gCtrl = comp.control_totals || {};
+  const mBs   = meta ? aggMetaCampaigns(meta.campaigns, META_BS_IDS)   : null;
+  const mCtrl = meta ? aggMetaCampaigns(meta.campaigns, META_CTRL_IDS) : null;
+
+  // ── Platform summary cards ────────────────────────────────
+  const cardsEl = document.getElementById('combined-platform-cards');
+  const platCard = (title, icon, bsT, ctrlT, fmtCost, fmtRev, fmtROAS) => `
+    <div class="card">
+      <div class="card-title" style="font-size:13px;font-weight:700;color:var(--t1);margin-bottom:16px">${icon} ${title}</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+        <div style="background:var(--brandBg,#fff7f0);border:1px solid rgba(232,93,4,.2);border-radius:10px;padding:14px">
+          <div style="font-size:10px;font-weight:700;color:var(--brand);letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px">🟠 BS Campaigns</div>
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <div><span style="font-size:10px;color:var(--t3)">Cost</span><br><strong>${fmtCost(bsT.cost_czk||bsT.spend||0)}</strong></div>
+            <div><span style="font-size:10px;color:var(--t3)">Conv. Value</span><br><strong>${fmtRev(bsT.revenue_czk||bsT.revenue||0)}</strong></div>
+            <div><span style="font-size:10px;color:var(--t3)">ROAS</span><br><strong>${fmtROAS(bsT)}</strong></div>
+            <div><span style="font-size:10px;color:var(--t3)">CTR</span><br><strong>${(bsT.ctr_pct||bsT.ctr||0).toFixed(2)}%</strong></div>
+          </div>
+        </div>
+        <div style="background:var(--blueL);border:1px solid rgba(37,99,235,.2);border-radius:10px;padding:14px">
+          <div style="font-size:10px;font-weight:700;color:var(--blue);letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px">🔵 Control</div>
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <div><span style="font-size:10px;color:var(--t3)">Cost</span><br><strong>${fmtCost(ctrlT.cost_czk||ctrlT.spend||0)}</strong></div>
+            <div><span style="font-size:10px;color:var(--t3)">Conv. Value</span><br><strong>${fmtRev(ctrlT.revenue_czk||ctrlT.revenue||0)}</strong></div>
+            <div><span style="font-size:10px;color:var(--t3)">ROAS</span><br><strong>${fmtROAS(ctrlT)}</strong></div>
+            <div><span style="font-size:10px;color:var(--t3)">CTR</span><br><strong>${(ctrlT.ctr_pct||ctrlT.ctr||0).toFixed(2)}%</strong></div>
+          </div>
+        </div>
+      </div>
+    </div>`;
+
+  const gROAS = t => t.roas ? t.roas.toFixed(2)+'×' : (t.revenue_czk&&t.cost_czk ? (t.revenue_czk/t.cost_czk).toFixed(2)+'×' : '—');
+  const mROAS = t => t.roas ? t.roas.toFixed(2)+'×' : (t.revenue&&t.spend ? (t.revenue/t.spend).toFixed(2)+'×' : '—');
+
+  cardsEl.innerHTML =
+    platCard('Google Ads', '🟢', gBs, gCtrl,
+      v => fmtCZK(Math.round(v)), v => fmtCZK(Math.round(v)), gROAS) +
+    (mBs ? platCard('Meta Ads', '🔵', mBs, mCtrl,
+      v => EUR(v), v => EUR(v), mROAS) : '<div class="card" style="text-align:center;color:var(--t3);padding:40px">Meta data nejsou k dispozici</div>');
+
+  // ── BS Wins Scoreboard ────────────────────────────────────
+  const metrics = [
+    { label:'ROAS',   gBs: gBs.roas,       gCtrl: gCtrl.roas,       mBs: mBs?.roas,        mCtrl: mCtrl?.roas,        lower:false },
+    { label:'CTR',    gBs: gBs.ctr_pct,    gCtrl: gCtrl.ctr_pct,    mBs: mBs?.ctr_pct,     mCtrl: mCtrl?.ctr_pct,     lower:false },
+    { label:'CPC',    gBs: gBs.avg_cpc,    gCtrl: gCtrl.avg_cpc,    mBs: mBs?.avg_cpc,     mCtrl: mCtrl?.avg_cpc,     lower:true  },
+    { label:'Conv.R', gBs: gBs.conv_rate_pct, gCtrl: gCtrl.conv_rate_pct, mBs: mBs?.conv_rate_pct, mCtrl: mCtrl?.conv_rate_pct, lower:false },
+    { label:'AOV',    gBs: gBs.aov,        gCtrl: gCtrl.aov,        mBs: mBs?.aov,         mCtrl: mCtrl?.aov,         lower:false },
+  ];
+  let gBsWins=0, gCtrlWins=0, mBsWins=0, mCtrlWins=0;
+  metrics.forEach(m => {
+    if (m.gBs != null && m.gCtrl != null) {
+      const bsWin = m.lower ? m.gBs < m.gCtrl : m.gBs > m.gCtrl;
+      if (Math.abs((m.gBs-m.gCtrl)/(m.gCtrl||1)*100) > 1) { if(bsWin) gBsWins++; else gCtrlWins++; }
+    }
+    if (m.mBs != null && m.mCtrl != null) {
+      const bsWin = m.lower ? m.mBs < m.mCtrl : m.mBs > m.mCtrl;
+      if (Math.abs((m.mBs-m.mCtrl)/(m.mCtrl||1)*100) > 1) { if(bsWin) mBsWins++; else mCtrlWins++; }
+    }
+  });
+  const totalBs   = gBsWins + mBsWins;
+  const totalCtrl = gCtrlWins + mCtrlWins;
+  const totalMetrics = metrics.length * (mBs ? 2 : 1);
+
+  document.getElementById('combined-scoreboard').innerHTML = `
+    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px">
+      <div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--t3);margin-bottom:6px">Cross-Platform Score (${totalMetrics} metrics)</div>
+        <div style="font-size:28px;font-weight:800;color:var(--t1)">BS <span style="color:var(--brand)">${totalBs}</span> — <span style="color:var(--blue)">${totalCtrl}</span> Control</div>
+      </div>
+      <div style="display:flex;gap:24px">
+        <div style="text-align:center">
+          <div style="font-size:10px;color:var(--t3);font-weight:600;margin-bottom:4px">Google Ads</div>
+          <div style="font-size:20px;font-weight:700"><span style="color:var(--brand)">${gBsWins}</span> — <span style="color:var(--blue)">${gCtrlWins}</span></div>
+        </div>
+        ${mBs ? `<div style="text-align:center">
+          <div style="font-size:10px;color:var(--t3);font-weight:600;margin-bottom:4px">Meta Ads</div>
+          <div style="font-size:20px;font-weight:700"><span style="color:var(--brand)">${mBsWins}</span> — <span style="color:var(--blue)">${mCtrlWins}</span></div>
+        </div>` : ''}
+      </div>
+    </div>`;
+
+  // ── Revenue & ROAS Charts ─────────────────────────────────
+  // Google daily
+  const gDates = (comp.daily_bs||[]).map(d=>d.date);
+  const gBsRev  = (comp.daily_bs||[]).map(d=>d.revenue_czk||0);
+  const gCtRev  = (comp.daily_control||[]).map(d=>d.revenue_czk||0);
+  const gBsR    = (comp.daily_bs||[]).map(d=>d.cost_czk>=50 ? +Math.min(d.revenue_czk/d.cost_czk,50).toFixed(2) : 0);
+  const gCtR    = (comp.daily_control||[]).map(d=>d.cost_czk>=50 ? +Math.min(d.revenue_czk/d.cost_czk,50).toFixed(2) : 0);
+
+  const mkLine = (canvasId, labels, ds1, ds2, yFmt) => {
+    if (charts[canvasId]) charts[canvasId].destroy();
+    charts[canvasId] = new Chart(document.getElementById(canvasId), {
+      type:'line',
+      data:{ labels, datasets:[
+        { label:ds1.label, data:ds1.data, borderColor:'#E85D04', backgroundColor:'rgba(232,93,4,.07)', fill:true, tension:.35, pointRadius:1.5 },
+        { label:ds2.label, data:ds2.data, borderColor:'#2563EB', backgroundColor:'rgba(37,99,235,.07)', fill:true, tension:.35, pointRadius:1.5 },
+      ]},
+      options:{ responsive:true, maintainAspectRatio:false, interaction:{mode:'index',intersect:false},
+        plugins:{ legend:{position:'top',labels:{font:{size:10}}}, datalabels:{display:false} },
+        scales:{ x:{ticks:{font:{size:9},maxTicksLimit:10}}, y:{ticks:{callback:yFmt}} }
+      }
+    });
+  };
+
+  mkLine('chartCombGoogleRev', gDates,
+    {label:'BS',data:gBsRev},{label:'Control',data:gCtRev},
+    v=>'Kč'+v.toLocaleString('cs-CZ',{maximumFractionDigits:0}));
+  mkLine('chartCombGoogleROAS', gDates,
+    {label:'BS ROAS',data:gBsR},{label:'Control ROAS',data:gCtR},
+    v=>v.toFixed(1)+'×');
+
+  // Meta daily (if available)
+  if (mBs && mCtrl) {
+    const allMDates = [...new Set([...mBs.daily.map(d=>d.date),...mCtrl.daily.map(d=>d.date)])].sort();
+    const mBsRevMap  = Object.fromEntries(mBs.daily.map(d=>[d.date,d.revenue]));
+    const mCtRevMap  = Object.fromEntries(mCtrl.daily.map(d=>[d.date,d.revenue]));
+    const mBsRMap    = Object.fromEntries(mBs.daily.map(d=>[d.date,d.roas]));
+    const mCtRMap    = Object.fromEntries(mCtrl.daily.map(d=>[d.date,d.roas]));
+    mkLine('chartCombMetaRev', allMDates,
+      {label:'BS',data:allMDates.map(d=>mBsRevMap[d]||0)},{label:'Control',data:allMDates.map(d=>mCtRevMap[d]||0)},
+      v=>'€'+v.toLocaleString());
+    mkLine('chartCombMetaROAS', allMDates,
+      {label:'BS ROAS',data:allMDates.map(d=>+(mBsRMap[d]||0).toFixed(2))},{label:'Control ROAS',data:allMDates.map(d=>+(mCtRMap[d]||0).toFixed(2))},
+      v=>v.toFixed(1)+'×');
+  }
+
+  // ── Combined Campaign Table ───────────────────────────────
+  const tbody = document.getElementById('combined-tbody');
+  const rows = [];
+
+  // Google Ads campaigns
+  (comp.campaigns||[]).forEach(c => {
+    const t    = c.totals || {};
+    const roas = t.cost_czk>0 ? t.revenue_czk/t.cost_czk : (t.roas||0);
+    const badge= c.group==='BS'
+      ? `<span class="camp-badge camp-bs">BS</span>`
+      : `<span class="camp-badge camp-ctrl">Control</span>`;
+    rows.push(`<tr>
+      <td><span style="font-size:10px;font-weight:700;color:#34a853;background:#e6f4ea;padding:2px 8px;border-radius:20px">🟢 Google</span></td>
+      <td>${c.name||'—'}</td><td>${badge}</td>
+      <td class="num">${fmtCZK(Math.round(t.cost_czk||0))}</td>
+      <td class="num">${fmtCZK(Math.round(t.revenue_czk||0))}</td>
+      <td class="num">${roas.toFixed(2)}×</td>
+      <td class="num">${(t.ctr_pct||0).toFixed(2)}%</td>
+      <td class="num">${fmtCZK((t.avg_cpc||0).toFixed(2))}</td>
+      <td class="num">${(t.conv_rate_pct||0).toFixed(2)}%</td>
+      <td class="num">${fmtCZK(Math.round(t.aov||0))}</td>
+    </tr>`);
+  });
+
+  // Meta campaigns (filtered to 4 IDs)
+  if (meta) {
+    [...(mBs?.campaigns||[]).map(c=>({...c,group:'BS'})),
+     ...(mCtrl?.campaigns||[]).map(c=>({...c,group:'Control'}))]
+    .forEach(c => {
+      const t = c.totals;
+      const roas = t.spend>0 ? t.revenue/t.spend : 0;
+      const ctr  = t.impressions>0 ? t.clicks/t.impressions*100 : 0;
+      const cpc  = t.clicks>0 ? t.spend/t.clicks : 0;
+      const cr   = t.clicks>0 ? t.conversions/t.clicks*100 : 0;
+      const aov  = t.conversions>0 ? t.revenue/t.conversions : 0;
+      const badge= c.group==='BS'
+        ? `<span class="camp-badge camp-bs">BS</span>`
+        : `<span class="camp-badge camp-ctrl">Control</span>`;
+      rows.push(`<tr>
+        <td><span style="font-size:10px;font-weight:700;color:#1877F2;background:#e7f0fd;padding:2px 8px;border-radius:20px">🔵 Meta</span></td>
+        <td>${c.name}</td><td>${badge}</td>
+        <td class="num">${EUR(t.spend)}</td>
+        <td class="num">${EUR(t.revenue)}</td>
+        <td class="num">${roas.toFixed(2)}×</td>
+        <td class="num">${ctr.toFixed(2)}%</td>
+        <td class="num">${EURdec(cpc)}</td>
+        <td class="num">${cr.toFixed(2)}%</td>
+        <td class="num">${EUR(aov)}</td>
+      </tr>`);
+    });
+  }
+
+  tbody.innerHTML = rows.join('') || '<tr><td colspan="10" style="text-align:center;color:var(--t3);padding:32px">Žádná data</td></tr>';
+}
+
+/* ════════════════════════════════════════════════════════════
+   META IMPACT TAB
+   ════════════════════════════════════════════════════════════ */
+const META_BS_IDS   = ['6888667716300', '6882480731300'];
+const META_CTRL_IDS = ['6497858750900', '6461756881100'];
+const EUR = v => '€' + Number(v).toLocaleString('en-IE', {minimumFractionDigits:0, maximumFractionDigits:0});
+const EURdec = v => '€' + Number(v).toFixed(2);
+
+function aggMetaCampaigns(campaigns, ids) {
+  const filtered = (campaigns || []).filter(c => ids.includes(c.id));
+  let spend=0, impressions=0, clicks=0, conversions=0, revenue=0;
+  const dailyMap = {};
+  filtered.forEach(c => {
+    spend       += c.totals.spend;
+    impressions += c.totals.impressions;
+    clicks      += c.totals.clicks;
+    conversions += c.totals.conversions;
+    revenue     += c.totals.revenue;
+    (c.daily||[]).forEach(d => {
+      if (!dailyMap[d.date]) dailyMap[d.date] = {spend:0,revenue:0,conversions:0,clicks:0};
+      dailyMap[d.date].spend       += d.spend;
+      dailyMap[d.date].revenue     += d.revenue;
+      dailyMap[d.date].conversions += d.conversions;
+      dailyMap[d.date].clicks      += d.clicks;
+    });
+  });
+  const roas     = spend > 0 ? revenue / spend : 0;
+  const ctr_pct  = impressions > 0 ? clicks / impressions * 100 : 0;
+  const avg_cpc  = clicks > 0 ? spend / clicks : 0;
+  const conv_rate= clicks > 0 ? conversions / clicks * 100 : 0;
+  const aov      = conversions > 0 ? revenue / conversions : 0;
+  const ltv      = aov * 3;
+  const daily    = Object.entries(dailyMap).sort((a,b)=>a[0]<b[0]?-1:1).map(([date,v])=>({
+    date, ...v,
+    // exclude micro-spend days (< €1) to avoid division artifacts; cap at 50× for chart sanity
+    roas: v.spend >= 1 ? Math.min(v.revenue / v.spend, 50) : 0,
+  }));
+  return { spend, impressions, clicks, conversions, revenue, roas, ctr_pct, avg_cpc, conv_rate_pct: conv_rate, aov, ltv, daily, campaigns: filtered };
+}
+
+function renderMetaImpact(meta) {
+  if (!meta || meta.error) {
+    document.getElementById('meta-kpi-grid').innerHTML =
+      `<div style="grid-column:1/-1;text-align:center;color:var(--t3);padding:40px">⚠️ Meta data nejsou k dispozici — klikni na "Fetch new data"</div>`;
+    return;
+  }
+
+  // Period + timestamp
+  const periodEl = document.getElementById('meta-period-lbl');
+  if (periodEl) periodEl.textContent = `📅 ${meta.date_start} – ${meta.date_end}`;
+  const tsEl = document.getElementById('meta-update-ts');
+  if (tsEl && meta.fetched_at) {
+    const d = new Date(meta.fetched_at);
+    tsEl.textContent = 'Aktualizováno: ' + d.toLocaleDateString('cs-CZ') + ' ' + d.toLocaleTimeString('cs-CZ',{hour:'2-digit',minute:'2-digit'});
+  }
+
+  const bs   = aggMetaCampaigns(meta.campaigns, META_BS_IDS);
+  const ctrl = aggMetaCampaigns(meta.campaigns, META_CTRL_IDS);
+
+  // KPI cards
+  const metrics = [
+    { key:'spend',         label:'Cost',           fmt: v=>EUR(v),          lowerIsBetter:true  },
+    { key:'revenue',       label:'Conv. Value',     fmt: v=>EUR(v),          lowerIsBetter:false },
+    { key:'roas',          label:'ROAS',            fmt: v=>v.toFixed(2)+'×',lowerIsBetter:false },
+    { key:'ctr_pct',       label:'CTR',             fmt: v=>v.toFixed(2)+'%',lowerIsBetter:false },
+    { key:'avg_cpc',       label:'CPC',             fmt: v=>EURdec(v),       lowerIsBetter:true  },
+    { key:'conv_rate_pct', label:'Conversion Rate', fmt: v=>v.toFixed(2)+'%',lowerIsBetter:false },
+    { key:'aov',           label:'AOV',             fmt: v=>EUR(v),          lowerIsBetter:false },
+    { key:'ltv',           label:'LTV (est.)',      fmt: v=>EUR(v),          lowerIsBetter:false },
+  ];
+  const grid = document.getElementById('meta-kpi-grid');
+  grid.innerHTML = metrics.map(m => {
+    const bsVal   = bs[m.key]   || 0;
+    const ctrlVal = ctrl[m.key] || 0;
+    const pct     = ctrlVal > 0 ? ((bsVal - ctrlVal) / ctrlVal * 100) : null;
+    let winClass, winLabel, winPct;
+    if (pct === null || Math.abs(pct) < 1) {
+      winClass = 'cmp-win-tie'; winLabel = '≈ Tie'; winPct = '';
+    } else {
+      const bsWins = m.lowerIsBetter ? bsVal < ctrlVal : bsVal > ctrlVal;
+      winClass  = bsWins ? 'cmp-win-bs'   : 'cmp-win-ctrl';
+      winLabel  = bsWins ? '🟠 BS wins'   : '🔵 Control wins';
+      winPct    = (bsWins === !m.lowerIsBetter ? '↑' : '↓') + Math.abs(pct).toFixed(1) + '%';
+    }
+    return `
+      <div class="cmp-card">
+        <div class="cmp-metric">${m.label}</div>
+        <div class="cmp-row">
+          <div class="cmp-group">
+            <div class="cmp-lbl cmp-lbl-bs">🟠 BS</div>
+            <div class="cmp-val">${m.fmt(bsVal)}</div>
+          </div>
+          <div class="cmp-winner">
+            <span class="cmp-win-badge ${winClass}">${winLabel}</span>
+            <span class="cmp-win-pct" style="color:${winClass==='cmp-win-bs'?'var(--brand)':winClass==='cmp-win-ctrl'?'var(--blue)':'var(--t3)'}">${winPct}</span>
+          </div>
+          <div class="cmp-group" style="text-align:right">
+            <div class="cmp-lbl cmp-lbl-ctrl" style="text-align:right">Control 🔵</div>
+            <div class="cmp-val">${m.fmt(ctrlVal)}</div>
+          </div>
+        </div>
+        <div class="cmp-bar-wrap">
+          <div class="cmp-bar-bs"   style="width:${Math.min(100,bs.spend/(bs.spend+ctrl.spend||1)*100)}%"></div>
+          <div class="cmp-bar-ctrl" style="width:${Math.min(100,ctrl.spend/(bs.spend+ctrl.spend||1)*100)}%"></div>
+        </div>
+      </div>`;
+  }).join('');
+
+  // Revenue chart
+  const allDates = [...new Set([...bs.daily.map(d=>d.date), ...ctrl.daily.map(d=>d.date)])].sort();
+  const bsRevMap   = Object.fromEntries(bs.daily.map(d=>[d.date, d.revenue]));
+  const ctrlRevMap = Object.fromEntries(ctrl.daily.map(d=>[d.date, d.revenue]));
+  const bsRoasMap  = Object.fromEntries(bs.daily.map(d=>[d.date, d.roas]));
+  const ctrlRoasMap= Object.fromEntries(ctrl.daily.map(d=>[d.date, d.roas]));
+
+  if (charts.metaRevenue) charts.metaRevenue.destroy();
+  charts.metaRevenue = new Chart(document.getElementById('chartMetaRevenue'), {
+    type: 'line',
+    data: {
+      labels: allDates,
+      datasets: [
+        { label:'BS Revenue (EUR)', data: allDates.map(d=>bsRevMap[d]||0),
+          borderColor:'#E85D04', backgroundColor:'rgba(232,93,4,.08)', fill:true, tension:.35, pointRadius:2 },
+        { label:'Control Revenue (EUR)', data: allDates.map(d=>ctrlRevMap[d]||0),
+          borderColor:'#2563EB', backgroundColor:'rgba(37,99,235,.08)', fill:true, tension:.35, pointRadius:2 },
+      ]
+    },
+    options: { responsive:true, maintainAspectRatio:false, interaction:{mode:'index',intersect:false},
+      plugins:{ legend:{position:'top', labels:{font:{size:11}}}, datalabels:{display:false} },
+      scales:{ x:{ticks:{font:{size:10},maxTicksLimit:12}}, y:{ticks:{callback:v=>'€'+v.toLocaleString()}} }
+    }
+  });
+
+  // ROAS chart
+  if (charts.metaROAS) charts.metaROAS.destroy();
+  charts.metaROAS = new Chart(document.getElementById('chartMetaROAS'), {
+    type: 'line',
+    data: {
+      labels: allDates,
+      datasets: [
+        { label:'BS ROAS', data: allDates.map(d=>+(bsRoasMap[d]||0).toFixed(2)),
+          borderColor:'#E85D04', tension:.35, pointRadius:2 },
+        { label:'Control ROAS', data: allDates.map(d=>+(ctrlRoasMap[d]||0).toFixed(2)),
+          borderColor:'#2563EB', tension:.35, pointRadius:2 },
+      ]
+    },
+    options: { responsive:true, maintainAspectRatio:false, interaction:{mode:'index',intersect:false},
+      plugins:{ legend:{position:'top', labels:{font:{size:11}}}, datalabels:{display:false} },
+      scales:{ x:{ticks:{font:{size:10},maxTicksLimit:12}}, y:{ticks:{callback:v=>v.toFixed(1)+'×'}} }
+    }
+  });
+
+  // Campaign table
+  const tbody = document.getElementById('meta-tbody');
+  const allCamps = [
+    ...bs.campaigns.map(c=>({...c, group:'BS'})),
+    ...ctrl.campaigns.map(c=>({...c, group:'Control'})),
+  ];
+  tbody.innerHTML = allCamps.map(c => {
+    const t   = c.totals;
+    const roas= t.spend > 0 ? t.revenue / t.spend : 0;
+    const ctr = t.impressions > 0 ? t.clicks / t.impressions * 100 : 0;
+    const cpc = t.clicks > 0 ? t.spend / t.clicks : 0;
+    const cr  = t.clicks > 0 ? t.conversions / t.clicks * 100 : 0;
+    const aov = t.conversions > 0 ? t.revenue / t.conversions : 0;
+    const ltv = aov * 3;
+    const badge = c.group === 'BS'
+      ? `<span class="camp-badge camp-bs">BS</span>`
+      : `<span class="camp-badge camp-ctrl">Control</span>`;
+    return `<tr>
+      <td>${c.name}</td>
+      <td>${badge}</td>
+      <td class="num">${EUR(t.spend)}</td>
+      <td class="num">${EUR(t.revenue)}</td>
+      <td class="num">${roas.toFixed(2)}×</td>
+      <td class="num">${ctr.toFixed(2)}%</td>
+      <td class="num">${EURdec(cpc)}</td>
+      <td class="num">${cr.toFixed(2)}%</td>
+      <td class="num">${EUR(aov)}</td>
+      <td class="num">${EUR(ltv)}</td>
+    </tr>`;
+  }).join('');
+}
+
+/* ════════════════════════════════════════════════════════════
+   PERFORMANCE INSIGHTS ENGINE
+   ════════════════════════════════════════════════════════════ */
+
+function pct(a, b) { return b > 0 ? (a - b) / b * 100 : 0; }
+function sign(v, lowerBetter) {
+  if (Math.abs(v) < 1) return 'neutral';
+  return (lowerBetter ? v < 0 : v > 0) ? 'bs_wins' : 'ctrl_wins';
+}
+
+function insightCard(title, platformBadgeHtml, summary, working, opportunities, actions) {
+  const col = (type, heading, emoji, items) => items.length ? `
+    <div class="insight-col insight-col-${type}">
+      <div class="insight-col-title">${emoji} ${heading}</div>
+      <div class="insight-items">${items.map(i=>`<div class="insight-item">${i}</div>`).join('')}</div>
+    </div>` : '';
+  return `
+    <div class="insight-header">
+      ${platformBadgeHtml}
+      <span class="insight-title">${title}</span>
+    </div>
+    <div class="insight-summary">${summary}</div>
+    <div class="insight-cols">
+      ${col('green','What\'s working','✅', working)}
+      ${col('amber','Opportunities','🟡', opportunities)}
+      ${col('red','Recommendations','🔴', actions)}
+    </div>`;
+}
+
+function generateGoogleInsights(bs, ctrl) {
+  if (!bs || !ctrl) return '';
+  const roasDiff  = pct(bs.roas,          ctrl.roas);
+  const ctrDiff   = pct(bs.ctr_pct,       ctrl.ctr_pct);
+  const cpcDiff   = pct(bs.avg_cpc,       ctrl.avg_cpc);
+  const crDiff    = pct(bs.conv_rate_pct, ctrl.conv_rate_pct);
+  const aovDiff   = pct(bs.aov,           ctrl.aov);
+  const spendDiff = pct(bs.cost_czk,      ctrl.cost_czk);
+  const revDiff   = pct(bs.revenue_czk,   ctrl.revenue_czk);
+  const TARGET_ROAS = 12;
+
+  const working = [], opps = [], actions = [];
+
+  // ROAS analysis
+  if (roasDiff > 3)  working.push(`BS ROAS ${bs.roas.toFixed(2)}× beats Control by ${roasDiff.toFixed(1)}% — first-party audience segments are delivering measurably better returns.`);
+  else if (roasDiff < -3) opps.push(`Control ROAS ${ctrl.roas.toFixed(2)}× outperforms BS by ${Math.abs(roasDiff).toFixed(1)}%. BS campaigns are still in the learning phase — allow more time before drawing conclusions.`);
+  else working.push(`BS ROAS ${bs.roas.toFixed(2)}× is on par with Control (${ctrl.roas.toFixed(2)}×) — strong signal that audience quality is maintained.`);
+
+  if (bs.roas < TARGET_ROAS)
+    opps.push(`BS ROAS ${bs.roas.toFixed(2)}× is below the ${TARGET_ROAS}× target. Consider tightening audience match score thresholds in Boost.space or increasing bid aggressiveness on high-value segments.`);
+  else
+    working.push(`BS campaigns are hitting the ${TARGET_ROAS}× ROAS target — the synced audience segments are profitable.`);
+
+  // CTR
+  if (ctrDiff > 5)  working.push(`BS CTR ${bs.ctr_pct.toFixed(2)}% is ${ctrDiff.toFixed(0)}% higher — Boost.space segments reach more relevant audiences, reducing wasted impressions.`);
+  else if (ctrDiff < -5) actions.push(`BS CTR ${bs.ctr_pct.toFixed(2)}% lags Control by ${Math.abs(ctrDiff).toFixed(0)}%. Review ad copy relevance for BS audience segments — messaging may not resonate with the synced cohort.`);
+
+  // CPC
+  if (cpcDiff < -5)  working.push(`BS CPC ${fmtCZK(bs.avg_cpc.toFixed(0))} is ${Math.abs(cpcDiff).toFixed(0)}% cheaper than Control — more efficient click acquisition via targeted audiences.`);
+  else if (cpcDiff > 10) actions.push(`BS CPC ${fmtCZK(bs.avg_cpc.toFixed(0))} is ${cpcDiff.toFixed(0)}% above Control. The audience pool may be too narrow — expand segments in Boost.space or increase lookalike radius.`);
+
+  // Conversion Rate
+  if (crDiff > 5)  working.push(`BS conversion rate ${bs.conv_rate_pct.toFixed(2)}% is ${crDiff.toFixed(0)}% above Control — synced first-party buyers are converting at higher rates.`);
+  else if (crDiff < -5) opps.push(`BS conversion rate (${bs.conv_rate_pct.toFixed(2)}%) trails Control (${ctrl.conv_rate_pct.toFixed(2)}%). Evaluate landing page relevance for segments sourced from Boost.space or check if segment definitions need refinement.`);
+
+  // AOV
+  if (aovDiff > 3)  working.push(`BS AOV ${fmtCZK(Math.round(bs.aov))} exceeds Control AOV — Boost.space segments identify higher-value buyers.`);
+  else if (aovDiff < -5) opps.push(`BS AOV ${fmtCZK(Math.round(bs.aov))} is below Control (${fmtCZK(Math.round(ctrl.aov))}). Consider layering purchase history or LTV filters in Boost.space to surface higher-intent segments.`);
+
+  // Spend imbalance
+  if (spendDiff < -30) opps.push(`BS spend (${fmtCZK(Math.round(bs.cost_czk))}) is ${Math.abs(spendDiff).toFixed(0)}% lower than Control. If ROAS is healthy, this is a scaling opportunity — increase BS campaign budgets to capture more of the proven audience.`);
+
+  // Revenue
+  if (revDiff > 0) working.push(`BS revenue ${fmtCZK(Math.round(bs.revenue_czk))} with lower spend — demonstrates capital efficiency of audience-based targeting.`);
+
+  // Default recommendations
+  actions.push('Sync Boost.space CRM data weekly to keep audience segments fresh and capture new purchasers.');
+  actions.push('Test a dedicated Boost.space segment for high-LTV customers (3+ orders) as a separate BS campaign layer.');
+  if (bs.roas < TARGET_ROAS) actions.push(`Raise tROAS toward ${TARGET_ROAS}× gradually (+10% every 2 weeks) once daily spend stabilises.`);
+
+  const roasVerdict = Math.abs(roasDiff) < 2 ? 'comparable to'
+    : roasDiff > 0 ? `${roasDiff.toFixed(1)}% ahead of` : `${Math.abs(roasDiff).toFixed(1)}% behind`;
+  const summary = `Google Ads BS campaigns generated <strong>${fmtCZK(Math.round(bs.revenue_czk))}</strong> revenue on <strong>${fmtCZK(Math.round(bs.cost_czk))}</strong> spend (ROAS <strong>${bs.roas.toFixed(2)}×</strong>) — ${roasVerdict} Control. BS CTR is ${ctrDiff >= 0 ? ctrDiff.toFixed(1)+'% higher' : Math.abs(ctrDiff).toFixed(1)+'% lower'} and CPC is ${cpcDiff <= 0 ? Math.abs(cpcDiff).toFixed(1)+'% cheaper' : cpcDiff.toFixed(1)+'% more expensive'}. Conversion rate ${crDiff >= 0 ? 'advantage' : 'gap'}: ${Math.abs(crDiff).toFixed(1)}%.`;
+
+  const badge = `<span class="insight-platform-badge" style="background:#e6f4ea;color:#15803d">🟢 Google Ads</span>`;
+  return insightCard('Google Ads Performance Analysis', badge, summary, working, opps, actions);
+}
+
+function generateMetaInsights(bs, ctrl) {
+  if (!bs || !ctrl) return '';
+  const roasDiff  = pct(bs.roas,          ctrl.roas);
+  const ctrDiff   = pct(bs.ctr_pct,       ctrl.ctr_pct);
+  const cpcDiff   = pct(bs.avg_cpc,       ctrl.avg_cpc);
+  const crDiff    = pct(bs.conv_rate_pct, ctrl.conv_rate_pct);
+  const aovDiff   = pct(bs.aov,           ctrl.aov);
+  const spendRatio = bs.spend / (ctrl.spend || 1);
+
+  const working = [], opps = [], actions = [];
+
+  // Spend maturity note
+  if (spendRatio < 0.4) {
+    opps.push(`BS Meta spend (${EUR(bs.spend)}) is only ${(spendRatio*100).toFixed(0)}% of Control spend (${EUR(ctrl.spend)}). Results are directional — scale BS budget to reach statistical significance before drawing firm conclusions.`);
+    actions.push(`Gradually increase BS Meta campaign budgets by 20–30% per week to exit the learning phase (typically requires 50+ conversions per campaign per week).`);
+  }
+
+  // ROAS
+  if (roasDiff > 3)  working.push(`BS Meta ROAS ${bs.roas.toFixed(2)}× outperforms Control by ${roasDiff.toFixed(1)}% — Boost.space audiences drive higher-quality Meta traffic.`);
+  else if (roasDiff < -3) opps.push(`Control Meta ROAS (${ctrl.roas.toFixed(2)}×) leads BS (${bs.roas.toFixed(2)}×) by ${Math.abs(roasDiff).toFixed(1)}%. Early-stage BS audiences may need broadening or pixel signal enrichment.`);
+  else working.push(`BS Meta ROAS ${bs.roas.toFixed(2)}× matches Control — audience quality is consistent despite smaller scale.`);
+
+  // CTR
+  if (ctrDiff > 5)  working.push(`BS CTR ${bs.ctr_pct.toFixed(2)}% is ${ctrDiff.toFixed(0)}% above Control — synced customer data produces higher ad relevance on Meta.`);
+  else if (ctrDiff < -5) actions.push(`BS CTR ${bs.ctr_pct.toFixed(2)}% lags Control by ${Math.abs(ctrDiff).toFixed(0)}%. Test creative variations specifically tailored to the Boost.space audience cohort — existing creatives may be generic.`);
+
+  // CPC
+  if (cpcDiff < -5) working.push(`BS CPC ${EURdec(bs.avg_cpc)} is ${Math.abs(cpcDiff).toFixed(0)}% cheaper — tighter audience definition reduces auction competition.`);
+  else if (cpcDiff > 10) actions.push(`BS CPC ${EURdec(bs.avg_cpc)} is ${cpcDiff.toFixed(0)}% above Control. The audience may be too narrow for Meta's algorithm — consider using Advantage+ Audience with Boost.space data as a signal rather than a hard constraint.`);
+
+  // Conv rate
+  if (crDiff > 5) working.push(`BS Meta conversion rate (${bs.conv_rate_pct.toFixed(2)}%) is ${crDiff.toFixed(0)}% above Control — Boost.space data matches high-intent buyers.`);
+  else if (crDiff < -5) opps.push(`BS conversion rate (${bs.conv_rate_pct.toFixed(2)}%) trails Control (${ctrl.conv_rate_pct.toFixed(2)}%). Verify that the Meta Pixel is receiving Boost.space CRM events via CAPI to improve signal quality.`);
+
+  // AOV
+  if (aovDiff > 3) working.push(`BS AOV (${EUR(bs.aov)}) is above Control — Boost.space segments skew toward higher-basket buyers.`);
+  else if (aovDiff < -5) opps.push(`BS Meta AOV (${EUR(bs.aov)}) is below Control (${EUR(ctrl.aov)}). Add product-level revenue filters in Boost.space to exclude low-value purchasers from audience exports.`);
+
+  // Default actions
+  actions.push('Connect Boost.space CRM data to Meta via Conversions API (CAPI) for full signal matching — reduces iOS 14+ attribution loss.');
+  actions.push('Build a Boost.space-powered Lookalike Audience (1–3%) from your top-LTV customer cohort and test it as a new BS campaign layer.');
+  actions.push('Ensure Boost.space sends hashed email + phone with each purchase event for maximum Meta match rates (target EMQ > 7.0).');
+
+  const roasVerdict = Math.abs(roasDiff) < 2 ? 'comparable to'
+    : roasDiff > 0 ? `${roasDiff.toFixed(1)}% ahead of` : `${Math.abs(roasDiff).toFixed(1)}% behind`;
+  const summary = `Meta BS campaigns spent <strong>${EUR(bs.spend)}</strong> generating <strong>${EUR(bs.revenue)}</strong> revenue (ROAS <strong>${bs.roas.toFixed(2)}×</strong>) — ${roasVerdict} Control. BS campaigns currently represent <strong>${(spendRatio*100).toFixed(0)}%</strong> of Control budget. ${spendRatio < 0.5 ? 'Results are promising but scale is insufficient for statistical significance — scaling is the primary next step.' : 'Scale is sufficient to compare results with confidence.'}`;
+
+  const badge = `<span class="insight-platform-badge" style="background:#e7f0fd;color:#1877F2">🔵 Meta Ads</span>`;
+  return insightCard('Meta Ads Performance Analysis', badge, summary, working, opps, actions);
+}
+
+function renderInsights(targetId, html) {
+  const el = document.getElementById(targetId);
+  if (el && html) {
+    el.innerHTML = `<div style="padding:4px 0">${html}</div>`;
+  }
+}
+
+function renderAllInsights(comp, meta) {
+  if (!comp) return;
+  const gBs   = comp.bs_totals   || {};
+  const gCtrl = comp.control_totals || {};
+  const mBs   = meta ? aggMetaCampaigns(meta.campaigns, META_BS_IDS)   : null;
+  const mCtrl = meta ? aggMetaCampaigns(meta.campaigns, META_CTRL_IDS) : null;
+
+  // Google Ads tab insights
+  const gHtml = generateGoogleInsights(gBs, gCtrl);
+  renderInsights('impact-insights', gHtml);
+
+  // Meta tab insights
+  const mHtml = generateMetaInsights(mBs, mCtrl);
+  renderInsights('meta-insights', mHtml);
+
+  // Combined tab — both platforms
+  renderInsights('combined-insights',
+    gHtml + (mHtml ? `<hr class="insight-divider">${mHtml}` : ''));
+}
+</script>
+</body>
+</html>
