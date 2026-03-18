@@ -1,32 +1,24 @@
 {
-  "fetched_at": "2026-03-17T22:05:29.152232",
+  "fetched_at": "2026-03-18T09:00:05.210806",
   "period": {
-    "start": "2026-02-15",
-    "end": "2026-03-16",
+    "start": "2026-02-16",
+    "end": "2026-03-17",
     "days": 30
   },
   "period_60d": {
-    "start": "2026-01-16",
-    "end": "2026-03-16",
+    "start": "2026-01-17",
+    "end": "2026-03-17",
     "days": 60
   },
   "property_id": "302145992",
   "totals": {
-    "sessions": 319237,
-    "users": 232869,
-    "engaged_sessions": 152812,
-    "event_count": 3440991,
-    "engagement_rate_pct": 47.9
+    "sessions": 319646,
+    "users": 233498,
+    "engaged_sessions": 148621,
+    "event_count": 3424167,
+    "engagement_rate_pct": 46.5
   },
   "daily": [
-    {
-      "date": "2026-02-15",
-      "sessions": 8349,
-      "users": 6062,
-      "engaged_sessions": 4289,
-      "event_count": 103715,
-      "engagement_rate": 51.4
-    },
     {
       "date": "2026-02-16",
       "sessions": 12295,
@@ -258,17 +250,17 @@
       "engaged_sessions": 5338,
       "event_count": 110038,
       "engagement_rate": 50.6
+    },
+    {
+      "date": "2026-03-17",
+      "sessions": 8758,
+      "users": 6691,
+      "engaged_sessions": 98,
+      "event_count": 86891,
+      "engagement_rate": 1.1
     }
   ],
   "daily_60d": [
-    {
-      "date": "2026-01-16",
-      "sessions": 12870,
-      "users": 9640,
-      "engaged_sessions": 6998,
-      "event_count": 159849,
-      "engagement_rate": 54.4
-    },
     {
       "date": "2026-01-17",
       "sessions": 12526,
@@ -740,80 +732,88 @@
       "engaged_sessions": 5338,
       "event_count": 110038,
       "engagement_rate": 50.6
+    },
+    {
+      "date": "2026-03-17",
+      "sessions": 8758,
+      "users": 6691,
+      "engaged_sessions": 98,
+      "event_count": 86891,
+      "engagement_rate": 1.1
     }
   ],
   "channels": [
     {
       "channel": "Organic Search",
-      "sessions": 77841,
-      "users": 36445,
-      "engaged_sessions": 31873
+      "sessions": 77820,
+      "users": 36150,
+      "engaged_sessions": 31134
     },
     {
       "channel": "Paid Social",
-      "sessions": 65920,
-      "users": 29748,
-      "engaged_sessions": 25113
+      "sessions": 67111,
+      "users": 29927,
+      "engaged_sessions": 24993
     },
     {
       "channel": "Cross-network",
-      "sessions": 62377,
-      "users": 29755,
-      "engaged_sessions": 36342
+      "sessions": 62486,
+      "users": 29789,
+      "engaged_sessions": 35241
     },
     {
       "channel": "Direct",
-      "sessions": 23198,
-      "users": 9484,
-      "engaged_sessions": 10237
+      "sessions": 23324,
+      "users": 9574,
+      "engaged_sessions": 9922
     },
     {
       "channel": "Paid Search",
-      "sessions": 23170,
-      "users": 9064,
-      "engaged_sessions": 14391
-    },
-    {
-      "channel": "Affiliates",
-      "sessions": 17843,
-      "users": 8802,
-      "engaged_sessions": 10052
+      "sessions": 23266,
+      "users": 9079,
+      "engaged_sessions": 14010
     },
     {
       "channel": "Unassigned",
-      "sessions": 15139,
-      "users": 7743,
-      "engaged_sessions": 7879
+      "sessions": 19240,
+      "users": 10901,
+      "engaged_sessions": 7615
+    },
+    {
+      "channel": "Affiliates",
+      "sessions": 17559,
+      "users": 8689,
+      "engaged_sessions": 9638
     },
     {
       "channel": "Referral",
-      "sessions": 10285,
-      "users": 3764,
-      "engaged_sessions": 5954
+      "sessions": 10209,
+      "users": 3716,
+      "engaged_sessions": 5782
     },
     {
       "channel": "Email",
-      "sessions": 8688,
-      "users": 3230,
-      "engaged_sessions": 4944
+      "sessions": 8435,
+      "users": 3161,
+      "engaged_sessions": 4776
     },
     {
       "channel": "Organic Social",
-      "sessions": 6575,
-      "users": 3262,
-      "engaged_sessions": 2761
+      "sessions": 6548,
+      "users": 3254,
+      "engaged_sessions": 2701
     },
     {
       "channel": "Paid Shopping",
-      "sessions": 2462,
-      "users": 1567,
-      "engaged_sessions": 884
+      "sessions": 2497,
+      "users": 1599,
+      "engaged_sessions": 878
     },
     {
       "channel": "Organic Video",
-      "sessions": 261,
-      "users": 96,
-      "engaged_sessions": 145
+      "sessions": 258,
+      "users": 92,
+      "engaged_sessions": 137
     },
     {
       "channel": "Paid Other",
@@ -823,9 +823,9 @@
     },
     {
       "channel": "Display",
-      "sessions": 8,
-      "users": 3,
-      "engaged_sessions": 4
+      "sessions": 5,
+      "users": 2,
+      "engaged_sessions": 3
     }
   ]
 }
